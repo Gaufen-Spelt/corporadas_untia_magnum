@@ -68,126 +68,131 @@ body::before {
   z-index: -1;
 }
 
-/* Light mode - clinical corporate white */
+
 /* Light mode - clinical corporate white */
 body:not(.dark-mode) {
-  --bg-color: #f8f9fa;
+  --bg-color: #f5f7fa;
   --border-color: #2d3748;
-  --content-bg-color: #ffffff;
-  --text-color: #1a202c;
-  --link-color: #2563eb;
+  --content-bg-color: #ffffff;  /* WHITE content boxes */
+  --text-color: #1a202c;  /* DARK text on white */
+  --link-color: #2563eb;  /* Blue links */
   --link-hover-color: rgba(37, 99, 235, 0.08);
-  --tab-bg-color: #e2e8f0;
-  --tab-color: #cbd5e0;
-  --tab-hover-color: #f7fafc;
+  --tab-bg-color: #e2e8f0;  /* Light gray tabs */
+  --tab-color: #f7fafc;  /* Very light tab background */
+  --tab-hover-color: #cbd5e0;
   --card-border-color: #2d3748;
   --card-bg-color: #ffffff;
-  --accent-color: #dc2626;
-  --warning-color: #d97706;
-  --success-color: #059669;
+  --accent-color: #dc2626;  /* Red accent */
+  --warning-color: #d97706;  /* Orange warning */
+  --success-color: #059669;  /* Green success */
   
   background-color: var(--bg-color);
   background-image: 
-    /* Horizontal scanlines - darker for visibility */
+    /* Horizontal scanlines - subtle on light bg */
     repeating-linear-gradient(
       0deg,
       transparent,
       transparent 2px,
-      rgba(45, 55, 72, 0.04) 2px,
-      rgba(45, 55, 72, 0.04) 4px
+      rgba(45, 55, 72, 0.03) 2px,
+      rgba(45, 55, 72, 0.03) 4px
     ),
-    /* Vertical grid - more visible */
+    /* Vertical grid */
     repeating-linear-gradient(
       90deg,
       transparent,
       transparent 40px,
-      rgba(45, 55, 72, 0.03) 40px,
-      rgba(45, 55, 72, 0.03) 41px
+      rgba(45, 55, 72, 0.025) 40px,
+      rgba(45, 55, 72, 0.025) 41px
     ),
     /* Diagonal noise lines */
     repeating-linear-gradient(
       45deg,
       transparent,
       transparent 2px,
-      rgba(45, 55, 72, 0.02) 2px,
-      rgba(45, 55, 72, 0.02) 4px
+      rgba(45, 55, 72, 0.015) 2px,
+      rgba(45, 55, 72, 0.015) 4px
     );
 }
 
-/* Light mode vignette - subtle but visible */
+/* Light mode vignette - very subtle */
 body:not(.dark-mode)::before {
-  background: radial-gradient(ellipse at center, transparent 0%, rgba(45, 55, 72, 0.08) 100%);
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(45, 55, 72, 0.05) 100%);
 }
 
-/* Light mode content box - add subtle shadow for depth */
+/* Light mode specific overrides for better visibility */
 body:not(.dark-mode) #content {
   box-shadow: 
-    0 0 0 1px var(--border-color),
-    0 8px 32px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    0 0 0 1px #e2e8f0,
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  border-left: 3px solid var(--border-color);
 }
 
-/* Light mode header links - more contrast */
+body:not(.dark-mode) #header-links {
+  box-shadow: 
+    0 0 0 1px #e2e8f0,
+    0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
 body:not(.dark-mode) #header-links a {
-  border-left: 1px solid rgba(45, 55, 72, 0.15);
+  border-left: 1px solid rgba(45, 55, 72, 0.12);
 }
 
-body:not(.dark-mode) #header-links a:hover {
-  box-shadow: inset 0 -3px 0 var(--link-color);
-}
-
-/* Light mode choices - better borders */
 body:not(.dark-mode) ul.choices {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #cbd5e0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  background-color: #ffffff;
 }
 
 body:not(.dark-mode) ul.choices li {
-  border-bottom: 1px solid rgba(45, 55, 72, 0.15);
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #ffffff;
 }
 
-/* Light mode stats boxes */
+body:not(.dark-mode) ul.choices li:hover {
+  background-color: var(--link-hover-color);
+  border-left: 3px solid var(--link-color);
+}
+
 body:not(.dark-mode) .stats-box {
   box-shadow: 
-    0 0 0 1px var(--border-color),
-    0 8px 32px rgba(0, 0, 0, 0.08);
+    0 0 0 1px #e2e8f0,
+    0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 body:not(.dark-mode) #qualities h1, 
 body:not(.dark-mode) #qualities_2 h1 {
-  border-bottom: 1px solid rgba(45, 55, 72, 0.15);
+  border-bottom: 1px solid #e2e8f0;
 }
 
-/* Light mode tabs - better contrast */
 body:not(.dark-mode) .tab_container, 
 body:not(.dark-mode) .tab_container_bottom {
-  border-bottom: 1px solid rgba(45, 55, 72, 0.2);
+  border-bottom: 1px solid #cbd5e0;
 }
 
 body:not(.dark-mode) .tab_button {
   border-right: 1px solid rgba(45, 55, 72, 0.1);
 }
 
-body:not(.dark-mode) .tab_button.active {
-  box-shadow: inset 0 -3px 0 var(--link-color);
-}
-
-/* Light mode cards - stronger borders */
 body:not(.dark-mode) a.card {
   box-shadow: 
-    0 0 0 2px var(--card-border-color),
-    0 4px 16px rgba(0, 0, 0, 0.1);
+    0 0 0 2px #cbd5e0,
+    0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 body:not(.dark-mode) a.card:hover {
   box-shadow: 
     0 0 0 2px var(--link-color),
-    0 8px 24px rgba(37, 99, 235, 0.2),
-    0 0 16px rgba(37, 99, 235, 0.1);
+    0 8px 20px rgba(37, 99, 235, 0.2);
 }
 
-/* Light mode buttons */
-body:not(.dark-mode) button:hover {
-  box-shadow: 0 0 12px rgba(37, 99, 235, 0.15);
+body:not(.dark-mode) blockquote {
+  border-left: 3px solid #cbd5e0;
+  opacity: 0.75;
+}
+
+body:not(.dark-mode) hr {
+  border-top: 1px solid #e2e8f0;
 }
 
 
