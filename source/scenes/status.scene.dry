@@ -15,7 +15,7 @@ Chief Operating Officer: [+ coo_name +] ([+ coo_division +])
 [? if market_leader : (Market Dominance) ?][? if market_challenger : (Market Challenger) ?][? if strategic_alliance : (Strategic Alliance) ?]
 
 Board Chairman: [+ board_chairman +] ([+ parent_corporation +])
-Next Shareholder Meeting: [+ next_meeting_quarter : quarter +] [+ next_meeting_year +]
+Next Shareholder Meeting: [+ next_meeting_quarter +] [+ next_meeting_year +]
 
 **Corporate Resources**
 
