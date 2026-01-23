@@ -2,318 +2,318 @@ title: Status
 new-page: true
 is-special: true
 
-= [+ month : month +] [+ year +]
+= FISCAL QUARTER [+ quarter : quarter +] // YEAR [+ year +]
 
-**Leadership**
+**Executive Leadership**
 
-ALP Leader: [+ alp_leader +] ([+ alp_leader_faction +])
-Deputy Leader: [+ alp_deputy +] ([+ alp_deputy_faction +])
+Chief Executive Officer: [+ ceo_name +] ([+ ceo_division +])
+Chief Operating Officer: [+ coo_name +] ([+ coo_division +])
 
-**Position**
+**Corporate Position**
 
-[? if alp_in_government : In Government ?][? if alp_opposition : In Opposition ?]
-[? if alp_majority : (Majority) ?][? if alp_minority : (Minority) ?][? if alp_coalition : (Coalition) ?]
+[? if controlling_entity : Controlling Entity ?][? if subsidiary_status : Subsidiary Status ?]
+[? if market_leader : (Market Dominance) ?][? if market_challenger : (Market Challenger) ?][? if strategic_alliance : (Strategic Alliance) ?]
 
-Prime Minister: [+ prime_minister +] ([+ prime_minister_party +])
-Next election: [+ next_election_month : month +] [+ next_election_year +]
+Board Chairman: [+ board_chairman +] ([+ parent_corporation +])
+Next Shareholder Meeting: [+ next_meeting_quarter : quarter +] [+ next_meeting_year +]
 
-**Resources**
+**Corporate Resources**
 
-Party funds: [+ resources +]
-[? if alp_in_government : Government budget: £[+ budget +]m ?]
-Internal dissent: [+ dissent_percent : dissent +]
+Liquid Assets: [+ resources +] ¤
+[? if controlling_entity : Operating Budget: ¤[+ budget +]M ?]
+Internal Resistance Index: [+ dissent_percent : dissent +]
 
-@government
+@corporate
 on-arrival: {!
-// Calculate state control
-Q.alp_states = 0;
-if (Q.alp_nsw) Q.alp_states += 1;
-if (Q.alp_victoria) Q.alp_states += 1;
-if (Q.alp_queensland) Q.alp_states += 1;
-if (Q.alp_sa) Q.alp_states += 1;
-if (Q.alp_wa) Q.alp_states += 1;
-if (Q.alp_tasmania) Q.alp_states += 1;
+// Calculate territorial control
+Q.controlled_zones = 0;
+if (Q.zone_alpha) Q.controlled_zones += 1;
+if (Q.zone_beta) Q.controlled_zones += 1;
+if (Q.zone_gamma) Q.controlled_zones += 1;
+if (Q.zone_delta) Q.controlled_zones += 1;
+if (Q.zone_epsilon) Q.controlled_zones += 1;
+if (Q.zone_zeta) Q.controlled_zones += 1;
 !}
 
-= Government
+= Corporate Structure
 
-**Federal Government**
+**Executive Board**
 
-Governor-General: [+ governor_general +]
+Chairman of the Board: [+ board_chairman +]
 
-Prime Minister: [+ prime_minister +] ([+ prime_minister_party +])
+Chief Executive Officer: [+ ceo_name +] ([+ parent_corporation +])
 
-**Senate**
+**Shareholder Assembly**
 
-{!<span class="tooltip-text" title="Australian Labor Party">ALP</span>!}: [+ alp_seats_s +] seats ([+ alp_percent_s +]%)
-{!<span class="tooltip-text" title="Liberal Party of Australia">Liberal</span>!}: [+ liberal_seats_s +] seats ([+ liberal_percent_s +]%)
-{!<span class="tooltip-text" title="Australian Country Party">Country Party</span>!}: [+ country_seats_s +] seats ([+ country_percent_s +]%)
-{!<span class="tooltip-text" title="Communist Party of Australia">CPA</span>!}: [+ cpa_seats_s +] seats ([+ cpa_percent_s +]%)
-[? if lang_seats > 0 : {!<span class="tooltip-text" title="Lang Labor">Lang Labor</span>!}: [+ lang_seats_s +] seats ([+ lang_percent_s +]%) ?]
-[? if dlp_formed : {!<span class="tooltip-text" title="Democratic Labor Party">DLP</span>!}: [+ dlp_seats_s +] seats ([+ dlp_percent_s +]%) ?]
-Others: [+ other_seats +] seats ([+ other_percent +]%)
+{!<span class="tooltip-text" title="Corporadas Untia Magnum">CUM</span>!}: [+ cum_shares +] shares ([+ cum_percent +]%)
+{!<span class="tooltip-text" title="Hegemonic Industries">Hegemonic</span>!}: [+ hegemonic_shares +] shares ([+ hegemonic_percent +]%)
+{!<span class="tooltip-text" title="Sovereign Ventures Group">SVG</span>!}: [+ svg_shares +] shares ([+ svg_percent +]%)
+{!<span class="tooltip-text" title="Worker Collective Coalition">WCC</span>!}: [+ wcc_shares +] shares ([+ wcc_percent +]%)
+[? if legacy_shares > 0 : {!<span class="tooltip-text" title="Legacy Holdings">Legacy</span>!}: [+ legacy_shares +] shares ([+ legacy_percent +]%) ?]
+[? if dissident_bloc : {!<span class="tooltip-text" title="Dissident Bloc">Dissidents</span>!}: [+ dissident_shares +] shares ([+ dissident_percent +]%) ?]
+Independent: [+ independent_shares +] shares ([+ independent_percent +]%)
 
-**House of Representatives**
+**Executive Council**
 
-{!<span class="tooltip-text" title="Australian Labor Party">ALP</span>!}: [+ alp_seats +] seats ([+ alp_percent +]%)
-{!<span class="tooltip-text" title="Liberal Party of Australia">Liberal</span>!}: [+ liberal_seats +] seats ([+ liberal_percent +]%)
-{!<span class="tooltip-text" title="Australian Country Party">Country Party</span>!}: [+ country_seats +] seats ([+ country_percent +]%)
-{!<span class="tooltip-text" title="Communist Party of Australia">CPA</span>!}: [+ cpa_seats +] seats ([+ cpa_percent +]%)
-[? if lang_seats > 0 : {!<span class="tooltip-text" title="Lang Labor">Lang Labor</span>!}: [+ lang_seats +] seats ([+ lang_percent +]%) ?]
-[? if dlp_formed : {!<span class="tooltip-text" title="Democratic Labor Party">DLP</span>!}: [+ dlp_seats +] seats ([+ dlp_percent +]%) ?]
-Others: [+ other_seats +] seats ([+ other_percent +]%)
+{!<span class="tooltip-text" title="Corporadas Untia Magnum">CUM</span>!}: [+ cum_seats +] seats ([+ cum_seat_percent +]%)
+{!<span class="tooltip-text" title="Hegemonic Industries">Hegemonic</span>!}: [+ hegemonic_seats +] seats ([+ hegemonic_seat_percent +]%)
+{!<span class="tooltip-text" title="Sovereign Ventures Group">SVG</span>!}: [+ svg_seats +] seats ([+ svg_seat_percent +]%)
+{!<span class="tooltip-text" title="Worker Collective Coalition">WCC</span>!}: [+ wcc_seats +] seats ([+ wcc_seat_percent +]%)
+[? if legacy_seats > 0 : {!<span class="tooltip-text" title="Legacy Holdings">Legacy</span>!}: [+ legacy_seats +] seats ([+ legacy_seat_percent +]%) ?]
+[? if dissident_bloc : {!<span class="tooltip-text" title="Dissident Bloc">Dissidents</span>!}: [+ dissident_seats +] seats ([+ dissident_seat_percent +]%) ?]
+Independent: [+ independent_seats +] seats ([+ independent_seat_percent +]%)
 
-[? if alp_in_government : Budget balance: £[+ budget +] million ?]
+[? if controlling_entity : Capital Reserves: ¤[+ budget +] million ?]
 
-**State Governments**
+**Territorial Control**
 
-ALP controls [+ alp_states +] of 6 state governments
+CUM controls [+ controlled_zones +] of 6 operational zones
 
-[? if alp_nsw : NSW: [+ premier_nsw +] (ALP) ?][? if not alp_nsw : NSW: [+ premier_nsw +] (Coalition) ?]
+[? if zone_alpha : Alpha Zone: [+ director_alpha +] (CUM) ?][? if not zone_alpha : Alpha Zone: [+ director_alpha +] (Rival Consortium) ?]
 
-[? if alp_victoria : Victoria: [+ premier_victoria +] (ALP) ?][? if not alp_victoria : Victoria: [+ premier_victoria +] (Coalition) ?]
+[? if zone_beta : Beta Zone: [+ director_beta +] (CUM) ?][? if not zone_beta : Beta Zone: [+ director_beta +] (Rival Consortium) ?]
 
-[? if alp_queensland : Queensland: [+ premier_queensland +] (ALP) ?][? if not alp_queensland : Queensland: [+ premier_queensland +] (Coalition) ?]
+[? if zone_gamma : Gamma Zone: [+ director_gamma +] (CUM) ?][? if not zone_gamma : Gamma Zone: [+ director_gamma +] (Rival Consortium) ?]
 
-[? if alp_sa : South Australia: [+ premier_sa +] (ALP) ?][? if not alp_sa : South Australia: [+ premier_sa +] (Coalition) ?]
+[? if zone_delta : Delta Zone: [+ director_delta +] (CUM) ?][? if not zone_delta : Delta Zone: [+ director_delta +] (Rival Consortium) ?]
 
-[? if alp_wa : Western Australia: [+ premier_wa +] (ALP) ?][? if not alp_wa : Western Australia: [+ premier_wa +] (Coalition) ?]
+[? if zone_epsilon : Epsilon Zone: [+ director_epsilon +] (CUM) ?][? if not zone_epsilon : Epsilon Zone: [+ director_epsilon +] (Rival Consortium) ?]
 
-[? if alp_tasmania : Tasmania: [+ premier_tasmania +] (ALP) ?][? if not alp_tasmania : Tasmania: [+ premier_tasmania +] (Coalition) ?]
+[? if zone_zeta : Zeta Zone: [+ director_zeta +] (CUM) ?][? if not zone_zeta : Zeta Zone: [+ director_zeta +] (Rival Consortium) ?]
 
-@economy
+@markets
 on-arrival: {!
-if (Q.unemployed) {
-    Q.unemployed_2 = Q.unemployed.toFixed(1);
+if (Q.citizen_unemployment) {
+    Q.citizen_unemployment_2 = Q.citizen_unemployment.toFixed(1);
 }
-if (Q.inflation) {
-    Q.inflation_2 = Q.inflation.toFixed(1);
+if (Q.price_volatility) {
+    Q.price_volatility_2 = Q.price_volatility.toFixed(1);
 }
-Q.economic_growth_2 = '0';
-if (Q.economic_growth) {
-    Q.economic_growth_2 = Q.economic_growth.toFixed(1);
+Q.growth_index_2 = '0';
+if (Q.growth_index) {
+    Q.growth_index_2 = Q.growth_index.toFixed(1);
 }
-if (Q.sterling_reserves) {
-    Q.sterling_reserves_2 = Q.sterling_reserves.toFixed(1);
+if (Q.credit_reserves) {
+    Q.credit_reserves_2 = Q.credit_reserves.toFixed(1);
 }
-if (Q.income) {
-    Q.income_2 = Q.income.toFixed(0);
+if (Q.citizen_income) {
+    Q.citizen_income_2 = Q.citizen_income.toFixed(0);
 }
 !}
 
-= Economy
+= Market Metrics
 
 **Economic Indicators**
 
-Inflation: [+ inflation_2 +]%
-Unemployment: [+ unemployed_2 +]%
-Economic growth: [+ economic_growth_2 +]%
-Worker income: £[+ income_2 +]/year
-Sterling reserves: [+ sterling_reserves_2 +] million
+Price Volatility Index: [+ price_volatility_2 +]%
+Citizen Unemployment Rate: [+ citizen_unemployment_2 +]%
+Corporate Growth Index: [+ growth_index_2 +]%
+Citizen Average Income: ¤[+ citizen_income_2 +]/cycle
+Corporate Credit Reserves: [+ credit_reserves_2 +] million
 
-**Economic Policies**
+**Active Directives**
 
-[? if works_program : Public works programs: Level [+ works_program +] ?]
-[? if nationalization_progress : Nationalization progress: Level [+ nationalization_progress +] ?]
-[? if welfare : Welfare expansion: Level [+ welfare +] ?]
-[? if snowy_scheme : Snowy Mountains Scheme: Active ?]
-[? if tariffs != 0 : Tariff protection: Level [+ tariffs +] ?]
+[? if employment_programs : Mandatory Employment Programs: Level [+ employment_programs +] ?]
+[? if asset_acquisition : Asset Acquisition Progress: Level [+ asset_acquisition +] ?]
+[? if welfare_credits : Welfare Credit Distribution: Level [+ welfare_credits +] ?]
+[? if infrastructure_initiative : Infrastructure Initiative: Active ?]
+[? if market_protections != 0 : Market Protection Level: [+ market_protections +] ?]
 
-@factions
+@divisions
 
-= Internal Factions
+= Internal Divisions
 
-**Left - Victorians / Intellectual**
-Strength: [+ left_vic_strength : strength +] [+ left_vic_strength +] | Dissent: [+ left_vic_dissent : dissent +] [+ left_vic_dissent +] |
-Ideological direction: [+ left_vic_direction +]
+**Innovation Division - Research & Development**
+Strength: [+ innovation_strength : strength +] [+ innovation_strength +] | Resistance: [+ innovation_dissent : dissent +] [+ innovation_dissent +] |
+Strategic Priority: [+ innovation_direction +]
 
-**Left - NSW / Streets / Labor**
-Strength: [+ left_nsw_strength : strength +] [+ left_nsw_strength +] | Dissent: [+ left_nsw_dissent : dissent +] [+ left_nsw_dissent +] |
-Ideological direction: [+ left_nsw_direction +]
+**Production Division - Manufacturing**
+Strength: [+ production_strength : strength +] [+ production_strength +] | Resistance: [+ production_dissent : dissent +] [+ production_dissent +] |
+Strategic Priority: [+ production_direction +]
 
-**Centre - Federal**
-Strength: [+ centre_federal_strength : strength +] [+ centre_federal_strength +] | Dissent: [+ centre_federal_dissent : dissent +] [+ centre_federal_dissent +] |
-Ideological direction: [+ centre_federal_direction +]
+**Distribution Division - Logistics**
+Strength: [+ distribution_strength : strength +] [+ distribution_strength +] | Resistance: [+ distribution_dissent : dissent +] [+ distribution_dissent +] |
+Strategic Priority: [+ distribution_direction +]
 
-**Centre - Unity**
-Strength: [+ centre_unity_strength : strength +] [+ centre_unity_strength +] | Dissent: [+ centre_unity_dissent : dissent +] [+ centre_unity_dissent +] |
-Ideological direction: [+ centre_unity_direction +]
+**Finance Division - Capital Management**
+Strength: [+ finance_strength : strength +] [+ finance_strength +] | Resistance: [+ finance_dissent : dissent +] [+ finance_dissent +] |
+Strategic Priority: [+ finance_direction +]
 
-**Right - NSW Group**
-Strength: [+ right_alp_nsw_strength : strength +] [+ right_alp_nsw_strength +] | Dissent: [+ right_alp_nsw_dissent : dissent +] [+ right_alp_nsw_dissent +] |
-Ideological direction: [+ right_alp_nsw_direction +]
+**Security Division - Asset Protection**
+Strength: [+ security_strength : strength +] [+ security_strength +] | Resistance: [+ security_dissent : dissent +] [+ security_dissent +] |
+Strategic Priority: [+ security_direction +]
 
-**Right - Queensland Sector**
-Strength: [+ right_alp_qld_strength : strength +] [+ right_alp_qld_strength +] | Dissent: [+ right_alp_qld_dissent : dissent +] [+ right_alp_qld_dissent +] |
-Ideological direction: [+ right_alp_qld_direction +]
+**Human Resources - Citizen Management**
+Strength: [+ hr_strength : strength +] [+ hr_strength +] | Resistance: [+ hr_dissent : dissent +] [+ hr_dissent +] |
+Strategic Priority: [+ hr_direction +]
 
-**Right - Southern Sector**
-Strength: [+ right_alp_south_strength : strength +] [+ right_alp_south_strength +] | Dissent: [+ right_alp_south_dissent : dissent +] [+ right_alp_south_dissent +] |
-Ideological direction: [+ right_alp_south_direction +]
+**Public Relations - Image Control**
+Strength: [+ pr_strength : strength +] [+ pr_strength +] | Resistance: [+ pr_dissent : dissent +] [+ pr_dissent +] |
+Strategic Priority: [+ pr_direction +]
 
-**Right - Unions**
-Strength: [+ right_alp_union_strength : strength +] [+ right_alp_union_strength +] | Dissent: [+ right_alp_union_dissent : dissent +] [+ right_alp_union_dissent +] |
-Ideological direction: [+ right_alp_union_direction +]
+**Legal Division - Compliance**
+Strength: [+ legal_strength : strength +] [+ legal_strength +] | Resistance: [+ legal_dissent : dissent +] [+ legal_dissent +] |
+Strategic Priority: [+ legal_direction +]
 
-**Industrial Groups**
-Strength: [+ groupers_strength : strength +] [+ groupers_strength +] | Dissent: [+ groupers_dissent : dissent +] [+ groupers_dissent +] |
-Ideological direction: [+ groupers_direction +]
+**Special Projects - Black Ops**
+Strength: [+ blackops_strength : strength +] [+ blackops_strength +] | Resistance: [+ blackops_dissent : dissent +] [+ blackops_dissent +] |
+Strategic Priority: [+ blackops_direction +]
 
-[? if langist_strength > 0 : **Old Guard - Langists**
-Strength: [+ langist_strength : strength +] [+ langist_strength +] | Dissent: [+ langist_dissent : dissent +] [+ langist_dissent +] |
-Ideological direction: [+ langist_direction +] ?]
+[? if rogue_faction_strength > 0 : **Rogue Elements - Unaligned**
+Strength: [+ rogue_faction_strength : strength +] [+ rogue_faction_strength +] | Resistance: [+ rogue_faction_dissent : dissent +] [+ rogue_faction_dissent +] |
+Strategic Priority: [+ rogue_faction_direction +] ?]
 
-@relations
+@influence
 
-= Relations
+= Corporate Influence
 
-**Inter-party Relations**
+**Inter-Corporate Relations**
 
-Liberal Party: [+ liberal_relation : relationships +]
-Country Party: [+ country_relation : relationships +]
-Communist Party: [+ cpa_relation : relationships +]
-[? if dlp_formed : Democratic Labor Party: [+ dlp_relation : relationships +] ?]
-[? if lang_labor_active : Lang Labor: [+ lang_relation : relationships +] ?]
-Others: [+ other_relation: relationships +]
+Hegemonic Industries: [+ hegemonic_relation : relationships +]
+Sovereign Ventures Group: [+ svg_relation : relationships +]
+Worker Collective Coalition: [+ wcc_relation : relationships +]
+[? if dissident_bloc : Dissident Bloc: [+ dissident_relation : relationships +] ?]
+[? if legacy_active : Legacy Holdings: [+ legacy_relation : relationships +] ?]
+Independent Actors: [+ independent_relation: relationships +]
 
-**International Relations**
+**External Relations**
 
-United Kingdom: [+ uk_relation : relationships +] |
-United States: [+ usa_relation : relationships +] |
-Asia-Pacific: [+ asia_relation : relationships +] |
+Regulatory Authority: [+ regulator_relation : relationships +] |
+International Consortium: [+ consortium_relation : relationships +] |
+Underground Networks: [+ underground_relation : relationships +] |
 
-[? if anzus_progress > 0 : ANZUS Treaty progress: [+ anzus_progress +] ?]
-[? if colombo_plan : Colombo Plan: Active ?]
+[? if merger_progress > 0 : Merger Protocol Progress: [+ merger_progress +] ?]
+[? if trade_agreement : Trade Agreement: Active ?]
 
-**Governor-General**
+**Board Chairman**
 
-Relationship: [+ governor_general_relation : relationships +]
-[? if governor_general_enabled : Can dismiss government: Yes ?]
+Relationship Status: [+ chairman_relation : relationships +]
+[? if chairman_override_enabled : Override Authority: Enabled ?]
 
-@unions
+@assets
 on-arrival: {!
-if (Q.actu_strength) {
-    Q.actu_strength_2 = Q.actu_strength.toFixed(0);
+if (Q.enforcement_strength) {
+    Q.enforcement_strength_2 = Q.enforcement_strength.toFixed(0);
 }
-if (Q.wharfies_strength) {
-    Q.wharfies_strength_2 = Q.wharfies_strength.toFixed(0);
+if (Q.logistics_strength) {
+    Q.logistics_strength_2 = Q.logistics_strength.toFixed(0);
 }
-if (Q.miners_strength) {
-    Q.miners_strength_2 = Q.miners_strength.toFixed(0);
+if (Q.production_workers) {
+    Q.production_workers_2 = Q.production_workers.toFixed(0);
 }
-if (Q.aru_strength) {
-    Q.aru_strength_2 = Q.aru_strength.toFixed(0);
+if (Q.service_workers) {
+    Q.service_workers_2 = Q.service_workers.toFixed(0);
 }
-if (Q.awu_strength) {
-    Q.awu_strength_2 = Q.awu_strength.toFixed(0);
+if (Q.tech_workers) {
+    Q.tech_workers_2 = Q.tech_workers.toFixed(0);
 }
-if (Q.ironworkers_strength) {
-    Q.ironworkers_strength_2 = Q.ironworkers_strength.toFixed(0);
+if (Q.security_personnel) {
+    Q.security_personnel_2 = Q.security_personnel.toFixed(0);
 }
 !}
 
-= Unions & Security
+= Assets & Security
 
-**Union Movement**
+**Citizen Workforce**
 
-{!<span class="tooltip-text" title="Australian Council of Trade Unions">ACTU</span>!}: [+ actu_strength_2 +]k members | Militancy: [+ actu_militancy : militancy +] | Communist influence: [+ actu_communist : influence +]
+{!<span class="tooltip-text" title="Central Management Bureau">CMB</span>!}: [+ cmb_strength_2 +]k citizens | Productivity: [+ cmb_productivity : productivity +] | Dissent Index: [+ cmb_dissent : influence +]
 
-{!<span class="tooltip-text" title="Waterside Workers Federation">WWF (Wharfies)</span>!}: [+ wharfies_strength_2 +]k members | Militancy: [+ wharfies_militancy : militancy +] | Communist influence: [+ wharfies_communist : influence +]
+{!<span class="tooltip-text" title="Manufacturing Sector">Production</span>!}: [+ production_workers_2 +]k citizens | Productivity: [+ production_productivity : productivity +] | Dissent Index: [+ production_worker_dissent : influence +]
 
-{!<span class="tooltip-text" title="Miners Federation">Miners</span>!}: [+ miners_strength_2 +]k members | Militancy: [+ miners_militancy : militancy +] | Communist influence: [+ miners_communist : influence +]
+{!<span class="tooltip-text" title="Logistics Network">Logistics</span>!}: [+ logistics_strength_2 +]k citizens | Productivity: [+ logistics_productivity : productivity +] | Dissent Index: [+ logistics_dissent : influence +]
 
-{!<span class="tooltip-text" title="Australian Railways Union">ARU</span>!}: [+ aru_strength_2 +]k members | Militancy: [+ aru_militancy : militancy +] | Communist influence: [+ aru_communist : influence +]
+{!<span class="tooltip-text" title="Service Operations">Service Sector</span>!}: [+ service_workers_2 +]k citizens | Productivity: [+ service_productivity : productivity +] | Dissent Index: [+ service_dissent : influence +]
 
-{!<span class="tooltip-text" title="Australian Workers Union">AWU</span>!}: [+ awu_strength_2 +]k members | Militancy: [+ awu_militancy : militancy +] | Communist influence: [+ awu_communist : influence +]
+{!<span class="tooltip-text" title="Technology Division">Tech Sector</span>!}: [+ tech_workers_2 +]k citizens | Productivity: [+ tech_productivity : productivity +] | Dissent Index: [+ tech_dissent : influence +]
 
-{!<span class="tooltip-text" title="Federated Ironworkers Association">Ironworkers</span>!}: [+ ironworkers_strength_2 +]k members | Militancy: [+ ironworkers_militancy : militancy +] | Communist influence: [+ ironworkers_communist : influence +]
+{!<span class="tooltip-text" title="Enforcement Division">Security</span>!}: [+ security_personnel_2 +]k personnel | Productivity: [+ security_productivity : productivity +] | Dissent Index: [+ security_dissent : influence +]
 
-**Security Forces**
+**Enforcement Assets**
 
-Australian Defence Force: [+ adf_strength +]k personnel | Loyalty: [+ adf_loyalty : loyalty +]
-Commonwealth Police: [+ police_strength +]k members | Loyalty: [+ police_loyalty : loyalty +]
-[? if asio_formed : ASIO: Active | Strength: [+ asio_strength +] | Loyalty: Permanently Disloyal ?]
+Corporate Security Force: [+ csf_strength +]k operatives | Loyalty Index: [+ csf_loyalty : loyalty +]
+Enforcement Bureau: [+ enforcement_strength +]k agents | Loyalty Index: [+ enforcement_loyalty : loyalty +]
+[? if intelligence_division : Intelligence Division: Active | Strength: [+ intelligence_strength +] | Loyalty: Monitoring Only ?]
 
-@polls
+@metrics
 on-arrival: {!
-Q.support_labor_disp = Math.round(Q.support_labor);
-Q.anti_communist_disp = Math.round(Q.anti_communist);
-Q.pro_british_disp = Math.round(Q.pro_british);
-Q.immigration_support_disp = Math.round(Q.immigration_support);
-Q.white_australia_disp = Math.round(Q.white_australia_support);
+Q.citizen_satisfaction_disp = Math.round(Q.citizen_satisfaction);
+Q.productivity_index_disp = Math.round(Q.productivity_index);
+Q.loyalty_index_disp = Math.round(Q.loyalty_index);
+Q.consumption_rate_disp = Math.round(Q.consumption_rate);
+Q.compliance_rate_disp = Math.round(Q.compliance_rate);
 !}
 
-= Polling & Opinion
+= Performance Metrics
 
-**Projected Election Results**
+**Projected Market Position**
 
-ALP: [+ alp_votes +]% | Liberal: [+ liberal_votes +]% | Country: [+ country_votes +]% | CPA: [+ cpa_votes +]%[? if dlp_formed :  | DLP: [+ dlp_votes +]% ?][? if lang_votes > 0 :  | Lang: [+ lang_votes +]% ?] | Others: [+ other_votes +]% 
+CUM: [+ cum_market_share +]% | Hegemonic: [+ hegemonic_market_share +]% | SVG: [+ svg_market_share +]% | WCC: [+ wcc_market_share +]%[? if dissident_bloc :  | Dissidents: [+ dissident_market_share +]% ?][? if legacy_market_share > 0 :  | Legacy: [+ legacy_market_share +]% ?] | Independent: [+ independent_market_share +]% 
 
-**Support by Demographic**
+**Citizen Demographics by Sector**
 
-*Industrial Workers* ([+ workers +]): ALP [+ workers_alp_display +]% | Liberal [+ workers_liberal_display +]% | Country [+ workers_country_display +]% | CPA [+ workers_cpa_display +]%[? if dlp_formed :  | DLP [+ workers_dlp_display +]% ?][? if lang_votes > 0 :  | Lang [+ workers_lang_display +]% ?] | Others [+ workers_other_display +]%
+*Production Workers* ([+ production_citizens +]): CUM [+ production_cum_display +]% | Hegemonic [+ production_hegemonic_display +]% | SVG [+ production_svg_display +]% | WCC [+ production_wcc_display +]%[? if dissident_bloc :  | Dissidents [+ production_dissident_display +]% ?][? if legacy_market_share > 0 :  | Legacy [+ production_legacy_display +]% ?] | Independent [+ production_independent_display +]%
 
-*White Collar* ([+ white_collar +]): ALP [+ white_collar_alp_display +]% | Liberal [+ white_collar_liberal_display +]% | Country [+ white_collar_country_display +]% | CPA [+ white_collar_cpa_display +]%[? if dlp_formed :  | DLP [+ white_collar_dlp_display +]% ?][? if lang_votes > 0 :  | Lang [+ white_collar_lang_display +]% ?] | Others [+ white_collar_other_display +]%
+*Service Workers* ([+ service_citizens +]): CUM [+ service_cum_display +]% | Hegemonic [+ service_hegemonic_display +]% | SVG [+ service_svg_display +]% | WCC [+ service_wcc_display +]%[? if dissident_bloc :  | Dissidents [+ service_dissident_display +]% ?][? if legacy_market_share > 0 :  | Legacy [+ service_legacy_display +]% ?] | Independent [+ service_independent_display +]%
 
-*Small Business*([+ business +]): ALP [+ business_alp_display +]% | Liberal [+ business_liberal_display +]% | Country [+ business_country_display +]% | CPA [+ business_cpa_display +]%[? if dlp_formed :  | DLP [+ business_dlp_display +]% ?][? if lang_votes > 0 :  | Lang [+ business_lang_display +]% ?] | Others [+ business_other_display +]%
+*Management Class*([+ management_citizens +]): CUM [+ management_cum_display +]% | Hegemonic [+ management_hegemonic_display +]% | SVG [+ management_svg_display +]% | WCC [+ management_wcc_display +]%[? if dissident_bloc :  | Dissidents [+ management_dissident_display +]% ?][? if legacy_market_share > 0 :  | Legacy [+ management_legacy_display +]% ?] | Independent [+ management_independent_display +]%
 
-*Rural/Farmers*([+ rural +]): ALP [+ rural_alp_display +]% | Liberal [+ rural_liberal_display +]% | Country [+ rural_country_display +]% | CPA [+ rural_cpa_display +]%[? if dlp_formed :  | DLP [+ rural_dlp_display +]% ?][? if lang_votes > 0 :  | Lang [+ rural_lang_display +]% ?] | Others [+ rural_other_display +]%
+*Entrepreneurs*([+ entrepreneur_citizens +]): CUM [+ entrepreneur_cum_display +]% | Hegemonic [+ entrepreneur_hegemonic_display +]% | SVG [+ entrepreneur_svg_display +]% | WCC [+ entrepreneur_wcc_display +]%[? if dissident_bloc :  | Dissidents [+ entrepreneur_dissident_display +]% ?][? if legacy_market_share > 0 :  | Legacy [+ entrepreneur_legacy_display +]% ?] | Independent [+ entrepreneur_independent_display +]%
 
-*Unemployed*([+ unemployed +]): ALP [+ unemployed_alp_display +]% | Liberal [+ unemployed_liberal_display +]% | Country [+ unemployed_country_display +]% | CPA [+ unemployed_cpa_display +]%[? if dlp_formed :  | DLP [+ unemployed_dlp_display +]% ?][? if lang_votes > 0 :  | Lang [+ unemployed_lang_display +]% ?] | Others [+ unemployed_other_display +]%
+*Unproductive*([+ unproductive_citizens +]): CUM [+ unproductive_cum_display +]% | Hegemonic [+ unproductive_hegemonic_display +]% | SVG [+ unproductive_svg_display +]% | WCC [+ unproductive_wcc_display +]%[? if dissident_bloc :  | Dissidents [+ unproductive_dissident_display +]% ?][? if legacy_market_share > 0 :  | Legacy [+ unproductive_legacy_display +]% ?] | Independent [+ unproductive_independent_display +]%
 
-*Catholics*([+ catholics +]): ALP [+ catholics_alp_display +]% | Liberal [+ catholics_liberal_display +]% | Country [+ catholics_country_display +]% | CPA [+ catholics_cpa_display +]%[? if dlp_formed :  | DLP [+ catholics_dlp_display +]% ?][? if lang_votes > 0 :  | Lang [+ catholics_lang_display +]% ?] | Others [+ catholics_other_display +]%
+*Believer Class*([+ believer_citizens +]): CUM [+ believer_cum_display +]% | Hegemonic [+ believer_hegemonic_display +]% | SVG [+ believer_svg_display +]% | WCC [+ believer_wcc_display +]%[? if dissident_bloc :  | Dissidents [+ believer_dissident_display +]% ?][? if legacy_market_share > 0 :  | Legacy [+ believer_legacy_display +]% ?] | Independent [+ believer_independent_display +]%
 
-*New Australians*([+ migrants +]): ALP [+ migrants_alp_display +]% | Liberal [+ migrants_liberal_display +]% | Country [+ migrants_country_display +]% | CPA [+ migrants_cpa_display +]%[? if dlp_formed :  | DLP [+ migrants_dlp_display +]% ?][? if lang_votes > 0 :  | Lang [+ migrants_lang_display+]% ?] | Others [+ migrants_other_display +]%
+*Contract Citizens*([+ contract_citizens +]): CUM [+ contract_cum_display +]% | Hegemonic [+ contract_hegemonic_display +]% | SVG [+ contract_svg_display +]% | WCC [+ contract_wcc_display +]%[? if dissident_bloc :  | Dissidents [+ contract_dissident_display +]% ?][? if legacy_market_share > 0 :  | Legacy [+ contract_legacy_display+]% ?] | Independent [+ contract_independent_display +]%
 
-**Public Opinion**
+**Citizen Sentiment Analysis**
 
-Support for Labor: [+ support_labor_disp +]%
+Corporate Satisfaction Index: [+ citizen_satisfaction_disp +]%
 
-Anti-Communist sentiment: [+ anti_communist_disp +]%
+Productivity Compliance: [+ productivity_index_disp +]%
 
-Support for British ties: [+ pro_british_disp +]%
+Loyalty Metrics: [+ loyalty_index_disp +]%
 
-Support for immigration: [+ immigration_support_disp +]%
+Consumption Rate: [+ consumption_rate_disp +]%
 
-Support for White Australia: [+ white_australia_disp +]%
+Compliance Rate: [+ compliance_rate_disp +]%
 
-@policies
+@directives
 
-= Policies & Achievements
+= Directives & Achievements
 
-**Social Policies**
+**Citizen Management Directives**
 
-[? if welfare > 0 : Welfare expansion: Level [+ welfare +] ?]
-[? if health_reform : National health scheme implemented ?]
-[? if housing_program : Public housing program active ?]
-[? if womens_rights > 0 : Women's rights progress: Level [+ womens_rights +] ?]
-[? if indigenous_rights > 0 : Indigenous rights progress: Level [+ indigenous_rights +] ?]
+[? if welfare_credits > 0 : Welfare Credit System: Level [+ welfare_credits +] ?]
+[? if health_coverage : Universal Health Coverage: Implemented ?]
+[? if housing_allocation : Housing Allocation Program: Active ?]
+[? if equality_initiative > 0 : Equality Initiative Progress: Level [+ equality_initiative +] ?]
+[? if minority_integration > 0 : Minority Integration Progress: Level [+ minority_integration +] ?]
 
-**Economic Policies**
+**Economic Directives**
 
-[? if works_program > 0 : Public works: Level [+ works_program +] ?]
-[? if snowy_scheme : Snowy Mountains Scheme: Active ?]
-[? if nationalization_progress > 0 : Nationalizations: Level [+ nationalization_progress +] ?]
-[? if bank_nationalization : Banks nationalized ?]
+[? if employment_programs > 0 : Employment Programs: Level [+ employment_programs +] ?]
+[? if infrastructure_initiative : Infrastructure Initiative: Active ?]
+[? if asset_acquisition > 0 : Asset Acquisitions: Level [+ asset_acquisition +] ?]
+[? if monopoly_consolidation : Market Consolidation Complete ?]
 
-**Immigration & Social**
+**Expansion & Integration**
 
-[? if immigration_program > 0 : Immigration program: Level [+ immigration_program +] ?]
-[? if white_australia_challenged > 0 : White Australia Policy challenged: Level [+ white_australia_challenged +] ?]
+[? if expansion_program > 0 : Territorial Expansion: Level [+ expansion_program +] ?]
+[? if diversity_challenged > 0 : Diversity Standards Challenged: Level [+ diversity_challenged +] ?]
 
-**Foreign Policy**
+**External Relations**
 
-[? if anzus_progress > 0 : ANZUS Treaty: Progress [+ anzus_progress +] ?]
-[? if colombo_plan : Colombo Plan: Active ?]
-[? if uk_relation < 50 : Distance from Britain increasing ?]
+[? if alliance_progress > 0 : Strategic Alliance: Progress [+ alliance_progress +] ?]
+[? if aid_program : External Aid Program: Active ?]
+[? if sovereignty_distance < 50 : Distance from Regulatory Authority Increasing ?]
 
-**Security**
+**Security Protocols**
 
-[? if asio_formed : ASIO established ?]
-[? if cpa_banned : Communist Party banned ?]
-[? if ban_referendum_held : Ban referendum held ?]
+[? if intelligence_division : Intelligence Division: Established ?]
+[? if resistance_banned : Resistance Organizations: Banned ?]
+[? if ban_initiative_held : Ban Initiative: Ratified ?]
 
-**Education & Development**
+**Development & Innovation**
 
-[? if university_expansion : University expansion underway ?]
-[? if science > 0 : Science funding: Level [+ science +] ?]
+[? if research_expansion : Research Expansion: Underway ?]
+[? if innovation_funding > 0 : Innovation Funding: Level [+ innovation_funding +] ?]
