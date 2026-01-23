@@ -1,658 +1,651 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
+
 body {
-  --bg-color: #f3f3e3;
-  --border-color: #000;
-  --content-bg-color: #f3f3f3;
-  --text-color: #431;
-  --link-color: #900;
-  --link-hover-color: rgba(0, 0, 0, 0.05);
-  --unavailable-bg-color: rgba(0, 0, 0, 0.1);
-  --unavailable-color: #999;
-  --tab-bg-color: #dedede;
-  --tab-color: #ddd;
-  --tab-hover-color: #ececec;
-  --card-border-color: #ccc; 
-  --card-bg-color: #ddd; 
-  font-family: "Minion Pro", Georgia, serif;
+  --bg-color: #0a0e14;
+  --border-color: #00ffcc;
+  --content-bg-color: #0f1419;
+  --text-color: #c7d1db;
+  --link-color: #00ffcc;
+  --link-hover-color: rgba(0, 255, 204, 0.08);
+  --unavailable-bg-color: rgba(255, 0, 0, 0.05);
+  --unavailable-color: #4a5562;
+  --tab-bg-color: #161b22;
+  --tab-color: #0d1117;
+  --tab-hover-color: #1c2128;
+  --card-border-color: #00ffcc;
+  --card-bg-color: #0f1419;
+  --accent-color: #ff0066;
+  --warning-color: #ffaa00;
+  --success-color: #00ff88;
+  
+  font-family: "IBM Plex Mono", "Courier New", monospace;
   background-color: var(--bg-color);
   padding: 0;
-  line-height: 155%;
+  line-height: 165%;
   overflow-y: scroll;
+  letter-spacing: 0.02em;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 204, 0.02) 2px,
+      rgba(0, 255, 204, 0.02) 4px
+    );
 }
+
 body.dark-mode {
-  --bg-color: #000;
-  --border-color: #fff;
-  --content-bg-color: #242424;
-  --text-color: #efefef;
-  --link-color: #ff8080;
-  --link-hover-color: rgba(255, 255, 255, 0.06);
-  --tab-bg-color: #555555;
-  --tab-color: #505050;
-  --tab-hover-color: #242424;
-  --card-border-color: #4c4c4c;
-  --card-bg-color: #3f3f3f;
+  /* Already dark by default */
 }
-body.dark-mode #content {
-  border-style: double;
-  border-width: 4px;
-  border-color: #888;
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+  pointer-events: none;
+  z-index: -1;
 }
-body.dark-mode .tools {
-  border-style: double;
-  border-width: 4px;
-  border-color: #888;
+
+/* Light mode - clinical corporate white */
+body:not(.dark-mode) {
+  --bg-color: #f8f9fa;
+  --border-color: #1a1a2e;
+  --content-bg-color: #ffffff;
+  --text-color: #1a1a2e;
+  --link-color: #0066cc;
+  --link-hover-color: rgba(0, 102, 204, 0.05);
+  --tab-bg-color: #e9ecef;
+  --tab-color: #dee2e6;
+  --tab-hover-color: #f1f3f5;
+  --card-border-color: #1a1a2e;
+  --card-bg-color: #ffffff;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(26, 26, 46, 0.02) 2px,
+      rgba(26, 26, 46, 0.02) 4px
+    );
 }
 
 #main_column {
-  flex: 1; /* Takes up the remaining space */
-  max-width: 600px; /* Keeps text lines easy to read */
+  flex: 1;
+  max-width: 650px;
 }
 
 #content {
   background-color: var(--content-bg-color);
-  font-size: 1.1em;
-  padding: 1em 1.5em 1.5em 1.5em;
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+  font-size: 1em;
+  padding: 2em;
+  box-shadow: 
+    0 0 0 1px var(--border-color),
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
   min-height: 500px;
+  border-left: 3px solid var(--border-color);
+  position: relative;
+}
+
+#content::before {
+  content: "[ CLASSIFIED CLEARANCE LEVEL: Ω ]";
+  position: absolute;
+  top: 0.5em;
+  right: 1em;
+  font-size: 0.65em;
+  color: var(--accent-color);
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.1em;
+  opacity: 0.4;
+  text-transform: uppercase;
 }
 
 footer {
   margin-top: 1em;
-  font-size: 0.8em;
+  font-size: 0.75em;
   position: relative;
+  font-family: "IBM Plex Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  opacity: 0.6;
 }
+
 footer a {
   padding-right: 1em;
 }
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
+}
+
+#header-text {
+  flex: 1;
 }
 
 #header-links {
-  text-align: left;
+  text-align: right;
   display: flex;
-  flex-direction: row; /* Stacks links vertically like your image */
-  justify-content: space-around;
-  padding: 0.5em 1em;
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
-  background-color: var(--bg-color);
-  border: 1px solid var(--border-color);
+  flex-direction: row;
+  gap: 0;
+  box-shadow: 
+    0 0 0 1px var(--border-color),
+    0 4px 16px rgba(0, 0, 0, 0.3);
+  background-color: var(--tab-bg-color);
+  border: none;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 #header-links a {
-  padding-right: 1em;
+  padding: 0.8em 1.2em;
+  transition: all 0.2s ease;
+  border-left: 1px solid rgba(0, 255, 204, 0.2);
+  font-size: 0.85em;
 }
+
+#header-links a:first-child {
+  border-left: none;
+}
+
+#header-links a:hover {
+  background-color: var(--link-hover-color);
+  color: var(--link-color);
+  box-shadow: inset 0 -2px 0 var(--link-color);
+}
+
 header h1, header h2 {
-  display: inline-block;
+  display: block;
   font-weight: normal;
   margin: 0;
-  font-size: 1em;
+  font-family: "Orbitron", sans-serif;
 }
+
 header h1 {
-  font-weight: bold;
+  font-weight: 900;
+  font-size: 1.6em;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--link-color) 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.3em;
 }
+
+header h2 {
+  font-size: 0.75em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  font-weight: 400;
+}
+
 header h2:before {
-  content: "by";
-  font-style: italic;
-  padding: 0 0.3em 0 0;
+  content: "▸ ";
+  font-style: normal;
+  padding: 0 0.5em 0 0;
+  color: var(--link-color);
 }
 
 #content #read-marker {
   border: none;
   border-top: 1px solid var(--border-color);
   height: 1px;
-  width: 20%;
+  width: 30%;
   clear: left;
+  margin: 2em auto;
+  opacity: 0.3;
 }
+
 #content h1:first-child {
   margin-top: 0.5em;
 }
+
 #content h1 {
-  margin: 2em 0 1em 0;
-  font-size: 1.35em;
-  font-weight: normal;
-  text-align: center;
+  margin: 2.5em 0 1.5em 0;
+  font-size: 1.3em;
+  font-weight: 700;
+  font-family: "Rajdhani", sans-serif;
+  text-align: left;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  text-shadow: rgba(255, 255, 255, 0.75) 2px 2px 2px,
-               rgba(0, 0, 0, 0.1) -1px -1px 2px;
+  letter-spacing: 0.15em;
+  color: var(--link-color);
+  border-left: 4px solid var(--link-color);
+  padding-left: 1em;
+  text-shadow: none;
 }
+
+#content h1::before {
+  content: "◆ ";
+  color: var(--accent-color);
+  margin-right: 0.5em;
+}
+
 a {
   color: var(--link-color);
   text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
 }
+
+a:hover {
+  text-shadow: 0 0 8px var(--link-color);
+}
+
 p {
   margin: 0;
-  margin-bottom: 1em;
-  text-indent: 1em;
+  margin-bottom: 1.2em;
+  text-indent: 0;
+  text-align: justify;
 }
+
 p.game-over {
-  border: 2px solid #bbb;
-  padding: 0.5em;
-  margin: 0.5em 0 0 0;
-  border-radius: 4px;
-  color: #999;
+  border: 2px solid var(--accent-color);
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 0;
+  color: var(--accent-color);
+  background: rgba(255, 0, 102, 0.05);
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  font-weight: 700;
 }
+
 ul.choices {
-  border: 2px solid #876;
+  border: 1px solid var(--border-color);
   padding: 0;
-  margin: 0.25em 0 0 0;
+  margin: 1em 0 0 0;
   list-style-type: none;
-  border-radius: 4px;
+  border-radius: 0;
   clear: left;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
+
 ul.choices li {
-  border-bottom: 1px solid #876;
-  padding: 0.5em;
+  border-bottom: 1px solid rgba(0, 255, 204, 0.2);
+  padding: 1em 1.2em;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.05em;
+  transition: all 0.2s ease;
+  position: relative;
 }
+
+ul.choices li::before {
+  content: "▹";
+  color: var(--link-color);
+  margin-right: 0.8em;
+  transition: all 0.2s ease;
+}
+
+ul.choices li:hover::before {
+  content: "▸";
+  margin-right: 1em;
+}
+
 ul.choices li div.subtitle {
-  margin-left: 2em;
+  margin-left: 2.5em;
   font-style: italic;
+  font-size: 0.9em;
+  opacity: 0.7;
+  font-family: "IBM Plex Mono", monospace;
 }
+
 ul.choices li.unavailable {
   color: var(--unavailable-color);
   background-color: var(--unavailable-bg-color) !important;
-  cursor: default !important;
+  cursor: not-allowed !important;
+  text-decoration: line-through;
+  opacity: 0.4;
 }
+
+ul.choices li.unavailable::before {
+  content: "✕";
+  color: var(--accent-color);
+}
+
 ul.choices li:hover {
   background-color: var(--link-hover-color);
   cursor: pointer;
+  border-left: 3px solid var(--link-color);
+  padding-left: calc(1.2em - 3px);
 }
+
 ul.choices li:last-child {
   border-bottom: none;
 }
-ul.choices a {
-  text-decoration: none;
-}
+
 blockquote {
-  margin: 1em 2em;
-}
-blockquote.attribution {
-  margin-left: 4em;
-}
-blockquote + blockquote.attribution {
-  margin-top: -1em;
+  margin: 1.5em 2em;
+  padding-left: 1em;
+  border-left: 3px solid var(--border-color);
+  font-style: italic;
+  opacity: 0.85;
 }
 
-
-
-
-
-
-
-
-/* This is mostly copied from undum. */
-#mid_panel {
-  margin: 0 16rem;
-}
+/* Layout */
 #page {
   display: flex;
   flex-direction: row;
-  justify-content: center; /* Centers the whole game on the screen */
+  justify-content: center;
   align-items: flex-start;
-  gap: 20px; /* Gap between sidebar and story */
-  max-width: 1200px;
+  gap: 25px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 20px;
 }
-#tools_wrapper {
-  position: absolute;
-  width: 100%;
-  max-width: 69em;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-}
+
 .tools {
-  flex: 0 0 240px; /* Fixes the sidebar width at 240px */
-  padding: 0.6em;
+  flex: 0 0 260px;
+  padding: 0;
   color: var(--text-color);
-  background-color: var(--content-bg-color);
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
-  position: sticky; /* This keeps stats on screen while you scroll text */
-  top: 10px;
+  background-color: transparent;
+  box-shadow: none;
+  position: sticky;
+  top: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 300px; /* Optional: ensures a minimum height for the sidebar */
+  gap: 25px;
 }
 
+/* Stats Boxes */
+.stats-box {
+  background-color: var(--content-bg-color);
+  padding: 0;
+  box-shadow: 
+    0 0 0 1px var(--border-color),
+    0 8px 32px rgba(0, 0, 0, 0.4);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
 
-
-
-
-
-
-
-
-
-
-
-#qualities {
+#qualities, #qualities_2 {
+  padding: 1em;
   text-indent: 0;
-  line-height: 1.3em;
+  line-height: 1.4em;
   flex-grow: 1;
+  font-size: 0.9em;
 }
-#qualities p {
+
+#qualities p, #qualities_2 p {
   text-indent: 0;
+  margin-bottom: 0.8em;
+  text-align: left;
 }
-#qualities h1 {
-  font-size: 1.1em;
-  font-weight: normal;
+
+#qualities h1, #qualities_2 h1 {
+  font-size: 0.9em;
+  font-weight: 700;
+  font-family: "Orbitron", sans-serif;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  text-shadow: rgba(255, 255, 255, 0.75) 2px 2px 2px,
-               rgba(0, 0, 0, 0.1) -1px -1px 2px;
-}
-#qualities h1 + p:first-line {
-  font-weight: normal;
+  letter-spacing: 0.15em;
+  text-shadow: none;
+  color: var(--link-color);
+  margin: 0 0 1em 0;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid rgba(0, 255, 204, 0.2);
 }
 
-
-/* tabs */
-.tab_container {
-    background-color: var(--tab-bg-color);
-    margin-top: -0.6em;
-    margin-left: -0.6em;
-    margin-right: -0.6em;
-    display: flex; 
-    flex-direction: row;
-    margin: -0.6em -0.6em 1em -0.6em; 
+/* Tabs */
+.tab_container, .tab_container_bottom {
+  background-color: var(--tab-bg-color);
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid var(--border-color);
 }
+
 .tab_button {
-    font-family: "Minion Pro", Georgia, serif;
-    background-color: var(--tab-color);
-    color: var(--text-color);
-    /*float: left;*/
-    border: none;
-    outline: none;
-    flex: 1; /* Makes buttons share width equally */
-    padding: 10px 2px; /* Reduces horizontal padding to prevent overflow */
-    font-size: 0.85em; /* Slightly smaller text helps mobile fit */
-    white-space: nowrap; /* Prevents text from wrapping inside buttons */
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 500;
+  background-color: var(--tab-color);
+  color: var(--text-color);
+  border: none;
+  outline: none;
+  flex: 1;
+  padding: 0.8em 0.4em;
+  font-size: 0.8em;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: all 0.2s ease;
+  border-right: 1px solid rgba(0, 255, 204, 0.1);
+  cursor: pointer;
 }
+
+.tab_button:last-child {
+  border-right: none;
+}
+
 .tab_button.active {
-    background-color: var(--content-bg-color);
+  background-color: var(--content-bg-color);
+  color: var(--link-color);
+  box-shadow: inset 0 -2px 0 var(--link-color);
 }
+
 .tab_button:hover {
-    background-color: var(--tab-hover-color);
+  background-color: var(--tab-hover-color);
+  color: var(--link-color);
 }
 
-/* Specific styling for the bottom tab container */
-/* Container for the bottom tabs */
 .tab_container_bottom {
-    background-color: var(--tab-bg-color);
-    margin-bottom: -0.6em; /* Pulls it to the very bottom of the sidebar */
-    margin-left: -0.6em;   /* Aligns with sidebar edges */
-    margin-right: -0.6em;
-    margin-top: 1em;       /* Adds space between stats and buttons */
-    display: flex;         /* Forces buttons into a single row */
-    flex-wrap: wrap;    
-    margin: 0.5em -0.6em -0.6em -0.6em; /* Bottom tabs *//* Allows wrapping if screen is tiny */
+  border-bottom: none;
+  border-top: 1px solid var(--border-color);
+  margin-top: auto;
 }
 
-/* Ensure buttons inside the bottom container fill the width evenly */
-.tab_container_bottom .tab_button {
-    flex: 1; 
-    padding: 10px 5px;     /* Slightly less horizontal padding to fit better */
-    border-top: 1px solid var(--card-border-color);
-}
-
-/* Container adjustments */
-#stats_sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;       /* This creates the physical gap between the two boxes */
-    background: none !important; 
-    box-shadow: none !important;
-    border: none !important;
-}
-
-/* Individual box styling */
-.stats-box {
-    background-color: var(--content-bg-color);
-    padding: 0.6em;
-    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-}
-
-
-
-
-
-
+/* Overlays */
 .overlay {
-    background: rgba(0,0,0,0.7);
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 2;
-    overflow: scroll;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(8px);
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  overflow: scroll;
 }
-.options {
-    text-align: right;
-}
+
 .overlay_top {
-    position: relative;
-    max-width: 540px;
-    margin: 100px auto;
-    background: rgba(50,50,50,0.7);
-    border: 2px solid;
-    color: white;
-}
-.save_info {
-    min-width: 10em;
-}
-.background {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: var(--bg-color);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    overflow: hidden;
-}
-/*
- * This is used for overlaying transparencies
- * only transition on fade-in
- * */
-#bg2 {
-    z-index: -100;
-}
-#bg1 {
-    z-index: -99;
-}
-.b {
-}
-.save_button {
-}
-.delete_button {
+  position: relative;
+  max-width: 600px;
+  margin: 100px auto;
+  background: var(--content-bg-color);
+  border: 2px solid var(--border-color);
+  color: var(--text-color);
+  box-shadow: 
+    0 0 40px rgba(0, 255, 204, 0.3),
+    0 16px 64px rgba(0, 0, 0, 0.8);
+  padding: 2em;
 }
 
-/*
- * Card stuff for dendrynexus
- * 
- */
-
-ul.decks, ul.hand, ul.pinned-cards {
-  list-style: none;
-  padding-left: 0;
+.overlay-title {
+  font-family: "Orbitron", sans-serif;
+  text-align: center;
+  font-size: 1.2em;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--link-color);
+  margin-bottom: 1.5em;
+  padding-bottom: 0.8em;
+  border-bottom: 2px solid var(--border-color);
 }
 
-.hand {
-
+table {
+  border-spacing: 0.8em;
+  width: 100%;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.9em;
 }
 
-.pinned-cards {
-
+table td {
+  padding: 0.5em;
 }
 
-.deck {
-
+button {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 500;
+  background-color: var(--tab-bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 0.6em 1.2em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9em;
 }
 
+button:hover {
+  background-color: var(--link-hover-color);
+  color: var(--link-color);
+  box-shadow: 0 0 12px rgba(0, 255, 204, 0.3);
+  border-color: var(--link-color);
+}
+
+input[type="radio"] {
+  accent-color: var(--link-color);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid rgba(0, 255, 204, 0.2);
+  margin: 0.5em 0;
+}
+
+/* Cards */
 a.card {
   display: inline-block;
   width: 120px;
   height: 150px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-  border: 10px solid var(--card-border-color);
+  box-shadow: 
+    0 0 0 2px var(--card-border-color),
+    0 8px 24px rgba(0, 0, 0, 0.5);
+  border: none;
   margin-bottom: 0.5em;
   position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
+
 a.card:hover {
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
-  left: -5px;
-  top: -5px;
-}
-div.blank-card {
-  display: inline-block;
-  width: 120px;
-  height: 150px;
-  background-color: var(--card-bg-color);
-  border: 10px solid var(--card-border-color);
-  margin-bottom: 0.5em;
+  box-shadow: 
+    0 0 0 2px var(--link-color),
+    0 12px 32px rgba(0, 255, 204, 0.4),
+    0 0 24px rgba(0, 255, 204, 0.2);
+  transform: translateY(-4px);
 }
 
-.card-in-hand, .pinned-card, .deck {
-  display: inline-block;
-  position: relative;
-  max-width: 150px;
-  margin-right: 1em;
-  vertical-align: top;
+a.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 204, 0.3), transparent);
+  transition: left 0.5s ease;
 }
 
-/* TODO: unavailable card */
-.unavailable-card {
-  color: var(--unavailable-color);
-  background-color: var(--unavailable-bg-color) !important;
-  cursor: default !important;
+a.card:hover::before {
+  left: 100%;
 }
 
 .card-caption {
-  text-align: center;
-  display: block;
-  font-size: 1em;
+  font-family: "Rajdhani", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85em;
+  font-weight: 500;
 }
 
-.card-tooltip {
-  position: absolute;
-  visibility: hidden;
-  width: 150px;
-  max-width: 200px;
-  font-size: 0.9em;
-  z-index: 2;
-  padding: 0.2em;
-  border: 1px solid var(--border-color);
-  background-color: var(--content-bg-color);
-  left: 105%;
-}
-
-.card-img {
-  height: 150px;
-  width: 120px;
-  object-fit: cover;
-}
-
-a.card:focus .card-tooltip, a.card:hover .card-tooltip {
-  visibility: visible;
-  position: absolute;
-}
-
-/* Unlike cards, face images can have different sizes. */
-.face-figure {
-  /*vertical-align: top;*/
-  display: inline-block;
-  border: 5px solid var(--card-border-color);
-  float: left;
-  max-width: 35%;
-  /*max-height: 180px;*/
-  margin-right: 1em;
-  margin-bottom: 0.5em;
-  overflow: hidden;
-}
-.face-img {
-  /*max-width: 150px;*/
-  vertical-align: bottom;
-  object-fit: cover;
-}
-
-/*
- * sprite stuff- feel free to comment out/remove if not using
- */
-img {
-    max-width: 100%;
-    max-height: 100%;
-}
-#contentSpriteContainer {
+/* Background effects */
+.background {
   position: fixed;
   width: 100%;
   height: 100%;
-  max-width: 62em;
-  left: 0;
+  top: 0;
   right: 0;
-  margin: 0 auto;
-  z-index: -97;
-}
-.sprite {
-    position: absolute;
-    width: 180px;
-}
-#topLeftSprite {
-    float: left;
-    top: -1em;
-    left: 0.4em;
-}
-#topRightSprite {
-    float: right;
-    top: -1em;
-    right: 0.4em;
-}
-#bottomLeftSprite {
-    float: left;
-    left: 0.4em;
-    top: 50%;
-}
-#bottomRightSprite {
-    float: right;
-    right: 0.4em;
-    top: 50%;
+  bottom: 0;
+  left: 0;
+  background-color: var(--bg-color);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  overflow: hidden;
 }
 
-/* smaller screens: hide left margin */
-@media screen and (max-width: 1200px) {
-  .tools {
-      margin-right: 0.4em;
-      margin-left: 0.4em;
-  }
-  #mid_panel {
-      margin-right: 0.4em;
-  }
-}
-/* mobile: move the stat box to the top if the screen is too small,
- * and reduce font size slightly. */
-@media screen and (max-width: 560px) {
-  #page {
-      position: static;
-  }
-  #content {
-      position: static;
-      font-size: 1em;
-      line-height: 160%;
-      padding: 1em 1em 1.5em 1em;
-  }
-  #qualities {
-      font-size: 1em;
-  }
-  #tools_wrapper {
-    position: static;
-  }
-  .tools {
-      width: 90%;
-      margin: 2em 0 1em 0;
-      margin: 0.4em;
-  }
-  .tools.left {
-      float: none;
-      left: 0;
-  }
-  .tools.right {
-      float: none;
-      right: 0;
-  }
-  #mid_panel {
-      margin: 0 auto;
-  }
-
-  /* cards are smaller on mobile */
-  .card-img {
-    height: 125px;
-    width: 100px;
-  }
-  a.card {
-    width: 100px;
-    height: 125px;
-    border: 8px solid var(--card-border-color);
-    margin-bottom: 0.5em;
-    position: relative;
-  }
-  div.blank-card {
-    width: 100px;
-    height: 125px;
-    border: 8px solid var(--card-border-color);
-    margin-bottom: 0.5em;
-  }
-  .card-in-hand, .pinned-card, .deck {
-    max-width: 120px;
-    margin-right: 1em;
-    vertical-align: top;
-  }
+#bg2 {
+  z-index: -100;
 }
 
+#bg1 {
+  z-index: -99;
+}
 
-/* New stuff just for this game */
-
-/* colored box div */
+/* Utility */
 .box {
   display: inline-block;
   height: 1em;
   width: 1em;
+  border: 1px solid var(--border-color);
 }
 
-table {
-    border-spacing: 0.5em;
+/* Responsive */
+@media screen and (max-width: 1200px) {
+  .tools {
+    margin: 0 0.4em;
+  }
 }
 
-/* Styles for parties */
-.seat.kpd {
-    fill: #8B0000;
-}
-.seat.spd {
-    fill: #E3000F;
-    stroke: var(--border-color);
-    stroke-width: 1.5px;
-}
-.seat.ddp {
-    fill: #DCCA4A;
-}
-.seat.z {
-    fill: #000;
-}
-.seat.bvp {
-    fill: #69A2BE;
-}
-.seat.dvp {
-    fill: #D5AC27;
-}
-.seat.other {
-    fill: #909090;
-}
-.seat.dnvp {
-    fill: #3F7BC1;
-}
-.seat.nsdap {
-    fill: #954B00;
-}
-.seat.sapd {
-    fill: #C40000;
-}
-
-.tooltip-text {
-    text-decoration: underline;
-    text-decoration-style: dotted;
+@media screen and (max-width: 768px) {
+  #page {
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .tools {
+    position: static;
+    flex: 0 0 auto;
+    width: 100%;
+    gap: 15px;
+  }
+  
+  .stats-box {
+    width: 100%;
+  }
+  
+  #content {
+    font-size: 0.95em;
+    padding: 1.5em;
+  }
+  
+  header {
+    flex-direction: column;
+  }
+  
+  #header-links {
+    width: 100%;
+    margin-top: 1em;
+  }
+  
+  header h1 {
+    font-size: 1.3em;
+  }
 }
