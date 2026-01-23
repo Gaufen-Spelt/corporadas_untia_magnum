@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
-
 body {
+  font-family: "IBM Plex Mono", "Courier New", monospace;
+  padding: 0;
+  line-height: 165%;
+  overflow-y: scroll;
+  letter-spacing: 0.02em;
+}
+
+/* Dark mode - cyberpunk green/cyan theme */
+body.dark-mode {
   --bg-color: #0a0e14;
   --border-color: #00ffcc;
   --content-bg-color: #0f1419;
@@ -18,12 +26,6 @@ body {
   --warning-color: #ffaa00;
   --success-color: #00ff88;
   
-  font-family: "IBM Plex Mono", "Courier New", monospace;
-  background-color: var(--bg-color);
-  padding: 0;
-  line-height: 165%;
-  overflow-y: scroll;
-  letter-spacing: 0.02em;
   background-color: var(--bg-color);
   background-image: 
     /* Horizontal scanlines */
@@ -52,11 +54,7 @@ body {
     );
 }
 
-body.dark-mode {
-  /* Already dark by default */
-}
-
-body::before {
+body.dark-mode::before {
   content: "";
   position: fixed;
   top: 0;
@@ -68,27 +66,26 @@ body::before {
   z-index: -1;
 }
 
-
 /* Light mode - clinical corporate white */
 body:not(.dark-mode) {
   --bg-color: #f5f7fa;
   --border-color: #2d3748;
-  --content-bg-color: #ffffff;  /* WHITE content boxes */
-  --text-color: #1a202c;  /* DARK text on white */
-  --link-color: #2563eb;  /* Blue links */
+  --content-bg-color: #ffffff;
+  --text-color: #1a202c;
+  --link-color: #2563eb;
   --link-hover-color: rgba(37, 99, 235, 0.08);
-  --tab-bg-color: #e2e8f0;  /* Light gray tabs */
-  --tab-color: #f7fafc;  /* Very light tab background */
+  --tab-bg-color: #e2e8f0;
+  --tab-color: #f7fafc;
   --tab-hover-color: #cbd5e0;
   --card-border-color: #2d3748;
   --card-bg-color: #ffffff;
-  --accent-color: #dc2626;  /* Red accent */
-  --warning-color: #d97706;  /* Orange warning */
-  --success-color: #059669;  /* Green success */
+  --accent-color: #dc2626;
+  --warning-color: #d97706;
+  --success-color: #059669;
   
   background-color: var(--bg-color);
   background-image: 
-    /* Horizontal scanlines - subtle on light bg */
+    /* Horizontal scanlines */
     repeating-linear-gradient(
       0deg,
       transparent,
@@ -114,9 +111,16 @@ body:not(.dark-mode) {
     );
 }
 
-/* Light mode vignette - very subtle */
 body:not(.dark-mode)::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: radial-gradient(ellipse at center, transparent 0%, rgba(45, 55, 72, 0.05) 100%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* Light mode specific overrides for better visibility */
@@ -128,10 +132,12 @@ body:not(.dark-mode) #content {
   border-left: 3px solid var(--border-color);
 }
 
-body:not(.dark-mode) #header-links {
+body:not(.dark-mode) #content {
   box-shadow: 
     0 0 0 1px #e2e8f0,
-    0 2px 8px rgba(0, 0, 0, 0.06);
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  border-left: 3px solid var(--border-color);
 }
 
 body:not(.dark-mode) #header-links a {
