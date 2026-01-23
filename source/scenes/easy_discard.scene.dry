@@ -1,0 +1,34 @@
+title: Return card to hand.
+view-if: difficulty <= 0 and last_advisor_action = 0 and last_cabinet_action = 0
+go-to: root
+on-arrival: {!
+if (Q.month_actions > 0) {
+    Q.month_actions -= 1;
+}
+
+if (Q.day_actions > 0) {
+    Q.day_actions -= 1;
+}
+
+if (Q.week_actions > 0) {
+    Q.week_actions -= 1;
+}
+// return card to hand
+var card = this.state.lastPlayedCard;
+card.image = card.cardImage;
+if (Q.use_main_2 >= 1) {
+    this.state.currentHands['main_2'].push(card);
+} else if (Q.difficulty >= 0) {
+    this.state.currentHands['main'].push(card);
+} else {
+    this.state.currentHands['main.main_easy'].push(card);
+}
+// reset the timer...
+if (Q[card.id + "_timer"]) {
+    Q[card.id + "_timer"] = 0;
+}
+// reduce visit count
+if (this.state.visits[card.id]) {
+    this.state.visits[card.id] -= 1;
+}
+!}

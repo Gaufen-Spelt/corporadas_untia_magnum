@@ -1,0 +1,142 @@
+title: Visit Union Branch
+new-page: true
+is-card: true
+tags: day_affairs
+view-if: union_visit_daily_timer = 0
+on-arrival: day_actions += 1; union_visit_timer = 1
+
+Visit a local union branch to strengthen ties with organized labor and show the ALP flag. Our presence can help counter communist organizing efforts.
+
+Which state's union movement should we visit?
+
+- @nsw: New South Wales
+- @vic: Victoria
+- @qld: Queensland
+- @sa: South Australia
+- @wa: Western Australia
+- @tas: Tasmania
+- @no_visit: Cancel visit
+
+@nsw
+on-arrival: {!
+// Small chance to reduce communist influence
+if (Math.random() < 0.3) {
+    Q.nsw_workers_cpa *= 0.99;
+    Q.nsw_actu_communist -= 0.01;
+}
+// Strengthen Right NSW and Union Right
+Q.right_alp_nsw_strength += 0.3;
+Q.right_alp_union_strength += 0.4;
+// Small Grouper benefit
+Q.groupers_strength += 0.1;
+!}
+
+We visited a union branch in Sydney's industrial heartland. The NSW Right's union networks ensure we're well-received.
+
+[? if nsw_workers_cpa < nsw_workers_cpa + 0.01 : Our presence helped counter some communist agitation among the rank-and-file. ?]
+
+The union officials appreciate Labor's solidarity and remind us of upcoming wage claims.
+
+@vic
+on-arrival: {!
+// Higher chance for communist encounter in Victoria
+let communist_present = Math.random() < 0.4;
+if (communist_present) {
+    Q.vic_workers_cpa *= 0.985;
+    Q.vic_actu_communist -= 0.015;
+    Q.groupers_strength += 0.5; // Groupers benefit more from anti-communist work
+    Q.left_vic_dissent += 2; // Left doesn't like this approach
+}
+// Strengthen Groupers and Union Right
+Q.groupers_strength += 0.3;
+Q.right_alp_union_strength += 0.2;
+Q.right_alp_south_strength += 0.1;
+!}
+
+We attended a branch meeting in Melbourne. The atmosphere is tense - communist influence runs deep in some Victorian unions.
+
+[? if communist_present : The Groupers seized the moment, challenging communist sympathizers in a heated debate. The Left faction privately grumbles about our 'red-baiting.' ?]
+[? if not communist_present : Union officials welcomed our visit, though the factional undercurrents are never far from the surface. ?]
+
+@qld
+on-arrival: {!
+// Lower communist presence in Queensland
+if (Math.random() < 0.2) {
+    Q.qld_workers_cpa *= 0.995;
+    Q.qld_actu_communist -= 0.005;
+}
+// Strengthen Queensland Right and Union Right
+Q.right_alp_qld_strength += 0.5;
+Q.right_alp_union_strength += 0.3;
+// Minor grouper benefit
+Q.groupers_strength += 0.05;
+!}
+
+We visited a union hall in Brisbane or one of the mining towns. Queensland's unions are less factional than down south - it's AWU territory here.
+
+[? if qld_workers_cpa < qld_workers_cpa + 0.005 : We reinforced Labor solidarity and marginalized a few communist agitators. ?]
+
+The Queensland Right dominates the union movement here. This is their stronghold.
+
+@sa
+on-arrival: {!
+// Moderate communist presence
+if (Math.random() < 0.35) {
+    Q.sa_workers_cpa *= 0.99;
+    Q.sa_actu_communist -= 0.01;
+    Q.groupers_strength += 0.4; // SA is Grouper territory
+}
+// Strengthen Southern Right and Groupers
+Q.right_alp_south_strength += 0.3;
+Q.groupers_strength += 0.4;
+Q.right_alp_union_strength += 0.2;
+!}
+
+We met with union officials in Adelaide. South Australia's Catholic working class makes this fertile ground for the Industrial Groups.
+
+[? if sa_workers_cpa < sa_workers_cpa + 0.01 : The Groupers led the charge against communist sympathizers, invoking Catholic social teaching. ?]
+
+The Southern Right and the Groupers work hand-in-hand here.
+
+@wa
+on-arrival: {!
+// Moderate-high communist presence (wharfies, miners)
+if (Math.random() < 0.4) {
+    Q.wa_workers_cpa *= 0.985;
+    Q.wa_actu_communist -= 0.015;
+    Q.left_nsw_dissent += 1; // Left doesn't like anti-red activity
+}
+// Mixed factional benefit - WA is complicated
+Q.right_alp_union_strength += 0.4;
+Q.groupers_strength += 0.2;
+Q.left_nsw_strength += 0.1; // Even Left benefits from union ties
+!}
+
+We visited Perth or Fremantle. WA's isolation creates unique dynamics - communist influence is strong in the wharfies and miners, but so is Labor solidarity.
+
+[? if wa_workers_cpa < wa_workers_cpa + 0.015 : We made inroads against communist organizing, though it's an uphill battle in the maritime unions. ?]
+
+Distance from the eastern states makes WA Labor more independent and pragmatic.
+
+@tas
+on-arrival: {!
+// Low communist presence
+if (Math.random() < 0.15) {
+    Q.tas_workers_cpa *= 0.995;
+    Q.tas_actu_communist -= 0.005;
+}
+// Strengthen Centre (Tasmania is less factional)
+Q.centre_federal_strength += 0.4;
+Q.right_alp_union_strength += 0.3;
+Q.groupers_strength += 0.1;
+!}
+
+We met with union comrades in Hobart or Launceston. Tasmania's small Labor community means everyone knows everyone.
+
+[? if tas_workers_cpa < tas_workers_cpa + 0.005 : Communist influence is minimal here - Tasmania's unions are solidly Labor. ?]
+
+The Centre faction benefits most from these personal relationships in Australia's smallest state.
+
+@no_visit
+
+We decided not to visit the unions today. Our relationship with organized labor remains unchanged.

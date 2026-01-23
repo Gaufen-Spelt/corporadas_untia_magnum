@@ -1,0 +1,314 @@
+title: STATUS 2
+new-page: true
+is-special: true
+
+= NEW SOUTH WALES
+
+ALP Workers NSW : [+ nsw_workers_alp +] |
+Liberal Workers NSW : [+ nsw_workers_liberal +] | 
+Country Workers NSW : [+ nsw_workers_country +] |
+CPA Workers NSW : [+ nsw_workers_cpa +] |
+Lang Workers NSW : [+ nsw_workers_lang +] |
+Other Workers NSW : [+ nsw_workers_other +] |
+
+ALP White Collar NSW : [+ nsw_white_collar_alp +]
+Liberal White Collar NSW : [+ nsw_white_collar_liberal +]
+Country White Collar NSW : [+ nsw_white_collar_country +]
+CPA White Collar NSW : [+ nsw_white_collar_cpa +]
+Lang White Collar NSW : [+ nsw_white_collar_lang +]
+Other White Collar NSW : [+ nsw_white_collar_other +]
+
+ALP Business NSW : [+ nsw_business_alp +]
+Liberal Business NSW : [+ nsw_business_liberal +]
+Country Business NSW : [+ nsw_business_country +]
+CPA Business NSW : [+ nsw_business_cpa +]
+Lang Business NSW : [+ nsw_business_lang +]
+Other Business NSW : [+ nsw_business_other +]
+
+ALP Rural NSW : [+ nsw_rural_alp +]
+Liberal Rural NSW : [+ nsw_rural_liberal +]
+Country Rural NSW : [+ nsw_rural_country +]
+CPA Rural NSW : [+ nsw_rural_cpa +]
+Lang Rural NSW : [+ nsw_rural_lang +]
+Other Rural NSW : [+ nsw_rural_other +]
+
+ALP Unemployed NSW : [+ nsw_unemployed_alp +]
+Liberal Unemployed NSW : [+ nsw_unemployed_liberal +]
+Country Unemployed NSW : [+ nsw_unemployed_country +]
+CPA Unemployed NSW : [+ nsw_unemployed_cpa +]
+Lang Unemployed NSW : [+ nsw_unemployed_lang +]
+Other Unemployed NSW : [+ nsw_unemployed_other +]
+
+ALP Catholics NSW : [+ nsw_catholics_alp +]
+Liberal Catholics NSW : [+ nsw_catholics_liberal +]
+Country Catholics NSW : [+ nsw_catholics_country +]
+CPA Catholics NSW : [+ nsw_catholics_cpa +]
+Lang Catholics NSW : [+ nsw_catholics_lang +]
+Other Catholics NSW : [+ nsw_catholics_other +]
+
+ALP Migrants NSW : [+ nsw_migrants_alp +]
+Liberal Migrants NSW : [+ nsw_migrants_liberal +]
+Country Migrants NSW : [+ nsw_migrants_country +]
+CPA Migrants NSW : [+ nsw_migrants_cpa +]
+Lang Migrants NSW : [+ nsw_migrants_lang +]
+Other Migrants NSW : [+ nsw_migrants_other +]
+
+
+= VICTORIA
+
+ALP Workers Victoria : [+ vic_workers_alp +]
+Liberal Workers Victoria : [+ vic_workers_liberal +]
+Country Workers Victoria : [+ vic_workers_country +]
+CPA Workers Victoria : [+ vic_workers_cpa +]
+Lang Workers Victoria : [+ vic_workers_lang +]
+Other Workers Victoria : [+ vic_workers_other +]
+
+ALP White Collar Victoria : [+ vic_white_collar_alp +]
+Liberal White Collar Victoria : [+ vic_white_collar_liberal +]
+Country White Collar Victoria : [+ vic_white_collar_country +]
+CPA White Collar Victoria : [+ vic_white_collar_cpa +]
+Lang White Collar Victoria : [+ vic_white_collar_lang +]
+Other White Collar Victoria : [+ vic_white_collar_other +]
+
+ALP Business Victoria : [+ vic_business_alp +]
+Liberal Business Victoria : [+ vic_business_liberal +]
+Country Business Victoria : [+ vic_business_country +]
+CPA Business Victoria : [+ vic_business_cpa +]
+Lang Business Victoria : [+ vic_business_lang +]
+Other Business Victoria : [+ vic_business_other +]
+
+ALP Rural Victoria : [+ vic_rural_alp +]
+Liberal Rural Victoria : [+ vic_rural_liberal +]
+Country Rural Victoria : [+ vic_rural_country +]
+CPA Rural Victoria : [+ vic_rural_cpa +]
+Lang Rural Victoria : [+ vic_rural_lang +]
+Other Rural Victoria : [+ vic_rural_other +]
+
+ALP Unemployed Victoria : [+ vic_unemployed_alp +]
+Liberal Unemployed Victoria : [+ vic_unemployed_liberal +]
+Country Unemployed Victoria : [+ vic_unemployed_country +]
+CPA Unemployed Victoria : [+ vic_unemployed_cpa +]
+Lang Unemployed Victoria : [+ vic_unemployed_lang +]
+Other Unemployed Victoria : [+ vic_unemployed_other +]
+
+ALP Catholics Victoria : [+ vic_catholics_alp +]
+Liberal Catholics Victoria : [+ vic_catholics_liberal +]
+Country Catholics Victoria : [+ vic_catholics_country +]
+CPA Catholics Victoria : [+ vic_catholics_cpa +]
+Lang Catholics Victoria : [+ vic_catholics_lang +]
+Other Catholics Victoria : [+ vic_catholics_other +]
+
+ALP Migrants Victoria : [+ vic_migrants_alp +]
+Liberal Migrants Victoria : [+ vic_migrants_liberal +]
+Country Migrants Victoria : [+ vic_migrants_country +]
+CPA Migrants Victoria : [+ vic_migrants_cpa +]
+Lang Migrants Victoria : [+ vic_migrants_lang +]
+Other Migrants Victoria : [+ vic_migrants_other +]
+
+
+= QUEENSLAND
+
+ALP Workers Queensland : [+ qld_workers_alp +]
+Liberal Workers Queensland : [+ qld_workers_liberal +]
+Country Workers Queensland : [+ qld_workers_country +]
+CPA Workers Queensland : [+ qld_workers_cpa +]
+Lang Workers Queensland : [+ qld_workers_lang +]
+Other Workers Queensland : [+ qld_workers_other +]
+
+ALP White Collar Queensland : [+ qld_white_collar_alp +]
+Liberal White Collar Queensland : [+ qld_white_collar_liberal +]
+Country White Collar Queensland : [+ qld_white_collar_country +]
+CPA White Collar Queensland : [+ qld_white_collar_cpa +]
+Lang White Collar Queensland : [+ qld_white_collar_lang +]
+Other White Collar Queensland : [+ qld_white_collar_other +]
+
+ALP Business Queensland : [+ qld_business_alp +]
+Liberal Business Queensland : [+ qld_business_liberal +]
+Country Business Queensland : [+ qld_business_country +]
+CPA Business Queensland : [+ qld_business_cpa +]
+Lang Business Queensland : [+ qld_business_lang +]
+Other Business Queensland : [+ qld_business_other +]
+
+ALP Rural Queensland : [+ qld_rural_alp +]
+Liberal Rural Queensland : [+ qld_rural_liberal +]
+Country Rural Queensland : [+ qld_rural_country +]
+CPA Rural Queensland : [+ qld_rural_cpa +]
+Lang Rural Queensland : [+ qld_rural_lang +]
+Other Rural Queensland : [+ qld_rural_other +]
+
+ALP Unemployed Queensland : [+ qld_unemployed_alp +]
+Liberal Unemployed Queensland : [+ qld_unemployed_liberal +]
+Country Unemployed Queensland : [+ qld_unemployed_country +]
+CPA Unemployed Queensland : [+ qld_unemployed_cpa +]
+Lang Unemployed Queensland : [+ qld_unemployed_lang +]
+Other Unemployed Queensland : [+ qld_unemployed_other +]
+
+ALP Catholics Queensland : [+ qld_catholics_alp +]
+Liberal Catholics Queensland : [+ qld_catholics_liberal +]
+Country Catholics Queensland : [+ qld_catholics_country +]
+CPA Catholics Queensland : [+ qld_catholics_cpa +]
+Lang Catholics Queensland : [+ qld_catholics_lang +]
+Other Catholics Queensland : [+ qld_catholics_other +]
+
+ALP Migrants Queensland : [+ qld_migrants_alp +]
+Liberal Migrants Queensland : [+ qld_migrants_liberal +]
+Country Migrants Queensland : [+ qld_migrants_country +]
+CPA Migrants Queensland : [+ qld_migrants_cpa +]
+Lang Migrants Queensland : [+ qld_migrants_lang +]
+Other Migrants Queensland : [+ qld_migrants_other +]
+
+
+= SOUTH AUSTRALIA
+
+ALP Workers South Australia : [+ sa_workers_alp +]
+Liberal Workers South Australia : [+ sa_workers_liberal +]
+Country Workers South Australia : [+ sa_workers_country +]
+CPA Workers South Australia : [+ sa_workers_cpa +]
+Lang Workers South Australia : [+ sa_workers_lang +]
+Other Workers South Australia : [+ sa_workers_other +]
+
+ALP White Collar South Australia : [+ sa_white_collar_alp +]
+Liberal White Collar South Australia : [+ sa_white_collar_liberal +]
+Country White Collar South Australia : [+ sa_white_collar_country +]
+CPA White Collar South Australia : [+ sa_white_collar_cpa +]
+Lang White Collar South Australia : [+ sa_white_collar_lang +]
+Other White Collar South Australia : [+ sa_white_collar_other +]
+
+ALP Business South Australia : [+ sa_business_alp +]
+Liberal Business South Australia : [+ sa_business_liberal +]
+Country Business South Australia : [+ sa_business_country +]
+CPA Business South Australia : [+ sa_business_cpa +]
+Lang Business South Australia : [+ sa_business_lang +]
+Other Business South Australia : [+ sa_business_other +]
+
+ALP Rural South Australia : [+ sa_rural_alp +]
+Liberal Rural South Australia : [+ sa_rural_liberal +]
+Country Rural South Australia : [+ sa_rural_country +]
+CPA Rural South Australia : [+ sa_rural_cpa +]
+Lang Rural South Australia : [+ sa_rural_lang +]
+Other Rural South Australia : [+ sa_rural_other +]
+
+ALP Unemployed South Australia : [+ sa_unemployed_alp +]
+Liberal Unemployed South Australia : [+ sa_unemployed_liberal +]
+Country Unemployed South Australia : [+ sa_unemployed_country +]
+CPA Unemployed South Australia : [+ sa_unemployed_cpa +]
+Lang Unemployed South Australia : [+ sa_unemployed_lang +]
+Other Unemployed South Australia : [+ sa_unemployed_other +]
+
+ALP Catholics South Australia : [+ sa_catholics_alp +]
+Liberal Catholics South Australia : [+ sa_catholics_liberal +]
+Country Catholics South Australia : [+ sa_catholics_country +]
+CPA Catholics South Australia : [+ sa_catholics_cpa +]
+Lang Catholics South Australia : [+ sa_catholics_lang +]
+Other Catholics South Australia : [+ sa_catholics_other +]
+
+ALP Migrants South Australia : [+ sa_migrants_alp +]
+Liberal Migrants South Australia : [+ sa_migrants_liberal +]
+Country Migrants South Australia : [+ sa_migrants_country +]
+CPA Migrants South Australia : [+ sa_migrants_cpa +]
+Lang Migrants South Australia : [+ sa_migrants_lang +]
+Other Migrants South Australia : [+ sa_migrants_other +]
+
+
+= WESTERN AUSTRALIA
+
+ALP Workers Western Australia : [+ wa_workers_alp +]
+Liberal Workers Western Australia : [+ wa_workers_liberal +]
+Country Workers Western Australia : [+ wa_workers_country +]
+CPA Workers Western Australia : [+ wa_workers_cpa +]
+Lang Workers Western Australia : [+ wa_workers_lang +]
+Other Workers Western Australia : [+ wa_workers_other +]
+
+ALP White Collar Western Australia : [+ wa_white_collar_alp +]
+Liberal White Collar Western Australia : [+ wa_white_collar_liberal +]
+Country White Collar Western Australia : [+ wa_white_collar_country +]
+CPA White Collar Western Australia : [+ wa_white_collar_cpa +]
+Lang White Collar Western Australia : [+ wa_white_collar_lang +]
+Other White Collar Western Australia : [+ wa_white_collar_other +]
+
+ALP Business Western Australia : [+ wa_business_alp +]
+Liberal Business Western Australia : [+ wa_business_liberal +]
+Country Business Western Australia : [+ wa_business_country +]
+CPA Business Western Australia : [+ wa_business_cpa +]
+Lang Business Western Australia : [+ wa_business_lang +]
+Other Business Western Australia : [+ wa_business_other +]
+
+ALP Rural Western Australia : [+ wa_rural_alp +]
+Liberal Rural Western Australia : [+ wa_rural_liberal +]
+Country Rural Western Australia : [+ wa_rural_country +]
+CPA Rural Western Australia : [+ wa_rural_cpa +]
+Lang Rural Western Australia : [+ wa_rural_lang +]
+Other Rural Western Australia : [+ wa_rural_other +]
+
+ALP Unemployed Western Australia : [+ wa_unemployed_alp +]
+Liberal Unemployed Western Australia : [+ wa_unemployed_liberal +]
+Country Unemployed Western Australia : [+ wa_unemployed_country +]
+CPA Unemployed Western Australia : [+ wa_unemployed_cpa +]
+Lang Unemployed Western Australia : [+ wa_unemployed_lang +]
+Other Unemployed Western Australia : [+ wa_unemployed_other +]
+
+ALP Catholics Western Australia : [+ wa_catholics_alp +]
+Liberal Catholics Western Australia : [+ wa_catholics_liberal +]
+Country Catholics Western Australia : [+ wa_catholics_country +]
+CPA Catholics Western Australia : [+ wa_catholics_cpa +]
+Lang Catholics Western Australia : [+ wa_catholics_lang +]
+Other Catholics Western Australia : [+ wa_catholics_other +]
+
+ALP Migrants Western Australia : [+ wa_migrants_alp +]
+Liberal Migrants Western Australia : [+ wa_migrants_liberal +]
+Country Migrants Western Australia : [+ wa_migrants_country +]
+CPA Migrants Western Australia : [+ wa_migrants_cpa +]
+Lang Migrants Western Australia : [+ wa_migrants_lang +]
+Other Migrants Western Australia : [+ wa_migrants_other +]
+
+
+= TASMANIA
+
+ALP Workers Tasmania : [+ tas_workers_alp +]
+Liberal Workers Tasmania : [+ tas_workers_liberal +]
+Country Workers Tasmania : [+ tas_workers_country +]
+CPA Workers Tasmania : [+ tas_workers_cpa +]
+Lang Workers Tasmania : [+ tas_workers_lang +]
+Other Workers Tasmania : [+ tas_workers_other +]
+
+ALP White Collar Tasmania : [+ tas_white_collar_alp +]
+Liberal White Collar Tasmania : [+ tas_white_collar_liberal +]
+Country White Collar Tasmania : [+ tas_white_collar_country +]
+CPA White Collar Tasmania : [+ tas_white_collar_cpa +]
+Lang White Collar Tasmania : [+ tas_white_collar_lang +]
+Other White Collar Tasmania : [+ tas_white_collar_other +]
+
+ALP Business Tasmania : [+ tas_business_alp +]
+Liberal Business Tasmania : [+ tas_business_liberal +]
+Country Business Tasmania : [+ tas_business_country +]
+CPA Business Tasmania : [+ tas_business_cpa +]
+Lang Business Tasmania : [+ tas_business_lang +]
+Other Business Tasmania : [+ tas_business_other +]
+
+ALP Rural Tasmania : [+ tas_rural_alp +]
+Liberal Rural Tasmania : [+ tas_rural_liberal +]
+Country Rural Tasmania : [+ tas_rural_country +]
+CPA Rural Tasmania : [+ tas_rural_cpa +]
+Lang Rural Tasmania : [+ tas_rural_lang +]
+Other Rural Tasmania : [+ tas_rural_other +]
+
+ALP Unemployed Tasmania : [+ tas_unemployed_alp +]
+Liberal Unemployed Tasmania : [+ tas_unemployed_liberal +]
+Country Unemployed Tasmania : [+ tas_unemployed_country +]
+CPA Unemployed Tasmania : [+ tas_unemployed_cpa +]
+Lang Unemployed Tasmania : [+ tas_unemployed_lang +]
+Other Unemployed Tasmania : [+ tas_unemployed_other +]
+
+ALP Catholics Tasmania : [+ tas_catholics_alp +]
+Liberal Catholics Tasmania : [+ tas_catholics_liberal +]
+Country Catholics Tasmania : [+ tas_catholics_country +]
+CPA Catholics Tasmania : [+ tas_catholics_cpa +]
+Lang Catholics Tasmania : [+ tas_catholics_lang +]
+Other Catholics Tasmania : [+ tas_catholics_other +]
+
+ALP Migrants Tasmania : [+ tas_migrants_alp +]
+Liberal Migrants Tasmania : [+ tas_migrants_liberal +]
+Country Migrants Tasmania : [+ tas_migrants_country +]
+CPA Migrants Tasmania : [+ tas_migrants_cpa +]
+Lang Migrants Tasmania : [+ tas_migrants_lang +]
+Other Migrants Tasmania : [+ tas_migrants_other +]

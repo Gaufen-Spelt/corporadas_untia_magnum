@@ -1,0 +1,12 @@
+title: Skip the Time
+is-pinned-card: true
+new-page: true
+card-image: img/vorwarts_2.jpg
+
+Skip???
+
+- @yeah: Yeah
+- @easy_discard: Nah
+
+@yeah
+on-arrival: actions += 1; day_actions += 1

@@ -1,0 +1,237 @@
+title: The Taft Docks Strike
+subtitle: Day 3 - San Francisco Waterfront
+new-page: true
+view-if: year = 1949 and month = 1 and day = 3 and taft_strike_seen = 0
+tags: event
+on-arrival: taft_strike_seen = 1
+
+= San Francisco - Taft's Shipdocks
+
+**Waterside Workers Federation - American Branch**
+
+The morning fog rolls thick over San Francisco Bay. You're Mickey Sullivan, WWF delegate on the Taft docks, standing with your crew as the Australian freighter *Southern Cross* sits heavy in the water, loaded with wool bales and wheat destined to service Australia's war debt.
+
+Your boss, Harry Bridges - the legendary longshoreman organizer - has called for a meeting. Word from Sydney says the Australian wharfies are being crushed under the debt repayment scheme. Every bale of wool, every bushel of wheat goes straight to American creditors while Australian workers go hungry.
+
+"We unload this ship," Harry says, his voice carrying across the assembled men, "we're helping the bankers squeeze our Australian brothers dry. International solidarity means something, or it means nothing."
+
+The *Southern Cross* captain is furious, threatening to report the strike to the authorities. The shipping company has already called it "communist sabotage." You can see FBI agents taking notes from a car nearby.
+
+But you also see the Australian cargo manifest - desperately needed exports to pay down debt that's strangling the Australian economy. And you know the political shitstorm this will cause back in Australia.
+
+What does your crew do?
+
+- @strike_full: "We don't touch that cargo! Solidarity with Australian workers!"
+- @strike_delay: "We'll delay the unloading until we get assurances about worker conditions."
+- @work_protest: "We work, but under protest. Let the world know why."
+- @unload: "We unload. This hurts Australian workers more than it helps."
+
+@strike_full
+on-arrival: {!
+Q.taft_strike_status = "full_strike";
+Q.usa_relation -= 8;
+Q.wharfies_militancy += 0.08;
+Q.actu_militancy += 0.03;
+Q.anti_communist += 4;
+Q.cpa_relation += 5;
+Q.workers_cpa += 0.5;
+Q.sterling_reserves -= 5;
+Q.economic_growth -= 0.3;
+!}
+
+"THAT CARGO STAYS ON THE SHIP!"
+
+Your voice echoes across the docks. The crew cheers. Harry Bridges grins and shakes your hand. "Now that's what I call solidarity, brother."
+
+The *Southern Cross* sits at anchor, unloaded. The captain radios Sydney in a fury. The shipping company calls the FBI. The newspapers will scream about communist sabotage.
+
+But you've drawn a line. The waterfront workers of the world stand together, or they fall divided.
+
+= Sydney - Three Days Later
+
+**Eddie Ward's Office, Balmain**
+
+The telegram from San Francisco sits on your desk. The Taft wharfies have struck. The *Southern Cross* sits unloaded.
+
+Jim Healey bursts into your office, grinning ear to ear. "Eddie! The Yanks did it! They're refusing to be part of this debt slavery scheme!"
+
+You light a cigarette, mind racing. This is politically explosive.
+
+Menzies will call it communist sabotage - proof that the waterfront is controlled by Moscow. The Groupers will demand Labor condemn it. Calwell and the Centre will worry about the economic damage. But the Left...the Left will see this as international working-class solidarity.
+
+The phone rings. It's a journalist from the *Herald*.
+
+"Mr. Ward, the American wharfies have struck against Australian cargo. They're calling the debt repayment scheme 'economic imperialism.' Does Labor support this action?"
+
+- @ward_support: "Damn right we do! This debt arrangement is strangling Australia!"
+- @ward_nuanced: "We support workers' rights to protest exploitative arrangements."
+- @ward_deflect: "This is Menzies' debt crisis. He created this mess."
+- @ward_condemn: "Labor supports Australian workers, not foreign strikes that hurt our economy."
+
+@ward_support
+on-arrival: {!
+Q.ward_taft_position = "full_support";
+Q.left_nsw_strength += 1.2;
+Q.left_vic_strength += 0.8;
+Q.anti_communist += 6;
+Q.groupers_dissent += 10;
+Q.right_alp_nsw_dissent += 8;
+Q.centre_federal_dissent += 5;
+Q.imperialism -= 3;
+Q.usa_relation -= 8;
+Q.workers_alp += 1.0;
+Q.workers_cpa += 0.8;
+Q.business_alp -= 2;
+Q.white_collar_alp -= 1;
+!}
+
+"DAMN RIGHT WE DO!"
+
+You let your anger flow into the phone. "This debt arrangement is economic imperialism! The Americans are charging us interest to pay for equipment we used fighting *their* war in the Pacific! The wharfies - American and Australian - are showing more solidarity than our own government!"
+
+"Every bale of wool, every ton of wheat goes to American banks while Australian workers go hungry. The Taft wharfies understand what Menzies doesn't - this is debt slavery!"
+
+The journalist is scribbling frantically. You can already see tomorrow's headline: "LABOR MP BACKS US STRIKE AGAINST AUSTRALIAN EXPORTS."
+
+Jim Healey is beaming. "That's the stuff, Eddie! The workers will love this!"
+
+But your phone immediately rings again. It's J.J. Cahill, and he's furious.
+
+"WARD! WHAT THE BLOODY HELL DO YOU THINK YOU'RE DOING?!"
+
+**The party leadership will need to respond to your statement...**
+
+@ward_nuanced
+on-arrival: {!
+Q.ward_taft_position = "nuanced_support";
+Q.left_nsw_strength += 0.7;
+Q.left_vic_strength += 0.5;
+Q.anti_communist += 3;
+Q.groupers_dissent += 5;
+Q.right_alp_nsw_dissent += 3;
+Q.imperialism -= 1;
+Q.usa_relation -= 4;
+Q.workers_alp += 0.5;
+!}
+
+"Labor supports workers' fundamental right to protest exploitative economic arrangements," you say carefully. "The debt repayment scheme places an enormous burden on Australian workers. If American wharfies want to express solidarity, that's their democratic right."
+
+It's a more careful position, but it still signals sympathy for the strike.
+
+The journalist presses: "But isn't this communist sabotage of the Australian economy?"
+
+"It's workers expressing solidarity across national borders," you reply. "That's not communism - that's basic unionism."
+
+Jim Healey looks slightly disappointed, but nods. "Good enough, Eddie. You didn't sell us out."
+
+**The party leadership will need to decide on an official position...**
+
+@ward_deflect
+on-arrival: {!
+Q.ward_taft_position = "deflect";
+Q.centre_federal_strength += 0.4;
+Q.left_nsw_dissent += 3;
+Q.right_alp_nsw_strength += 0.3;
+!}
+
+"This is Robert Menzies' debt crisis," you say firmly. "Labor warned against these terms in '47. We said the debt arrangement was unfair to Australian workers. Now the chickens are coming home to roost."
+
+"Menzies negotiated this deal. Menzies put Australian exports at the mercy of American creditors. If American workers are now protesting those arrangements, perhaps the Prime Minister should have thought about that before he signed on the dotted line."
+
+It's a deflection - you're not endorsing the strike, but you're not condemning it either. You're pointing the finger at Menzies.
+
+Jim Healey frowns. "Eddie, that's weak. The wharfies took a stand. So should we."
+
+But you've avoided taking a position that would explode the party.
+
+**The party leadership will need to decide on an official position...**
+
+@ward_condemn
+on-arrival: {!
+Q.ward_taft_position = "condemn";
+Q.left_nsw_dissent += 8;
+Q.left_vic_dissent += 6;
+Q.right_alp_nsw_strength += 0.6;
+Q.groupers_strength += 0.4;
+Q.centre_federal_strength += 0.5;
+Q.wharfies_relation -= 10;
+Q.workers_alp -= 0.5;
+Q.anti_communist -= 1;
+!}
+
+"Labor supports Australian workers," you say, choosing your words carefully. "This strike hurts Australian workers more than it helps them. Our economy depends on those exports. Families depend on that income."
+
+"While we appreciate international labor solidarity, we cannot support actions that damage the Australian economy and hurt Australian working families."
+
+The line goes dead. Jim Healey stares at you in disbelief.
+
+"Eddie... what the hell? You just sold out the wharfies!"
+
+"I saved the party from a political disaster," you snap back. "Menzies would crucify us!"
+
+Healey's face hardens. "The wharfies will remember this, Ward. The WWF will remember."
+
+**You've avoided a political crisis, but at what cost?**
+
+@strike_delay
+on-arrival: {!
+Q.taft_strike_status = "delayed";
+Q.usa_relation -= 4;
+Q.wharfies_militancy += 0.04;
+Q.sterling_reserves -= 2;
+Q.anti_communist += 2;
+!}
+
+"We don't unload until we get assurances about Australian worker conditions!"
+
+It's a compromise - not a full strike, but a protest action. You're using leverage without completely shutting down the ship.
+
+Harry Bridges nods approvingly. "Smart. We'll drag this out, make noise, get the press involved. Let the world see what this debt scheme is doing."
+
+The *Southern Cross* sits partially unloaded while negotiations drag on.
+
+**This will buy time, but everyone will need to take a position eventually...**
+
+**To be continued in: "The Party Responds"**
+
+@work_protest
+on-arrival: {!
+Q.taft_strike_status = "work_protest";
+Q.usa_relation -= 1;
+Q.wharfies_militancy += 0.01;
+Q.anti_communist += 1;
+!}
+
+"We work, but under protest. Slow and steady. And we make damn sure every newspaper in San Francisco knows WHY."
+
+The crew begins unloading, but at a deliberate crawl. Every journalist who'll listen gets an earful about Australian debt slavery. Picket signs go up: "AUSTRALIA DESERVES FAIR TERMS" and "WORKERS NOT BANKERS."
+
+It's symbolic resistance rather than direct action.
+
+Harry Bridges shrugs. "Better than nothing. At least you're making noise."
+
+**The symbolic protest makes a statement without causing economic damage...**
+
+**To be continued in: "The Party Responds"**
+
+@unload
+on-arrival: {!
+Q.taft_strike_status = "unloaded";
+Q.wharfies_militancy -= 0.02;
+Q.wharfies_relation -= 5;
+Q.cpa_relation -= 3;
+!}
+
+"We unload. Our job is to move cargo, not make foreign policy."
+
+Harry Bridges looks disappointed. Some of your crew grumble, but they get to work. The *Southern Cross* is unloaded on schedule.
+
+The Australian cargo continues its journey to creditors. The debt gets serviced. The system continues unchanged.
+
+"Sometimes," you mutter to yourself, "solidarity has to take a back seat to practicality."
+
+But you can see the disappointment in the eyes of the more militant men.
+
+**The cargo is unloaded. The crisis is averted. Nothing changes.**
+
+**To be continued in: "The Party Responds"**

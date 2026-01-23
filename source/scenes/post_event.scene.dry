@@ -1,0 +1,537 @@
+title: Post Event
+new-page: true
+on-arrival: {!
+
+console.log('=== POST EVENT START ===');
+console.log('Actions at entry:', Q.actions);
+console.log('Day:', Q.day, 'Week:', Q.week, 'Month:', Q.month);
+
+// ============================================
+// INITIALIZE AND INCREMENT ACTIONS
+// ============================================
+Q.actions = (Q.actions || 0);
+Q.last_advisor_action = 0;
+Q.last_cabinet_action = 0;
+
+// ============================================
+// DEFINE DYNAMIC PARTY LIST
+// ============================================
+let parties = ['alp', 'liberal', 'country', 'cpa', 'lang', 'other'];
+
+if (Q.dlp_formed) {
+    parties.push('dlp');
+}
+
+// For backwards compatibility
+Q.parties = parties;
+
+// ============================================
+// SANITIZE CLASS-PARTY SUPPORT (no negatives)
+// ============================================
+for (let c of Q.classes) {
+    for (let party of parties) {
+        Q[c + '_' + party] = Math.max(0, Q[c + '_' + party] || 0);
+    }
+}
+
+// ============================================
+// SANITIZE OPINION VARIABLES
+// ============================================
+Q.support_labor = Math.max(0, Math.min(99, Math.round(Q.support_labor || 48)));
+Q.anti_communist = Math.max(0, Math.min(100, Math.round(Q.anti_communist || 60)));
+Q.pro_british = Math.max(0, Math.min(100, Math.round(Q.pro_british || 70)));
+Q.immigration_support = Math.max(0, Math.min(100, Math.round(Q.immigration_support || 50)));
+Q.white_australia_support = Math.max(0, Math.min(100, Math.round(Q.white_australia_support || 80)));
+
+// ============================================
+// NORMALIZE STATE-LEVEL DEMOGRAPHICS
+// ============================================
+for (let state of Q.states) {
+    for (let demo_class of Q.classes) {
+        let total = 0;
+        
+        // Sum up all party support for this state-demographic combo
+        for (let party of parties) {
+            let state_var = state + '_' + demo_class + '_' + party;
+            total += Q[state_var] || 0;
+        }
+        
+        // Normalize if total isn't 100
+        if (total > 0 && Math.abs(total - 100) > 0.01) {
+            for (let party of parties) {
+                let state_var = state + '_' + demo_class + '_' + party;
+                if (Q[state_var]) {
+                    Q[state_var] = (Q[state_var] / total) * 100;
+                }
+            }
+        }
+    }
+}
+
+// ============================================
+// RECALCULATE NATIONAL FROM STATE DATA
+// ============================================
+
+// Recalculate national demographics
+for (let demo_class of Q.classes) {
+    Q[demo_class] = 0;
+    for (let state of Q.states) {
+        Q[demo_class] += (Q[state + '_' + demo_class] || 0) * Q.state_weights[state];
+    }
+}
+
+// Recalculate national party support from state data
+for (let demo_class of Q.classes) {
+    for (let party of parties) {
+        Q[demo_class + '_' + party] = 0;
+        for (let state of Q.states) {
+            let state_var = state + '_' + demo_class + '_' + party;
+            Q[demo_class + '_' + party] += (Q[state_var] || 0) * Q.state_weights[state];
+        }
+    }
+}
+
+// ============================================
+// NORMALIZE NATIONAL DEMOGRAPHICS (safety check)
+// ============================================
+for (let demo_class of Q.classes) {
+    let total = 0;
+    
+    // Sum up all party support for this demographic
+    for (let party of parties) {
+        total += Q[demo_class + '_' + party] || 0;
+    }
+    
+    // Normalize if total isn't 100
+    if (total > 0 && Math.abs(total - 100) > 0.01) {
+        for (let party of parties) {
+            let key = demo_class + '_' + party;
+            if (Q[key]) {
+                Q[key] = (Q[key] / total) * 100;
+            }
+        }
+    }
+}
+
+// ============================================
+// CALCULATE NORMALIZED CLASS VOTING
+// ============================================
+for (let c of Q.classes) {
+    let class_votes = 0;
+    
+    // Sum total votes for this class
+    for (let party of parties) {
+        class_votes += Q[c + '_' + party];
+    }
+    
+    // Normalize to percentages
+    for (let party of parties) {
+        if (class_votes > 0) {
+            Q[c + '_' + party + '_normalized'] = 100 * Q[c + '_' + party] / class_votes;
+            Q[c + '_' + party + '_display'] = Math.round(100 * Q[c + '_' + party] / class_votes);
+        } else {
+            Q[c + '_' + party + '_normalized'] = 0;
+            Q[c + '_' + party + '_display'] = 0;
+        }
+    }
+}
+
+// ============================================
+// CALCULATE OVERALL PARTY SUPPORT
+// ============================================
+let total_support = 0;
+
+for (let party of parties) {
+    let party_support = 0;
+    
+    for (let c of Q.classes) {
+        if (Q.old_demographics) {
+            party_support += Q[c] * Q[c + '_' + party];
+        } else {
+            party_support += Q[c] * Q[c + '_' + party + '_normalized'];
+        }
+    }
+    
+    Q[party + '_support'] = party_support;
+    total_support += party_support;
+}
+
+// Normalize party support to percentages
+for (let party of parties) {
+    if (total_support > 0) {
+        Q[party + '_normalized'] = Q[party + '_support'] / total_support;
+        Q[party + '_votes'] = Math.round(Q[party + '_normalized'] * 100);
+        Q[party + '_votes_display'] = (Q[party + '_normalized'] * 100).toFixed(2);
+    } else {
+        Q[party + '_normalized'] = 0;
+        Q[party + '_votes'] = 0;
+        Q[party + '_votes_display'] = '0.00';
+    }
+}
+
+// ============================================
+// NORMALIZE FACTIONS (sum to 200)
+// ============================================
+let factions = [
+    'left_vic', 'left_nsw', 'centre_federal', 'centre_unity',
+    'right_alp_nsw', 'right_alp_qld', 'right_alp_south', 'right_alp_union',
+    'groupers'
+];
+
+if (Q.langist_strength > 0) {
+    factions.push('langist');
+}
+
+let faction_sum = 0;
+for (let f of factions) {
+    Q[f + '_strength'] = Math.max(0, Q[f + '_strength'] || 0);
+    faction_sum += Q[f + '_strength'];
+}
+
+if (faction_sum > 0) {
+    let faction_factor = 200 / faction_sum;
+    for (let f of factions) {
+        Q[f + '_strength'] = +((Q[f + '_strength'] * faction_factor).toFixed(2));
+    }
+}
+
+// Sanitize faction dissent
+for (let f of factions) {
+    Q[f + '_dissent'] = Math.max(0, Math.min(99, Q[f + '_dissent'] || 0));
+}
+
+// ============================================
+// CALCULATE OVERALL DISSENT
+// ============================================
+let total_dissent = 0;
+let total_strength = 0;
+
+for (let f of factions) {
+    total_dissent += (Q[f + '_dissent'] || 0) * (Q[f + '_strength'] || 0);
+    total_strength += Q[f + '_strength'] || 0;
+}
+
+if (total_strength > 0) {
+    Q.dissent = total_dissent / total_strength / 100;
+} else {
+    Q.dissent = 0;
+}
+Q.dissent = Math.max(0, Math.min(0.95, Q.dissent));
+Q.dissent_percent = Q.dissent * 100;
+
+// ============================================
+// NORMALIZE CLASSES (sum to 100)
+// ============================================
+// Note: catholics and migrants are cross-cutting demographics
+// They overlap with other classes and shouldn't be normalized together
+let primary_classes = ['workers', 'white_collar', 'business', 'rural', 'unemployed'];
+
+let class_sum = 0;
+for (let c of primary_classes) {
+    Q[c] = Math.max(0, Q[c] || 0);
+    class_sum += Q[c];
+}
+
+if (class_sum > 0) {
+    let class_factor = 100 / class_sum;
+    for (let c of primary_classes) {
+        Q[c] = +((Q[c] * class_factor).toFixed(2));
+    }
+}
+
+// Catholics and migrants are separate (can be any class)
+Q.catholics = Math.max(0, Math.min(100, Q.catholics || 20));
+Q.migrants = Math.max(0, Math.min(100, Q.migrants || 2));
+
+// ============================================
+// SANITIZE ECONOMIC VARIABLES
+// ============================================
+Q.unemployed = Math.max(1, Q.unemployed || 2.5);
+Q.inflation = Q.inflation || 10;
+
+// ============================================
+// MULTI-SCALE TIME QUEUE SYSTEM
+// ============================================
+
+// Initialize time queues
+Q.day_actions   = Q.day_actions   || 0;
+Q.week_actions  = Q.week_actions  || 0;
+Q.month_actions = Q.month_actions || 0;
+
+// Initialize calendar
+Q.day   = Q.day   || 1;
+Q.week  = Q.week  || 1;
+Q.month = Q.month || 1;
+Q.year  = Q.year  || 1949;
+Q.time  = Q.time  || 0;
+
+// ============================================
+// ADVANCE DAY
+// ============================================
+function advance_day() {
+    Q.day += 1;
+    Q.time += 0.036;
+
+    // Decrement daily timers
+    for (let t of Q.daily_timers || []) {
+        if (Q[t + '_timer'] > 0) Q[t + '_timer'] -= 1;
+    }
+
+    // ============================================
+    // DAILY DRIFT (STATE-LEVEL)
+    // ============================================
+
+    Q.drift_base_daily = 0.01;
+
+    for (let state of Q.states) {
+        let state_weight = Q.state_weights[state] || 1;
+
+        for (let c of Q.classes) {
+            for (let party of parties) {
+
+                let key = state + '_' + c + '_' + party;
+                let base = Q[key] || 0;
+                let ideology_factor = 1.0;
+
+                // Immediate, local effects
+                if (party === 'alp') {
+                    if (Q.eddie_scandal_today) ideology_factor *= 0.95;
+                    if (Q.leafleting_today) ideology_factor *= 1.02;
+                    if (Q.union_meeting_today && c === 'workers') ideology_factor *= 1.03;
+                }
+
+                if (party === 'liberal') {
+                    if (Q.police_raid_today) ideology_factor *= 1.02;
+                }
+
+                if (party === 'cpa') {
+                    if (Q.strike_today && c === 'workers') ideology_factor *= 1.04;
+                }
+
+                let delta =
+                    Q.drift_base_daily *
+                    ideology_factor *
+                    state_weight;
+
+                Q[key] = Math.max(0, base + delta);
+            }
+        }
+    }
+
+    // Weekly rollover
+    if (Q.day >= 8) {
+        Q.day = 1;
+        Q.week_actions += 1;
+    }
+}
+
+// ============================================
+// ADVANCE WEEK
+// ============================================
+function advance_week() {
+    Q.week += 1;
+    Q.time += 0.25;
+
+    // Decrement weekly timers
+    for (let t of Q.weekly_timers || []) {
+        if (Q[t + '_timer'] > 0) Q[t + '_timer'] -= 1;
+    }
+
+    // ============================================
+    // WEEKLY DRIFT - PUT HERE
+    // ============================================
+    Q.drift_base_weekly = 0.05;
+    
+    Q.drift_base_weekly = 0.05;
+
+    for (let state of Q.states) {
+        let state_weight = Q.state_weights[state] || 1;
+        for (let c of Q.classes) {
+            for (let party of parties) {
+                let key = state + '_' + c + '_' + party;
+                let base = Q[key] || 0;
+                let ideology_factor = 1.0;
+
+                if (party === 'alp') {
+                    if (Q.nsw_alp_crisis && state === 'nsw') ideology_factor *= 0.90;
+                    if (Q.left_right_clash_this_week) ideology_factor *= 0.95;
+                    if (Q.strike_victory_this_week && c === 'workers') ideology_factor *= 1.08;
+                }
+
+                if (party === 'dlp' && Q.dlp_formed) {
+                    if (Q.grouper_campaign_this_week && c === 'catholics') ideology_factor *= 1.10;
+                }
+
+                if (party === 'cpa') {
+                    if (Q.communist_union_activity && c === 'workers') ideology_factor *= 1.05;
+                    if (Q.ban_referendum_this_week) ideology_factor *= 0.85;
+                }
+
+                let delta = Q.drift_base_weekly * ideology_factor * state_weight;
+                Q[key] = Math.max(0, base + delta);
+            }
+        }
+    }
+    
+    // Reset weekly flags
+    Q.nsw_alp_crisis = 0;
+    Q.left_right_clash_this_week = 0;
+    Q.strike_victory_this_week = 0;
+    Q.grouper_campaign_this_week = 0;
+    Q.communist_union_activity = 0;
+    Q.ban_referendum_this_week = 0;
+
+    // Monthly rollover
+    if (Q.week >= 5) {
+        Q.week = 1;
+        Q.month_actions += 1;
+    }
+}
+
+// ============================================
+// ADVANCE MONTH
+// ============================================
+function advance_month() {
+    Q.month += 1;
+    Q.time += 1;
+
+    // Year rollover
+    if (Q.month >= 13) {
+        Q.month = 1;
+        Q.year += 1;
+
+        if (Q.historical_mode) Q.resources += 2;
+    }
+
+    // Decrement monthly timers
+    for (let t of Q.timers || []) {
+        if (Q[t + '_timer'] > 0) Q[t + '_timer'] -= 1;
+    }
+
+    // ============================================
+    // MONTHLY DRIFT - PUT HERE
+    // ============================================
+    Q.drift_base_monthly = 0.15;
+
+    Q.support_labor_factor = (Q.support_labor || 50) / 50;
+    Q.anti_communist_factor = (Q.anti_communist || 60) / 50;
+    Q.pro_british_factor = (Q.pro_british || 70) / 50;
+
+    Q.economic_crisis = 1.0;
+    if (Q.unemployed > 5) Q.economic_crisis += (Q.unemployed - 5) * 0.05;
+    if (Q.inflation > 10) Q.economic_crisis += (Q.inflation - 10) * 0.03;
+
+    for (let state of Q.states) {
+        let state_weight = Q.state_weights[state] || 1;
+        for (let c of Q.classes) {
+            for (let party of parties) {
+                let key = state + '_' + c + '_' + party;
+                let base = Q[key] || 0;
+                let ideology_factor = 1.0;
+
+                if (party === 'alp') {
+                    ideology_factor = Q.support_labor_factor * (Q.alp_in_government ? 1.1 : 0.95);
+                    if (c === 'workers') ideology_factor *= 1.10;
+                    if (c === 'business') ideology_factor *= 0.85;
+                }
+
+                if (party === 'liberal') {
+                    ideology_factor = Q.anti_communist_factor * Q.pro_british_factor;
+                    if (c === 'business') ideology_factor *= 1.20;
+                    if (c === 'white_collar') ideology_factor *= 1.15;
+                }
+
+                if (party === 'country') {
+                    ideology_factor = Q.pro_british_factor * 0.8;
+                    if (c === 'rural') ideology_factor *= 1.40;
+                }
+
+                if (party === 'cpa') {
+                    ideology_factor = Q.support_labor_factor * Q.economic_crisis;
+                    if (Q.cpa_banned) ideology_factor *= 0.60;
+                    if (c === 'workers') ideology_factor *= 1.20;
+                    if (c === 'unemployed') ideology_factor *= 1.40;
+                }
+
+                if (party === 'dlp' && Q.dlp_formed) {
+                    ideology_factor = Q.anti_communist_factor * 0.8;
+                    if (c === 'catholics') ideology_factor *= 1.30;
+                }
+    
+                let delta = Q.drift_base_monthly * ideology_factor * state_weight;
+                Q[key] = Math.max(0, base + delta);
+            }
+        }
+    }
+
+    // Record statistics (existing code)
+    Q.party_support_records = Q.party_support_records || [];
+    Q.economic_records = Q.economic_records || [];
+
+    let date = new Date(Q.year, Q.month - 1);
+
+    let party_row = { date };
+    for (let p of Q.parties) {
+        party_row[p] = Q[p + '_normalized'] * 100;
+    }
+    Q.party_support_records.push(party_row);
+
+    Q.economic_records.push({
+        date,
+        inflation: Q.inflation,
+        unemployment: Q.unemployed
+    });
+}
+
+// ============================================
+// PROCESS TIME QUEUES - WITH PROPER CASCADING
+// ============================================
+
+// Process in order: days → weeks → months
+// This ensures proper cascading of time advancement
+
+while (Q.day_actions >= 1) {
+    Q.day_actions -= 1;
+    advance_day();
+}
+
+while (Q.week_actions >= 1) {
+    Q.week_actions -= 1;
+    advance_week();
+}
+
+while (Q.month_actions >= 1) {
+    Q.month_actions -= 1;
+    advance_month();
+}
+
+// ============================================
+// CHECK FOR EVENTS
+// ============================================
+Q.has_event = 0;
+let scene = this.game.scenes['post_event.events_choice'];
+let choices = this._compileChoices(scene);
+
+if (choices && choices[0].title != "Continue...") {
+    Q.has_event = 1;
+}
+
+// Pre-load event images
+if (this.ui && this.ui.show_portraits) {
+    for (let choice of choices) {
+        let cc = this.game.scenes[choice.id];
+        if (cc.faceImage) {
+            let im = new Image();
+            im.src = cc.faceImage;
+        }
+    }
+}
+
+!}
+go-to: events_choice if has_event = 1; main if has_event = 0 and use_main_2 = 0 and difficulty >= 0; main.main_easy if has_event = 0 and use_main_2 = 0 and difficulty < 0; main_2 if has_event = 0 and use_main_2 = 1
+
+= Day [+ day +], Week [+ week +], [+ month : month +] [+ year +]
+
+@events_choice
+
+- #event

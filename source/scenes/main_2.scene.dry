@@ -1,0 +1,24 @@
+title: Next month
+set-bg: img/map_2.jpg
+is-hand: true
+max-cards: 9
+on-arrival: use_main_2 = 1;
+
+Eddie's personal life. Micro scene. brodimba, here are variables
+
+Actions: [+ actions +]
+Time: [+ time +]
+Day: [+ day +]
+
+---
+
+- @day_actionz
+- @skip
+- @uneddie
+
+@day_actionz
+title: Daily Affairs
+card-image: img/Vorwaerts_nr_1.png
+is-deck: true
+
+- #day_affairs
