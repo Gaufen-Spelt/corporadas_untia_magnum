@@ -24,13 +24,31 @@ body {
   line-height: 165%;
   overflow-y: scroll;
   letter-spacing: 0.02em;
+  background-color: var(--bg-color);
   background-image: 
+    /* Horizontal scanlines */
     repeating-linear-gradient(
       0deg,
       transparent,
       transparent 2px,
-      rgba(0, 255, 204, 0.02) 2px,
-      rgba(0, 255, 204, 0.02) 4px
+      rgba(0, 255, 204, 0.03) 2px,
+      rgba(0, 255, 204, 0.03) 4px
+    ),
+    /* Vertical grid */
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 40px,
+      rgba(0, 255, 204, 0.02) 40px,
+      rgba(0, 255, 204, 0.02) 41px
+    ),
+    /* Diagonal noise lines */
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 204, 0.01) 2px,
+      rgba(0, 255, 204, 0.01) 4px
     );
 }
 
@@ -75,34 +93,8 @@ body:not(.dark-mode) {
 
 
 
-body {
-  background-color: var(--bg-color);
-  background-image: 
-    /* Horizontal scanlines */
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 255, 204, 0.03) 2px,
-      rgba(0, 255, 204, 0.03) 4px
-    ),
-    /* Vertical grid */
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 40px,
-      rgba(0, 255, 204, 0.02) 40px,
-      rgba(0, 255, 204, 0.02) 41px
-    ),
-    /* Diagonal noise lines */
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 255, 204, 0.01) 2px,
-      rgba(0, 255, 204, 0.01) 4px
-    );
-}
+
+
 
 
 
