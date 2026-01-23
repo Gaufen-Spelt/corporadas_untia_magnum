@@ -23,7 +23,6 @@ max-cards: 3
 - @eddie
 
 @main_easy
-set-bg: img/map_2.jpg
 is-hand: true
 on-arrival: {!
 if (Q.advisor_action_timer <= 0) {
