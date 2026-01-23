@@ -69,26 +69,125 @@ body::before {
 }
 
 /* Light mode - clinical corporate white */
+/* Light mode - clinical corporate white */
 body:not(.dark-mode) {
   --bg-color: #f8f9fa;
-  --border-color: #1a1a2e;
+  --border-color: #2d3748;
   --content-bg-color: #ffffff;
-  --text-color: #1a1a2e;
-  --link-color: #0066cc;
-  --link-hover-color: rgba(0, 102, 204, 0.05);
-  --tab-bg-color: #e9ecef;
-  --tab-color: #dee2e6;
-  --tab-hover-color: #f1f3f5;
-  --card-border-color: #1a1a2e;
+  --text-color: #1a202c;
+  --link-color: #2563eb;
+  --link-hover-color: rgba(37, 99, 235, 0.08);
+  --tab-bg-color: #e2e8f0;
+  --tab-color: #cbd5e0;
+  --tab-hover-color: #f7fafc;
+  --card-border-color: #2d3748;
   --card-bg-color: #ffffff;
+  --accent-color: #dc2626;
+  --warning-color: #d97706;
+  --success-color: #059669;
+  
+  background-color: var(--bg-color);
   background-image: 
+    /* Horizontal scanlines - darker for visibility */
     repeating-linear-gradient(
       0deg,
       transparent,
       transparent 2px,
-      rgba(26, 26, 46, 0.02) 2px,
-      rgba(26, 26, 46, 0.02) 4px
+      rgba(45, 55, 72, 0.04) 2px,
+      rgba(45, 55, 72, 0.04) 4px
+    ),
+    /* Vertical grid - more visible */
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 40px,
+      rgba(45, 55, 72, 0.03) 40px,
+      rgba(45, 55, 72, 0.03) 41px
+    ),
+    /* Diagonal noise lines */
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(45, 55, 72, 0.02) 2px,
+      rgba(45, 55, 72, 0.02) 4px
     );
+}
+
+/* Light mode vignette - subtle but visible */
+body:not(.dark-mode)::before {
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(45, 55, 72, 0.08) 100%);
+}
+
+/* Light mode content box - add subtle shadow for depth */
+body:not(.dark-mode) #content {
+  box-shadow: 
+    0 0 0 1px var(--border-color),
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Light mode header links - more contrast */
+body:not(.dark-mode) #header-links a {
+  border-left: 1px solid rgba(45, 55, 72, 0.15);
+}
+
+body:not(.dark-mode) #header-links a:hover {
+  box-shadow: inset 0 -3px 0 var(--link-color);
+}
+
+/* Light mode choices - better borders */
+body:not(.dark-mode) ul.choices {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+body:not(.dark-mode) ul.choices li {
+  border-bottom: 1px solid rgba(45, 55, 72, 0.15);
+}
+
+/* Light mode stats boxes */
+body:not(.dark-mode) .stats-box {
+  box-shadow: 
+    0 0 0 1px var(--border-color),
+    0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+body:not(.dark-mode) #qualities h1, 
+body:not(.dark-mode) #qualities_2 h1 {
+  border-bottom: 1px solid rgba(45, 55, 72, 0.15);
+}
+
+/* Light mode tabs - better contrast */
+body:not(.dark-mode) .tab_container, 
+body:not(.dark-mode) .tab_container_bottom {
+  border-bottom: 1px solid rgba(45, 55, 72, 0.2);
+}
+
+body:not(.dark-mode) .tab_button {
+  border-right: 1px solid rgba(45, 55, 72, 0.1);
+}
+
+body:not(.dark-mode) .tab_button.active {
+  box-shadow: inset 0 -3px 0 var(--link-color);
+}
+
+/* Light mode cards - stronger borders */
+body:not(.dark-mode) a.card {
+  box-shadow: 
+    0 0 0 2px var(--card-border-color),
+    0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+body:not(.dark-mode) a.card:hover {
+  box-shadow: 
+    0 0 0 2px var(--link-color),
+    0 8px 24px rgba(37, 99, 235, 0.2),
+    0 0 16px rgba(37, 99, 235, 0.1);
+}
+
+/* Light mode buttons */
+body:not(.dark-mode) button:hover {
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.15);
 }
 
 
