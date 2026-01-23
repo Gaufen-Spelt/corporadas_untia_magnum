@@ -921,7 +921,6 @@ Q.communist_ban_timer = 0;
 Q.korean_war_timer = 0;
 
 !}
-set-bg: img/australia_1949.jpg
 new-page: true
 
 > *"The prime minister, the foreign minister and the trade minister were the three wise monkeys: they saw no evil, they spoke no evil, they heard no evil but they knew all about it. It's a sorry story of a government in a mode of reckless negligence"*
