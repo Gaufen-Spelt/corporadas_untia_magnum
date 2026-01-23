@@ -558,6 +558,195 @@ hr {
   margin: 0.5em 0;
 }
 
+
+
+/* Cards - Horizontal Layout with Wrapping */
+
+/* Container for cards */
+ul.decks, ul.hand, ul.pinned-cards {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-bottom: 1.5em;
+}
+
+/* Individual card wrapper */
+.card-in-hand, .pinned-card, .deck {
+  display: inline-block;
+  position: relative;
+  max-width: 150px;
+  margin-right: 0; /* Remove since we're using gap */
+  vertical-align: top;
+}
+
+/* The actual card */
+a.card {
+  display: block; /* Changed from inline-block */
+  width: 120px;
+  height: 150px;
+  box-shadow: 
+    0 0 0 2px var(--card-border-color),
+    0 8px 24px rgba(0, 0, 0, 0.5);
+  border: none;
+  margin-bottom: 0.5em;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+a.card:hover {
+  box-shadow: 
+    0 0 0 2px var(--link-color),
+    0 12px 32px rgba(0, 255, 204, 0.4),
+    0 0 24px rgba(0, 255, 204, 0.2);
+  transform: translateY(-4px);
+}
+
+a.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 204, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+a.card:hover::before {
+  left: 100%;
+}
+
+/* Blank card placeholder */
+div.blank-card {
+  display: block; /* Changed from inline-block */
+  width: 120px;
+  height: 150px;
+  background-color: var(--card-bg-color);
+  border: 2px solid var(--card-border-color);
+  margin-bottom: 0.5em;
+  opacity: 0.3;
+}
+
+/* Card image */
+.card-img {
+  height: 150px;
+  width: 120px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card caption */
+.card-caption {
+  text-align: center;
+  display: block;
+  font-size: 0.85em;
+  font-family: "Rajdhani", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  margin-top: 0.5em;
+}
+
+/* Card tooltip */
+.card-tooltip {
+  position: absolute;
+  visibility: hidden;
+  width: 200px;
+  max-width: 250px;
+  font-size: 0.9em;
+  z-index: 2;
+  padding: 0.8em;
+  border: 1px solid var(--border-color);
+  background-color: var(--content-bg-color);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  left: 105%;
+  top: 0;
+}
+
+a.card:focus .card-tooltip, 
+a.card:hover .card-tooltip {
+  visibility: visible;
+  position: absolute;
+}
+
+/* Unavailable card */
+.unavailable-card {
+  color: var(--unavailable-color);
+  background-color: var(--unavailable-bg-color) !important;
+  cursor: not-allowed !important;
+  opacity: 0.3;
+  filter: grayscale(100%);
+}
+
+/* Face images (different from cards) */
+.face-figure {
+  display: inline-block;
+  border: 3px solid var(--card-border-color);
+  float: left;
+  max-width: 35%;
+  margin-right: 1em;
+  margin-bottom: 0.5em;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.face-img {
+  vertical-align: bottom;
+  object-fit: cover;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Mobile adjustments for cards */
+@media screen and (max-width: 560px) {
+  ul.decks, ul.hand, ul.pinned-cards {
+    gap: 0.5em;
+    justify-content: center;
+  }
+
+  .card-img {
+    height: 125px;
+    width: 100px;
+  }
+  
+  a.card {
+    width: 100px;
+    height: 125px;
+    margin-bottom: 0.5em;
+  }
+  
+  div.blank-card {
+    width: 100px;
+    height: 125px;
+    margin-bottom: 0.5em;
+  }
+  
+  .card-in-hand, .pinned-card, .deck {
+    max-width: 120px;
+    margin-right: 0;
+  }
+
+  .card-tooltip {
+    left: auto;
+    right: auto;
+    top: 100%;
+    width: 90vw;
+    max-width: 300px;
+  }
+}
+
+
+
+
+
+
+
+
+
 /* Cards */
 a.card {
   display: inline-block;
