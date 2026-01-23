@@ -560,6 +560,12 @@ hr {
 
 
 
+
+
+
+
+
+
 /* Cards - Horizontal Layout with Wrapping */
 
 /* Container for cards */
@@ -576,10 +582,13 @@ ul.decks, ul.hand, ul.pinned-cards {
 .card-in-hand, .pinned-card, .deck {
   display: inline-block;
   position: relative;
-  max-width: 150px;
-  margin-right: 0; /* Remove since we're using gap */
+  width: 120px; /* Fixed width instead of max-width */
+  height: 180px; /* Fixed height to contain card + caption */
+  margin-right: 0;
   vertical-align: top;
 }
+
+
 
 /* The actual card */
 
@@ -681,6 +690,8 @@ a.card:hover .card-tooltip {
   }
   
   .card-in-hand, .pinned-card, .deck {
+    width: 100px;
+    height: 155px; /* Adjusted for smaller card */
     max-width: 120px;
     margin-right: 0;
   }
@@ -740,6 +751,7 @@ a.card:hover::before {
   left: 100%;
 }
 
+/* Card caption */
 .card-caption {
   text-align: center;
   display: block;
@@ -749,6 +761,9 @@ a.card:hover::before {
   letter-spacing: 0.08em;
   font-weight: 500;
   margin-top: 0.5em;
+  line-height: 1.2em;
+  height: 2.4em; /* Fixed height for ~2 lines */
+  overflow: hidden; /* Hide overflow text */
 }
 
 /* Background effects */
