@@ -16,20 +16,19 @@
     // Add your custom code here.
   };
 
-  var TITLE = "Social Democracy: An Alternate History" + '_' + "Autumn Chen";
+  var TITLE = "Corporadas Untia Magnum" + '_' + "Corporate Dystopia Experience";
 
   // the url is a link to game.json
   // test url: https://aucchen.github.io/social_democracy_mods/v0.1.json
-  // TODO; 
   window.loadMod = function(url) {
       ui.loadGame(url);
   };
 
   window.showStats = function() {
-    if (window.dendryUI.dendryEngine.state.sceneId.startsWith('library')) {
+    if (window.dendryUI.dendryEngine.state.sceneId.startsWith('archives')) {
         window.dendryUI.dendryEngine.goToScene('backSpecialScene');
     } else {
-        window.dendryUI.dendryEngine.goToScene('library');
+        window.dendryUI.dendryEngine.goToScene('archives');
     }
   };
 
@@ -43,10 +42,10 @@
 
   window.showMods = function() {
     window.hideOptions();
-    if (window.dendryUI.dendryEngine.state.sceneId.startsWith('mod_loader')) {
+    if (window.dendryUI.dendryEngine.state.sceneId.startsWith('extension_loader')) {
         window.dendryUI.dendryEngine.goToScene('backSpecialScene');
     } else {
-        window.dendryUI.dendryEngine.goToScene('mod_loader');
+        window.dendryUI.dendryEngine.goToScene('extension_loader');
     }
   };
   
@@ -127,13 +126,14 @@
       document.body.classList.remove('dark-mode');
       window.dendryUI.saveSettings();
   };
+  
   window.enableDarkMode = function() {
       window.dendryUI.dark_mode = true;
       document.body.classList.add('dark-mode');
       window.dendryUI.saveSettings();
   };
 
-  // populates the checkboxes in the options view
+  // Populates the checkboxes in the system preferences view
   window.populateOptions = function() {
     var disable_bg = window.dendryUI.disable_bg;
     var animate = window.dendryUI.animate;
@@ -177,7 +177,7 @@
   window.handleSignal = function(signal, event, scene_id) {
   };
   
-  // This function runs on a new page. Right now, this auto-saves.
+  // This function runs on a new page. Right now, this auto-saves to memory banks.
   window.onNewPage = function() {
     var scene = window.dendryUI.dendryEngine.state.sceneId;
     if (scene != 'root' && !window.justLoaded) {
@@ -187,71 +187,69 @@
         window.justLoaded = false;
     }
   };
-// Modified to accept a target container ID (defaults to #qualities if not provided)
-    window.updateSidebar = function(targetId) {
-        targetId = targetId || '#qualities'; // Default to first box
-        var container = $(targetId);
-        container.empty();
-        
-        // Use the tab specifically saved for this container
-        var tabToLoad = (targetId === '#qualities_2') ? window.statusTab2 : window.statusTab;
-        
-        var scene = dendryUI.game.scenes[tabToLoad];
-        dendryUI.dendryEngine._runActions(scene.onArrival);
-        var displayContent = dendryUI.dendryEngine._makeDisplayContent(scene.content, true);
-        container.append(dendryUI.contentToHTML.convert(displayContent));
-    };
 
-    // Modified to accept a third argument: the target content ID
-    window.changeTab = function(newTab, tabId, targetQualitiesId) {
-        targetQualitiesId = targetQualitiesId || '#qualities';
-        
-        if (tabId.includes('poll') && dendryUI.dendryEngine.state.qualities.historical_mode) {
-            window.alert('Polls are not available in historical mode.');
-            return;
-        }
-
-        // Update active class only for buttons within the same parent box
-        var tabButton = document.getElementById(tabId);
-        var parentBox = tabButton.closest('.stats-box');
-        var siblingButtons = parentBox.getElementsByClassName('tab_button');
-
-        for (var i = 0; i < siblingButtons.length; i++) {
-            siblingButtons[i].classList.remove('active');
-        }
-
-        tabButton.classList.add('active');
-
-        // Save the tab state for the correct box
-        if (targetQualitiesId === '#qualities_2') {
-            window.statusTab2 = newTab;
-        } else {
-            window.statusTab = newTab;
-        }
-        
-        window.updateSidebar(targetQualitiesId);
-    };
-
-    // Ensure both sidebars update when the game displays new content
-    window.onDisplayContent = function() {
-        window.updateSidebar('#qualities');
-        window.updateSidebar('#qualities_2');
-    };
-
-    // Initialize the second tab variable at the bottom of the script
-    window.statusTab2 = "status.factions"; // Set a default for the 2nd box
-
-  window.onDisplayContent = function() {
-      window.updateSidebar();
+  // Modified to accept a target container ID (defaults to #qualities if not provided)
+  window.updateSidebar = function(targetId) {
+      targetId = targetId || '#qualities'; // Default to first metrics display
+      var container = $(targetId);
+      container.empty();
+      
+      // Use the tab specifically saved for this container
+      var tabToLoad = (targetId === '#qualities_2') ? window.statusTab2 : window.statusTab;
+      
+      var scene = dendryUI.game.scenes[tabToLoad];
+      dendryUI.dendryEngine._runActions(scene.onArrival);
+      var displayContent = dendryUI.dendryEngine._makeDisplayContent(scene.content, true);
+      container.append(dendryUI.contentToHTML.convert(displayContent));
   };
 
+  // Modified to accept a third argument: the target content ID
+  window.changeTab = function(newTab, tabId, targetQualitiesId) {
+      targetQualitiesId = targetQualitiesId || '#qualities';
+      
+      if (tabId.includes('metric') && dendryUI.dendryEngine.state.qualities.archived_mode) {
+          window.alert('Real-time metrics are not available in archived mode.');
+          return;
+      }
+
+      // Update active class only for buttons within the same parent display module
+      var tabButton = document.getElementById(tabId);
+      var parentBox = tabButton.closest('.stats-box');
+      var siblingButtons = parentBox.getElementsByClassName('tab_button');
+
+      for (var i = 0; i < siblingButtons.length; i++) {
+          siblingButtons[i].classList.remove('active');
+      }
+
+      tabButton.classList.add('active');
+
+      // Save the tab state for the correct display module
+      if (targetQualitiesId === '#qualities_2') {
+          window.statusTab2 = newTab;
+      } else {
+          window.statusTab = newTab;
+      }
+      
+      window.updateSidebar(targetQualitiesId);
+  };
+
+  // Ensure both metric displays update when the system displays new content
+  window.onDisplayContent = function() {
+      window.updateSidebar('#qualities');
+      window.updateSidebar('#qualities_2');
+  };
+
+  // Initialize the second tab variable
+  window.statusTab2 = "status.factions"; // Set default for 2nd display module
+
   /*
-   * This function copied from the code for Infinite Space Battle Simulator
+   * This function generates performance bars for corporate metrics
+   * Copied from the code for Infinite Space Battle Simulator
    *
    * quality - a number between max and min
-   * qualityName - the name of the quality
+   * qualityName - the name of the metric
    * max and min - numbers
-   * colors - if true/1, will use some color scheme - green to yellow to red for high to low
+   * colors - if true/1, will use color scheme - green to yellow to red for high to low
    * */
   window.generateBar = function(quality, qualityName, max, min, colors) {
       var bar = document.createElement('div');
@@ -280,14 +278,14 @@
   window.justLoaded = true;
   window.statusTab = "status";
   window.dendryModifyUI = main;
-  console.log("Modifying stats: see dendryUI.dendryEngine.state.qualities");
+  console.log("Accessing corporate metrics: see dendryUI.dendryEngine.state.qualities");
 
   window.onload = function() {
     window.dendryUI.loadSettings({show_portraits: false});
     if (window.dendryUI.dark_mode) {
         document.body.classList.add('dark-mode');
     }
-    window.pinnedCardsDescription = "Advisor cards - actions are only usable once per 6 months.";
+    window.pinnedCardsDescription = "Executive directives - actions are only usable once per quarter.";
   };
 
 }());
