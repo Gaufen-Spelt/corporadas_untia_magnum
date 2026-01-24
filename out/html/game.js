@@ -14,18 +14,10 @@
     game = ui.game;
 
     // Add your custom code here.
-    
-    // INITIALIZE SIDEBARS AUTOMATICALLY WHEN GAME STARTS
-    setTimeout(function() {
-        window.updateSidebar('#qualities');
-        window.updateSidebar('#qualities_2');
-    }, 300);
-};
+  };
 
   var TITLE = "Corporadas Untia Magnum" + '_' + "Corporate Dystopia Experience";
 
-  // the url is a link to game.json
-  // test url: https://aucchen.github.io/social_democracy_mods/v0.1.json
   window.loadMod = function(url) {
       ui.loadGame(url);
   };
@@ -139,7 +131,6 @@
       window.dendryUI.saveSettings();
   };
 
-  // Populates the checkboxes in the system preferences view
   window.populateOptions = function() {
     var disable_bg = window.dendryUI.disable_bg;
     var animate = window.dendryUI.animate;
@@ -172,18 +163,13 @@
     }
   };
 
-  
-  // This function allows you to modify the text before it's displayed.
-  // E.g. wrapping chat-like messages in spans.
   window.displayText = function(text) {
       return text;
   };
 
-  // This function allows you to do something in response to signals.
   window.handleSignal = function(signal, event, scene_id) {
   };
   
-  // This function runs on a new page. Right now, this auto-saves to memory banks.
   window.onNewPage = function() {
     var scene = window.dendryUI.dendryEngine.state.sceneId;
     if (scene != 'root' && !window.justLoaded) {
@@ -196,7 +182,7 @@
 
   // Modified to accept a target container ID (defaults to #qualities if not provided)
   window.updateSidebar = function(targetId) {
-      targetId = targetId || '#qualities'; // Default to first metrics display
+      targetId = targetId || '#qualities';
       var container = $(targetId);
       container.empty();
       
@@ -218,7 +204,6 @@
           return;
       }
 
-      // Update active class only for buttons within the same parent display module
       var tabButton = document.getElementById(tabId);
       var parentBox = tabButton.closest('.stats-box');
       var siblingButtons = parentBox.getElementsByClassName('tab_button');
@@ -229,7 +214,6 @@
 
       tabButton.classList.add('active');
 
-      // Save the tab state for the correct display module
       if (targetQualitiesId === '#qualities_2') {
           window.statusTab2 = newTab;
       } else {
@@ -239,24 +223,12 @@
       window.updateSidebar(targetQualitiesId);
   };
 
-  // Ensure both metric displays update when the system displays new content
+  // ✅ KEEP ONLY THIS ONE - updates BOTH sidebars
   window.onDisplayContent = function() {
       window.updateSidebar('#qualities');
       window.updateSidebar('#qualities_2');
   };
 
-  // Initialize the second tab variable
-  window.statusTab2 = "status.factions"; // Set default for 2nd display module
-
-  /*
-   * This function generates performance bars for corporate metrics
-   * Copied from the code for Infinite Space Battle Simulator
-   *
-   * quality - a number between max and min
-   * qualityName - the name of the metric
-   * max and min - numbers
-   * colors - if true/1, will use color scheme - green to yellow to red for high to low
-   * */
   window.generateBar = function(quality, qualityName, max, min, colors) {
       var bar = document.createElement('div');
       bar.className = 'bar';
@@ -280,9 +252,9 @@
       return bar;
   };
 
-
   window.justLoaded = true;
   window.statusTab = "status";
+  window.statusTab2 = "status_2"; // ✅ Changed to "status" to match what exists
   window.dendryModifyUI = main;
   console.log("Accessing corporate metrics: see dendryUI.dendryEngine.state.qualities");
 
