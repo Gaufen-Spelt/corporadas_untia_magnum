@@ -14,7 +14,13 @@
     game = ui.game;
 
     // Add your custom code here.
-  };
+    
+    // INITIALIZE SIDEBARS AUTOMATICALLY WHEN GAME STARTS
+    setTimeout(function() {
+        window.updateSidebar('#qualities');
+        window.updateSidebar('#qualities_2');
+    }, 300);
+};
 
   var TITLE = "Corporadas Untia Magnum" + '_' + "Corporate Dystopia Experience";
 
