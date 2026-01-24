@@ -9,18 +9,13 @@ is-special: true
 Chief Executive Officer: [+ ceo_name +] ([+ ceo_division +])
 Chief Operating Officer: [+ coo_name +] ([+ coo_division +])
 
-**Corporate Position**
-
-[? if controlling_entity : Controlling Entity ?][? if subsidiary_status : Subsidiary Status ?]
-[? if market_leader : (Market Dominance) ?][? if market_challenger : (Market Challenger) ?][? if strategic_alliance : (Strategic Alliance) ?]
-
 Board Chairman: [+ board_chairman +] ([+ parent_corporation +])
 Next Shareholder Meeting: [+ next_meeting_quarter +] [+ next_meeting_year +]
 
 **Corporate Resources**
 
 Liquid Assets: [+ resources +] ¤
-[? if controlling_entity : Operating Budget: ¤[+ budget +]M ?]
+Operating Budget: ¤[+ budget +]M
 Internal Resistance Index: [+ dissent_percent : dissent +]
 
 @corporate
