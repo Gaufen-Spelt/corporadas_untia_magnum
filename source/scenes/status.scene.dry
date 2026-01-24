@@ -2,7 +2,7 @@ title: Status
 new-page: true
 is-special: true
 
-= FISCAL QUARTER [+ quarter +] // YEAR [+ year +]
+YEAR [+ year +]
 
 **Executive Leadership**
 
@@ -14,7 +14,7 @@ Next Shareholder Meeting: [+ next_meeting_quarter +] [+ next_meeting_year +]
 
 **Corporate Resources**
 
-Liquid Assets: [+ resources +] ¤
+Liquid Assets: [+ resources +]¤
 Operating Budget: ¤[+ budget +]M
 Internal Resistance Index: [+ dissent_percent +]
 
