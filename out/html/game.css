@@ -201,22 +201,31 @@ body:not(.dark-mode) hr {
 }
 
 /* RESTRUCTURED LAYOUT */
+/* Hide the first (left) tools panel */
+.tools:first-of-type {
+  display: none !important;
+}
+
+/* Redefine the grid to only have 2 columns */
 #page {
   display: grid;
-  grid-template-columns: 0 1fr 260px;  /* Change first value from 260px to 0 */
+  grid-template-columns: 1fr 260px;
   grid-template-rows: auto 1fr;
   grid-template-areas:
-    "title title settings"
-    "left-panel main right-panel";
+    "title settings"
+    "main right-panel";
   gap: 25px;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 20px 20px 20px 0;
+  padding: 20px;
   align-items: start;
 }
 
-.tools:first-of-type {
-  display: none;  /* completely removes left panel */
+/* Update main column to use full width minus right panel */
+#main_column {
+  grid-area: main;
+  max-width: none;
+  margin-left: 0;
 }
 
 /* GAME TITLE - upper left */
@@ -299,17 +308,6 @@ header {
   background-color: var(--link-hover-color);
   color: var(--link-color);
   box-shadow: inset 0 -2px 0 var(--link-color);
-}
-
-/* LEFT PANEL - info panel */
-.tools:first-of-type {
-  grid-area: left-panel;
-}
-
-/* CENTER - main content */
-#main_column {
-  grid-area: main;
-  max-width: none;
 }
 
 /* RIGHT PANEL - info panel */
