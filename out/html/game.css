@@ -203,7 +203,7 @@ body:not(.dark-mode) hr {
 /* RESTRUCTURED LAYOUT */
 #page {
   display: grid;
-  grid-template-columns: 260px 1fr 260px;
+  grid-template-columns: 0 1fr 260px;  /* Change first value from 260px to 0 */
   grid-template-rows: auto 1fr;
   grid-template-areas:
     "title title settings"
