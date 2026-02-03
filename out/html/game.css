@@ -201,15 +201,17 @@ body:not(.dark-mode) hr {
 }
 
 /* RESTRUCTURED LAYOUT */
-/* Hide the first (left) tools panel */
-.tools:first-of-type {
-  display: none !important;
+/* Ensure right panel stays in place */
+.tools:last-of-type {
+  grid-area: right-panel;
+  width: 260px;  /* Force the width */
+  min-width: 260px;  /* Prevent shrinking */
 }
 
-/* Redefine the grid to only have 2 columns */
+/* Two-column grid layout */
 #page {
   display: grid;
-  grid-template-columns: 1fr 260px;
+  grid-template-columns: 1fr 260px;  /* Main content | Right panel */
   grid-template-rows: auto 1fr;
   grid-template-areas:
     "title settings"
@@ -222,10 +224,11 @@ body:not(.dark-mode) hr {
 }
 
 /* Update main column to use full width minus right panel */
+/* Remove or modify the #main_column width restriction */
 #main_column {
   grid-area: main;
   max-width: none;
-  margin-left: 0;
+  width: 100%;  /* Let it fill the grid area */
 }
 
 /* GAME TITLE - upper left */
@@ -340,6 +343,24 @@ header {
   min-height: 500px;
   border-left: 3px solid var(--border-color);
   position: relative;
+  width: 100%;  /* Add this */
+  max-width: none;  /* Add this */
+}
+
+/* Two-column grid layout */
+#page {
+  display: grid;
+  grid-template-columns: 1fr 260px;  /* Main content | Right panel */
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "title settings"
+    "main right-panel";
+  gap: 25px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  align-items: start;
+}
 }
 
 #content::before {
