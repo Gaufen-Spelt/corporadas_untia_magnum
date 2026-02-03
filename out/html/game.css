@@ -211,8 +211,12 @@ body:not(.dark-mode) hr {
   gap: 25px;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px 20px 20px 0;
   align-items: start;
+}
+
+.tools:first-of-type {
+  display: none;  /* completely removes left panel */
 }
 
 /* GAME TITLE - upper left */
