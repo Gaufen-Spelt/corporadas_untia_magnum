@@ -6,7 +6,7 @@ go-to: post_event if started = 1; start_menu if started = 0
 new-page: true
 go-to: start_menu_2
 
-= Divided Horizon: Australian Dawn
+= Corporadas Untia Magna: Sector 222
 
 @start_menu_2
 
@@ -14,953 +14,682 @@ go-to: start_menu_2
 - @tutorial: Tutorial and Information
 - @game_over.achievements
 
-
 @start
 on-arrival: {!
 Q.started = 1;
-// time elapsed (in months)
+
+// ============================================
+// TIME & DIFFICULTY
+// ============================================
 Q.time = 1;
-Q.year = 1949;
+Q.year = 3210;
+Q.quarter = 1;
 Q.month = 1;
-Q.week = 1;
-Q.day = 1;
-// how many actions have been taken this month?
+Q.week = 2;
+
+Q.quarter_actions = 0;
 Q.month_actions = 0;
 Q.week_actions = 0;
-Q.day_actions = 0;
 Q.actions = 0;
 
-// 0 = normal difficulty, 1 = hard mode, 2 = hard mode no saves
-Q.difficulty = 0;
+Q.difficulty = 0; // -1 easy, 0 normal, 1 hard, 2 historical
 Q.historical_mode = 0;
-// old demographics
-Q.old_demographics = 0;
-// use decimals for house seats
-Q.use_decimals = 0;
-
-// party resources
-Q.resources = 2;
-// party dues/union affiliations
-Q.dues = 2;
 
-// the state of the party
-// overall dissent reduces every increase in party support.
-Q.dissent = 0.05;
-Q.dissent_percent = 5;
-
-//LEADERSHIP
-
-Q.alp_leader = "Ben Chifley"
-Q.alp_leader_faction = "Centre - Federal"
-Q.alp_deputy = "H.V. Evatt"
-Q.alp_deputy_faction = "Left - Victorian / Intellectual"
-
-
-// factions - ALP internal groups
-Q.factions = ['left_vic', 'left_nsw', 'centre_federal' ,'centre_unity', 'right_alp_qld', 'groupers', 'right_alp_nsw', 'right_alp_union', 'right_alp_south' ,'langist'];
-// Labor factions in 1949
-Q.left_vic_strength = 20; // Socialist Left
-Q.left_vic_dissent = 15;
-Q.left_nsw_strength = 10; // Socialist Left
-Q.left_nsw_dissent = 15;
-Q.centre_federal_strength = 20; // Pragmatic centre
-Q.centre_dissent = 5;
-Q.centre_unity_strength = 30; // Pragmatic centre
-Q.centre_dissent = 5;
-Q.right_alp_nsw_strength = 19; // 
-Q.right_alp_nsw_dissent = 10;
-Q.right_alp_qld_strength = 12; //
-Q.right_alp_qld_dissent = 14;
-Q.right_alp_union_dissent = 18; //
-Q.right_alp_union_strength = 10;
-Q.groupers_strength = 9; // Catholic anti-communist Industrial Groups
-Q.groupers_dissent = 5;
-Q.langist_strength = 5; // Trade union officials
-Q.langist_dissent = 8;
-Q.right_alp_south_dissent = 10;
-Q.right_alp_south_strength = 7;
-
-
-
-
-// The array of forces - union strength and loyalty
-// Union membership in 1949 (in thousands)
-Q.actu_strength = 800; // ACTU umbrella
-Q.actu_militancy = 0.3;
-Q.actu_communist = 0.2; // Communist influence in unions
-Q.wharfies_strength = 25; // Waterside Workers Federation
-Q.wharfies_militancy = 0.7;
-Q.wharfies_communist = 0.8; // Very high communist influence
-Q.miners_strength = 50;
-Q.miners_militancy = 0.5;
-Q.miners_communist = 0.4;
-Q.aru_strength = 35; // Australian Railways Union
-Q.aru_militancy = 0.3;
-Q.aru_communist = 0.2;
-Q.ironworkers_strength = 50;
-Q.ironworkers_militancy = 0.15
-Q.ironworkers_communist = 0.2;
-Q.awu_strength = 150;
-Q.awu_militancy = 0.10;
-Q.awu_communist = 0.2;
-
-
-
-
-
-
-
-
-
-// secret events...
-Q.unions_independent = 0;
-Q.centre_resign = 0;
-Q.left_split = 0;
-Q.groupers_split = 0; // Future DLP split potential
-
-
-
-// Does the ALP control state governments?
-Q.alp_nsw = 1; // McGirr
-Q.alp_victoria = 0; // Hollway (Liberal)
-Q.alp_queensland = 1; // Hanlon
-Q.alp_sa = 0; // Playford (LCL - basically Liberal-Country)
-Q.alp_wa = 0; // McLarty (Liberal-Country)
-Q.alp_tasmania = 1; // Cosgrove
-
-Q.premier_nsw = "McGirr";
-Q.premier_victoria = "Hollway";
-Q.premier_queensland = "Hanlon";
-Q.premier_sa = "Playford";
-Q.premier_wa = "McLarty";
-Q.premier_tasmania = "Cosgrove";
-
-
-Q.cpa_leader = "Sharkey";
-Q.liberal_leader = "Menzies";
-Q.country_leader = "Fadden";
-
-
-
-// Current House of Representatives composition (1949 election results)
-// ALP: 47 seats (37.8%), Liberal: 55 (39.4%), Country: 19 (10.7%), Others: 3
-Q.alp_seats = 47;
-Q.liberal_seats = 55;
-Q.country_seats = 19;
-Q.cpa_seats = 0;
-Q.lang_seats = 0;
-Q.other_seats = 3;
-
-// Percentages
-Q.alp_percent = 37.8;
-Q.liberal_percent = 39.4;
-Q.country_percent = 10.7;
-Q.cpa_percent = 0;
-Q.lang_percent = 0;
-Q.other_percent = 2.4;
-
-// diff from prev (1946 election)
-Q.old_alp_seats = 43;
-Q.old_liberal_seats = 55;
-Q.old_country_seats = 19;
-Q.old_cpa_seats = 0;
-Q.old_lang_seats = 0;
-Q.old_other_seats = 3;
-
-// election records
-Q.election_records = [];
-Q.party_support_records = [];
-Q.economic_records = [];
-
-// State of the government
-Q.governor_general = "McKell"; // William McKell
-// starting PM: Robert Menzies (Liberal)
-Q.prime_minister = "Menzies";
-Q.prime_minister_party = 'Liberal';
-Q.alp_in_government = 0;
-Q.liberal_in_government = 1;
-Q.country_in_government = 1;
-Q.cpa_in_government = 0;
-
-// Coalition types
-Q.in_liberal_coalition = 1; // Liberal-Country Coalition
-Q.alp_majority = 0;
-Q.alp_minority = 0;
-Q.labor_coalition = 0; // Potential ALP-minor party coalition
-
-// if in coalition/minority, dissent tracker
-Q.coalition_dissent = 0;
-
-// does the ALP support the government from opposition?
-Q.alp_cooperation = 0;
-
-// ministries - Liberal-Country Coalition cabinet
-Q.foreign_minister = 'Spender';
-Q.foreign_minister_party = 'Liberal';
-Q.treasury_minister = 'Fadden';
-Q.treasury_minister_party = 'Country';
-Q.defence_minister = 'Holt';
-Q.defence_minister_party = 'Liberal';
-Q.labor_minister = 'Holt'; // Also held Labour portfolio
-Q.labor_minister_party = 'Liberal';
-Q.immigration_minister = 'Calwell'; // Actually Labor's shadow - adjust
-Q.immigration_minister_party = 'Liberal';
-Q.trade_minister = 'McEwen';
-Q.trade_minister_party = 'Country';
-Q.attorney_general = 'Spicer';
-Q.attorney_general_party = 'Liberal';
-
-
-
-// ALP Leadership - starting with post-1949 leadership
-Q.chifley_leader = 1; // Ben Chifley - leader (Centre-Left)
-Q.evatt_deputy = 1; // H.V. Evatt - deputy (Centre-Left, intellectual)
-Q.chifley_dead = 0; // Dies 1951
-
-// ALP Left advisors (Socialist/anti-imperialist wing)
-Q.ward_advisor = 0; // Eddie Ward - firebrand left, anti-British
-Q.cairns_advisor = 0; // Jim Cairns (enters parliament 1955)
-Q.kennelly_advisor = 0; // Pat Kennelly - Victorian Left
-Q.fitzgerald_advisor = 0; // Tom Fitzgerald - journalist, left intellectual
-
-// ALP Centre advisors (Pragmatic reformists)
-Q.calwell_advisor = 1; // Arthur Calwell - immigration minister, centrist
-Q.dedman_advisor = 0; // John Dedman - economic planning
-Q.makin_advisor = 0; // Norman Makin - foreign affairs
-Q.beazley_advisor = 0; // Kim Beazley Sr. - education reformer
-
-// ALP Right Political advisors (Conservative parliamentary wing - NSW machine)
-Q.cahill_advisor = 0; // J.J. Cahill - NSW Right boss, future premier
-Q.daly_advisor = 0; // Fred Daly - NSW Right, pragmatic operator
-Q.riordan_advisor = 0; // Bill Riordan - NSW Right organizer
-Q.mulcahy_advisor = 0; // Jack Mulcahy - NSW Right power broker
-Q.lazzarini_advisor = 0; // Hubert Lazzarini - can bridge to Langists
-Q.falstein_advisor = 0; // Sydney Falstein - NSW Jewish community link
-
-// Langists advisors (NSW populist faction)
-Q.lang_advisor = 0; // Jack Lang - outside party, NSW strongman
-Q.lazzarini_advisor = 0; // Hubert Lazzarini - Lang loyalist
-Q.minogue_advisor = 0; // Jack Minogue - NSW Left Langist
-
-// ALP Right Union advisors (Moderate union officials)
-Q.monk_advisor = 0; // Albert Monk - ACTU President
-Q.wright_advisor = 0; // Charlie Wright - carpenters union
-Q.souter_advisor = 0; // Garnet Souter - railway unions
-
-// ALP Industrial Groups advisors (Catholic anti-communist faction)
-Q.santamaria_advisor = 0; // B.A. Santamaria - "The Movement" leader (outside party)
-Q.keon_advisor = 0; // Stan Keon - Victorian Grouper MP
-Q.joshua_advisor = 0; // Bob Joshua - Victorian Grouper organizer
-Q.mannix_influence = 0; // Archbishop Mannix influence (not advisor, but tracker)
-
-// Communist-aligned union advisors (potential enemies or uneasy allies)
-Q.healey_advisor = 0; // Jim Healey - Waterside Workers, CPA member
-Q.thornton_advisor = 0; // Edgar Ross - Miners Federation communist
-
-// Other advisors
-Q.menzies_knowledge = 0; // Understanding opponent
-Q.whitlam_advisor = 0; // Gough Whitlam (very young in 1949, enters 1952)
-Q.haylen_advisor = 0; // Les Haylen - journalist and MP
-
-
-
-
-
-
-// crisis_urgency indicates how seriously the ALP is taking economic challenges - scale from 0 to 10.
-Q.crisis_urgency = 0;
-// communist_urgency indicates how seriously the ALP takes communist influence - scale from 0 to 10.
-Q.communist_urgency = 3; // Higher baseline in 1949 Cold War
-// radicalization indicates how radical the ALP's rhetoric is - scale from 0 to 10.
-Q.radicalization = 0;
-// Support for economic interventionism
-Q.interventionism_support = 0;
-// Support for breaking from Britain
-Q.independence_support = 0;
-// Support for immigration program
-Q.immigration_support = 0;
-// Support for working with communists
-Q.communist_cooperation = 0;
-// economic_plan: have we adopted *any* economic plan?
-// 1 - Keynesian stimulus, 2 - gradual reform, 3 - radical (nationalization)
-Q.economic_plan = 0;
-Q.keynesian_adopted = 0;
-// support for nationalizations
-Q.nationalization_support = 0;
-Q.nationalization_adopted = 0;
-// moderate economic plan
-Q.moderate_plan_support = 0;
-Q.moderate_plan_adopted = 0;
-// White Australia policy stance
-Q.white_australia_support = 80; // High baseline support in 1949
-Q.white_australia_reformed = 0;
-
-// organizations
-
-// inter-party relations
-Q.liberal_relation = 30;
-Q.cpa_relation = 15; // Communist Party of Australia
-Q.country_relation = 25; // Country Party
-// Liberal-Country Coalition is hostile
-Q.coalition_relation = 20;
-Q.dlp_formed = 0; // Democratic Labor Party doesn't exist yet
-Q.dlp_relation = 50;
-
-
-
-// relationship with Governor-General
-Q.governor_general_relation = 40;
-// can the GG dismiss the government?
-Q.governor_general_enabled = 0;
-
-
-
-// Security forces
-Q.adf_strength = 20; // Australian Defence Force (peacetime)
-Q.adf_militancy = 1;
-Q.adf_loyalty = 0.5;
-
-Q.police_strength = 15;
-Q.police_militancy = 1;
-Q.police_loyalty = 0.4;
-
-// ASIO doesn't exist yet but intelligence apparatus does
-Q.asio_strength = 0;
-Q.asio_formed = 0;
-Q.intelligence_loyalty = 0.3;
-
-// The state of the country
-
-// popular opinion
-// national ideology
-// imperialism vs independence
-Q.imperialism = 70; // Strong British ties in 1949
-// capitalism vs socialism
-Q.socialism = 35;
-// support for Labor/democratic governance
-Q.support_labor = 48;
-// anti-communism (higher = more anti-communist)
-Q.anti_communist = 60; // Cold War beginning
-
-Q.emergency_rule = 0;
-
-// constitutional issues
-Q.constitutional_reform = 0;
-// referendum success threshold
-Q.referendum_threshold = 50; // Need majority of states + majority of voters
-// allows banning of parties (doesn't exist in Australia)
-Q.cpa_banned = 0;
-Q.ban_referendum_held = 0;
-
-// economic pressure from business/foreign creditors
-Q.capital_strike_progress = 0;
-Q.debt_crisis_progress = 0; // Post-war debt burden
-Q.sterling_pressure = 5; // Pressure from sterling area obligations
-
-Q.budget = 0; // Budget balance (surplus/deficit in millions)
-
-// unemployment: 1949 ~2.5%, rises in early 1950s
-// Post-war migration program beginning
-
-// income for workers in pounds/year - 1949 baseline
-Q.income = 520; // Annual income in pounds
-Q.sterling_reserves = 0;
-
-// inflation (in %; 1949: ~10% post-war inflation; should decline)
-Q.inflation = 10;
-
-// economic growth
-Q.economic_growth = 5.0; // Post-war boom
-
-// economic expansion/contraction tracker
-Q.economic_expansion = 0;
-
-
-
+// ============================================
+// CORPORATE RESOURCES
+// ============================================
+Q.resources = 5; // Action points/influence
+Q.liquid_assets = 1000; // Million credits (¤)
+Q.budget = 150; // Quarterly operating budget in millions
+Q.credit_rating = 75; // Corporate credit score (0-100)
+Q.market_confidence = 60; // Investor confidence (0-100)
+
+// Overall corporate stability
+Q.dissent = 0.08; // Internal resistance index
+Q.dissent_percent = 8;
+
+// ============================================
+// EXECUTIVE LEADERSHIP
+// ============================================
+Q.ceo_name = "Mentezes Quatterz";
+Q.ceo_faction = "Mentezes' Group";
+Q.ceo_popularity = 55; // With board
+Q.ceo_charisma = 60; // Public appeal
+Q.ceo_ruthlessness = 50; // Willingness to use force
+
+Q.coo_name = "Gauletti Vuitmerbaus";
+Q.coo_faction = "Mentezes' Group";
+Q.coo_loyalty = 75;
+
+Q.board_chairman = "Mentezes Quatterz";
+Q.board_chairman_faction = "Mentezes' Group";
+
+// External Federation oversight
+Q.governorate_commandante = "Marius Huyius Osteblashisnbir";
+Q.gc_relation = 50; // GC's view of current CEO (0-100)
+Q.gc_intervention_risk = 15; // Risk of forced dismissal (0-100)
+Q.federation_quota_compliance = 80; // Meeting Federation demands (0-100)
+
+// ============================================
+// BOARD FACTIONS (100 seats total)
+// ============================================
+Q.factions = ['mentezes_group', 'visionarista_misumi', 'visionarista_gauten', 
+              'developmentalist', 'popularista_main', 'popularista_militia',
+              'trade_co', 'market_unions', 'bueskhan'];
+
+// MENTEZES' GROUP - Corporate Statists
+Q.mentezes_group_strength = 35;
+Q.mentezes_group_dissent = 10;
+Q.mentezes_group_priority = "Stability & Control";
+
+// VISIONARISTA - Split between expansionists and isolationists
+Q.visionarista_misumi_strength = 9; // Expansionist wing
+Q.visionarista_misumi_dissent = 18;
+Q.visionarista_misumi_priority = "Outer Wilder Expansion";
+
+Q.visionarista_gauten_strength = 6; // Isolationist wing
+Q.visionarista_gauten_dissent = 22;
+Q.visionarista_gauten_priority = "Internal Innovation";
+
+Q.visionarista_unified = 0; // Can they work together?
+Q.visionarista_split_risk = 35;
+
+// DEVELOPMENTALIST - Industrialization focus
+Q.developmentalist_strength = 12;
+Q.developmentalist_dissent = 15;
+Q.developmentalist_priority = "Mega-Industrialization";
+Q.developmentalist_colonial_transition_progress = 0; // Path to competitive status
+
+// POPULARISTA - Populist coalition (split internally)
+Q.popularista_main_strength = 7;
+Q.popularista_main_dissent = 12;
+Q.popularista_main_priority = "Citizen Satisfaction Programs";
+
+Q.popularista_militia_strength = 3;
+Q.popularista_militia_dissent = 25;
+Q.popularista_militia_priority = "Armed Popular Defense";
+Q.popularista_coup_risk = 20; // Risk of militia takeover
+
+// TRADE CO. EMERGENT - Umbrella corporation
+Q.trade_co_strength = 18;
+Q.trade_co_dissent = 5;
+Q.trade_co_priority = "Market Consolidation";
+Q.trade_co_loyalty_to_mentezes = 65; // Coalition partner stability
+
+// MARKET UNIONS - Small owner collective
+Q.market_unions_strength = 8;
+Q.market_unions_dissent = 30;
+Q.market_unions_priority = "Anti-Monopolization";
+Q.market_unions_unity = 50; // Internal cohesion (0-100)
+
+// BUESKHAN CLIQUE - Shadow operatives
+Q.bueskhan_strength = 2; // Public seats
+Q.bueskhan_dissent = 5;
+Q.bueskhan_hidden_influence = 15; // Secret power
+Q.bueskhan_priority = "Classified";
+Q.bueskhan_revelation_risk = 10; // Risk of exposure
+
+// ============================================
+// COALITIONS & ALLIANCES
+// ============================================
+Q.mentezes_coalition = 1; // Currently in power
+Q.mentezes_coalition_members = ['mentezes_group', 'bueskhan', 'trade_co'];
+Q.mentezes_coalition_seats = 55;
+Q.coalition_stability = 70;
+
+Q.reform_coalition_exists = 0;
+Q.reform_coalition_members = ['developmentalist', 'market_unions'];
+Q.reform_coalition_seats = 20;
+
+Q.opposition_unified = 0; // Can opposition coordinate?
+
+// ============================================
+// INTER-FACTION RELATIONS (0-100)
+// ============================================
+Q.mentezes_visionarista_relation = 40;
+Q.mentezes_developmentalist_relation = 30;
+Q.mentezes_popularista_relation = 25;
+Q.mentezes_trade_co_relation = 70;
+Q.mentezes_market_unions_relation = 35;
+Q.mentezes_bueskhan_relation = 85;
+
+Q.visionarista_developmentalist_relation = 55;
+Q.popularista_developmentalist_relation = 60;
+Q.trade_co_market_unions_relation = 20;
+Q.visionarista_misumi_gauten_relation = 45; // Internal Visionarista tension
+
+// ============================================
+// CORPORATE DIVISIONS (Your Management Structure)
+// ============================================
+Q.divisions = ['production', 'distribution', 'finance', 'security', 
+               'innovation', 'hr', 'pr', 'legal', 'special_projects'];
+
+// PRODUCTION DIVISION - Manufacturing
+Q.production_strength = 75;
+Q.production_dissent = 12;
+Q.production_loyalty = 65; // To current CEO
+Q.production_efficiency = 70;
+Q.production_priority = "Output Maximization";
+
+// DISTRIBUTION DIVISION - Logistics
+Q.distribution_strength = 68;
+Q.distribution_dissent = 15;
+Q.distribution_loyalty = 60;
+Q.distribution_efficiency = 65;
+Q.distribution_priority = "Supply Chain Optimization";
+
+// FINANCE DIVISION - Capital Management
+Q.finance_strength = 80;
+Q.finance_dissent = 8;
+Q.finance_loyalty = 70;
+Q.finance_efficiency = 75;
+Q.finance_priority = "Revenue Growth";
+
+// SECURITY DIVISION - Asset Protection
+Q.security_strength = 85;
+Q.security_dissent = 6;
+Q.security_loyalty = 80;
+Q.security_efficiency = 80;
+Q.security_priority = "Zone Stability";
+Q.security_brutality = 50; // Willingness to use force (0-100)
+
+// INNOVATION DIVISION - R&D
+Q.innovation_strength = 60;
+Q.innovation_dissent = 20;
+Q.innovation_loyalty = 55;
+Q.innovation_efficiency = 65;
+Q.innovation_priority = "Experimental Projects";
+Q.innovation_breakthrough_progress = 0;
+
+// HR DIVISION - Citizen Management
+Q.hr_strength = 55;
+Q.hr_dissent = 18;
+Q.hr_loyalty = 60;
+Q.hr_efficiency = 60;
+Q.hr_priority = "Workforce Optimization";
+
+// PR DIVISION - Image Control
+Q.pr_strength = 65;
+Q.pr_dissent = 12;
+Q.pr_loyalty = 65;
+Q.pr_efficiency = 70;
+Q.pr_priority = "Reputation Management";
+
+// LEGAL DIVISION - Compliance
+Q.legal_strength = 70;
+Q.legal_dissent = 10;
+Q.legal_loyalty = 68;
+Q.legal_efficiency = 72;
+Q.legal_priority = "Regulatory Navigation";
+
+// SPECIAL PROJECTS - Black Ops
+Q.special_projects_strength = 50;
+Q.special_projects_dissent = 15;
+Q.special_projects_loyalty = 75;
+Q.special_projects_efficiency = 65;
+Q.special_projects_priority = "Covert Operations";
+Q.special_projects_exposure_risk = 25;
+
+// ============================================
+// ZONE CONTROL (11 zones)
+// ============================================
+Q.zones = ['trade_zone', 'industrial_zone', 'civilian_zone', 'developmental_zone',
+           'technological_zone', 'outer_wilder_zone', 'garrison_1', 'garrison_2',
+           'garrison_3', 'garrison_4', 'mega_city_polus'];
+
+// TRADE ZONE
+Q.trade_zone_controller = "mentezes_group";
+Q.trade_zone_director = "Helustav Mentezes";
+Q.trade_zone_stability = 70;
+Q.trade_zone_profitability = 75;
+Q.trade_zone_population = 450000;
+
+// INDUSTRIAL ZONE
+Q.industrial_zone_controller = "mentezes_group";
+Q.industrial_zone_director = "Quarmina Viest";
+Q.industrial_zone_stability = 55; // CRISIS: Worker strikes
+Q.industrial_zone_profitability = 80;
+Q.industrial_zone_population = 800000;
+Q.industrial_zone_strike_active = 1;
+
+// CIVILIAN ZONE
+Q.civilian_zone_controller = "mentezes_group";
+Q.civilian_zone_director = "Paulistav Grentier";
+Q.civilian_zone_stability = 65;
+Q.civilian_zone_profitability = 60;
+Q.civilian_zone_population = 1200000;
+
+// DEVELOPMENTAL ZONE
+Q.developmental_zone_controller = "developmentalist";
+Q.developmental_zone_director = "Industriev Massim";
+Q.developmental_zone_stability = 80;
+Q.developmental_zone_profitability = 50; // Long-term investment
+Q.developmental_zone_population = 600000;
+
+// TECHNOLOGICAL ZONE
+Q.technological_zone_controller = "visionarista_misumi";
+Q.technological_zone_director = "Misumi Keivacht";
+Q.technological_zone_stability = 75;
+Q.technological_zone_profitability = 70;
+Q.technological_zone_population = 350000;
+
+// OUTER WILDER ZONE
+Q.outer_wilder_zone_controller = "contested";
+Q.outer_wilder_zone_director = "Frontier Command Collective";
+Q.outer_wilder_zone_stability = 30; // Lawless frontier
+Q.outer_wilder_zone_profitability = 40;
+Q.outer_wilder_zone_population = 150000;
+Q.outer_wilder_zone_expansion_progress = 0;
+
+// GARRISON 1
+Q.garrison_1_controller = "mentezes_group";
+Q.garrison_1_director = "General Kautrius";
+Q.garrison_1_stability = 90;
+Q.garrison_1_military_strength = 85;
+
+// GARRISON 2
+Q.garrison_2_controller = "mentezes_group";
+Q.garrison_2_director = "General Vaultheim";
+Q.garrison_2_stability = 85;
+Q.garrison_2_military_strength = 80;
+
+// GARRISON 3
+Q.garrison_3_controller = "popularista_militia";
+Q.garrison_3_director = "Commander Braulev";
+Q.garrison_3_stability = 70;
+Q.garrison_3_military_strength = 65;
+Q.garrison_3_coup_staging = 0; // Is militia planning something?
+
+// GARRISON 4
+Q.garrison_4_controller = "mentezes_group";
+Q.garrison_4_director = "General Ostovich";
+Q.garrison_4_stability = 80;
+Q.garrison_4_military_strength = 75;
+
+// MEGA CITY POLUS
+Q.mega_city_polus_controller = "mentezes_group";
+Q.mega_city_polus_director = "Governor-Mayor Quintus Havel";
+Q.mega_city_polus_stability = 60; // Unstable population center
+Q.mega_city_polus_profitability = 85;
+Q.mega_city_polus_population = 3500000;
+
+// ============================================
+// CITIZEN DEMOGRAPHICS (Sector population: ~7.5 million)
+// ============================================
+Q.citizen_classes = ['production_workers', 'service_workers', 'management',
+                     'entrepreneurs', 'unproductive', 'believers', 'contract_citizens'];
+
+// PRODUCTION WORKERS (Industrial labor)
+Q.production_workers = 2500000;
+Q.production_workers_satisfaction = 45; // LOW - strikes happening
+Q.production_workers_productivity = 70;
+Q.production_workers_dissent = 35;
+Q.production_workers_mentezes_support = 25;
+Q.production_workers_developmentalist_support = 40;
+Q.production_workers_popularista_support = 30;
+
+// SERVICE WORKERS (Civilian sector)
+Q.service_workers = 1800000;
+Q.service_workers_satisfaction = 55;
+Q.service_workers_productivity = 65;
+Q.service_workers_dissent = 20;
+Q.service_workers_mentezes_support = 35;
+Q.service_workers_trade_co_support = 40;
+
+// MANAGEMENT CLASS (Corporate administrators)
+Q.management = 600000;
+Q.management_satisfaction = 70;
+Q.management_productivity = 80;
+Q.management_dissent = 10;
+Q.management_mentezes_support = 65;
+Q.management_board_influence = 15; // Direct board voting power
+
+// ENTREPRENEURS (Small business owners)
+Q.entrepreneurs = 400000;
+Q.entrepreneurs_satisfaction = 50;
+Q.entrepreneurs_productivity = 75;
+Q.entrepreneurs_dissent = 25;
+Q.entrepreneurs_market_unions_support = 70;
+Q.entrepreneurs_trade_co_support = 20;
+
+// UNPRODUCTIVE (Unemployed, disabled, retired)
+Q.unproductive = 800000;
+Q.unproductive_satisfaction = 30; // Very low
+Q.unproductive_dissent = 45;
+Q.unproductive_popularista_support = 60;
+
+// BELIEVERS (Ideological supporters - corporate faithful)
+Q.believers = 300000;
+Q.believers_satisfaction = 85;
+Q.believers_dissent = 5;
+Q.believers_mentezes_support = 90;
+Q.believers_morale_boost = 10; // Buff to overall stability
+
+// CONTRACT CITIZENS (Temporary workers, expendable)
+Q.contract_citizens = 1100000;
+Q.contract_citizens_satisfaction = 35;
+Q.contract_citizens_productivity = 60;
+Q.contract_citizens_dissent = 40;
+Q.contract_citizens_revolt_risk = 30;
+
+// ============================================
+// ECONOMIC INDICATORS
+// ============================================
+Q.sector_gdp = 5000; // Million credits
+Q.economic_growth = 2.5; // Percent per quarter
+Q.inflation = 4.5;
+Q.unemployment = 8.5;
+Q.corporate_tax_rate = 15;
+Q.citizen_average_income = 28000; // Annual credits
+Q.wealth_inequality = 75; // Gini coefficient approximation
+
+Q.colonial_status = 1; // Still designated as colony
+Q.competitive_transition_progress = 0; // Path to independence
+
+// ============================================
+// EXTERNAL RELATIONS
+// ============================================
+// Other Sector 222 powers
+Q.hegemonic_industries_relation = 45;
+Q.sovereign_ventures_relation = 50;
+Q.tertium_conglomerate_relation = 40;
+
+// Interuniversal Federation
+Q.federation_relation = 60;
+Q.federation_tribute_owed = 200; // Million credits quarterly
+Q.federation_military_quota = 5000; // Troops required
+
+// Rival sectors
+Q.sector_221_relation = 35;
+Q.sector_223_relation = 55;
 
 
 
 
 
 // ============================================
-// CORE LISTS (Define these FIRST)
-// ============================================
-Q.classes = ['workers', 'white_collar', 'business', 'rural', 'unemployed', 'catholics', 'migrants'];
-Q.parties = ['alp', 'liberal', 'country', 'cpa', 'lang', 'other'];
-Q.states = ['nsw', 'vic', 'qld', 'sa', 'wa', 'tas'];
-
-// State weights for national calculation
-Q.state_weights = {
-    nsw: 0.38,
-    vic: 0.28,
-    qld: 0.16,
-    sa: 0.10,
-    wa: 0.06,
-    tas: 0.02
-};
-
-Q.lang_formed = 1; // Lang Labor exists
-Q.dlp_formed = 0; // DLP doesn't form until 1955
-
-// ============================================
-// DEMOGRAPHIC PROPORTIONS BY STATE
+// CROSS-FACTION INFLUENCES IN YOUR ORGANIZATION
 // ============================================
 
-// NEW SOUTH WALES (Urban, industrial Sydney)
-Q.nsw_workers = 48;
-Q.nsw_white_collar = 20;
-Q.nsw_business = 12;
-Q.nsw_rural = 12;
-Q.nsw_unemployed = 2.5;
-Q.nsw_catholics = 22;
-Q.nsw_migrants = 3;
+// Some of your divisions may have sympathies to external powers
 
-// VICTORIA (Melbourne urban center)
-Q.vic_workers = 46;
-Q.vic_white_collar = 19;
-Q.vic_business = 13;
-Q.vic_rural = 14;
-Q.vic_unemployed = 2.3;
-Q.vic_catholics = 23;
-Q.vic_migrants = 2.5;
+// Security Division
+Q.security_division_secucrados_sympathies = 35; // Admire their methods
+Q.security_division_juntia_sympathies = 25;
 
-// QUEENSLAND (More rural, mining)
-Q.qld_workers = 42;
-Q.qld_white_collar = 15;
-Q.qld_business = 11;
-Q.qld_rural = 24;
-Q.qld_unemployed = 2.8;
-Q.qld_catholics = 18;
-Q.qld_migrants = 1.5;
+// Innovation Division  
+Q.innovation_division_technau_sympathies = 55; // Want to work with them
+Q.innovation_division_ai_sectorium_contact = 30;
+Q.innovation_division_esotericist_infiltration = 20; // Cultists in R&D?
 
-// SOUTH AUSTRALIA (Mixed economy)
-Q.sa_workers = 44;
-Q.sa_white_collar = 17;
-Q.sa_business = 12;
-Q.sa_rural = 18;
-Q.sa_unemployed = 2.6;
-Q.sa_catholics = 19;
-Q.sa_migrants = 2;
+// Production Division
+Q.production_division_developmentalist_support = 60; // Natural allies
+Q.production_division_oligarch_bribery_attempts = 40;
 
-// WESTERN AUSTRALIA (Mining, Perth)
-Q.wa_workers = 43;
-Q.wa_white_collar = 16;
-Q.wa_business = 11;
-Q.wa_rural = 20;
-Q.wa_unemployed = 3.0;
-Q.wa_catholics = 17;
-Q.wa_migrants = 1.8;
+// Distribution Division
+Q.distribution_division_trade_co_alignment = 70;
+Q.distribution_division_bandit_protection_payments = 25;
 
-// TASMANIA (Small, industrial)
-Q.tas_workers = 41;
-Q.tas_white_collar = 16;
-Q.tas_business = 13;
-Q.tas_rural = 22;
-Q.tas_unemployed = 2.4;
-Q.tas_catholics = 21;
-Q.tas_migrants = 1.0;
+// Special Projects Division
+Q.special_projects_bueskhan_overlap = 90; // Basically same people
+Q.special_projects_esotericist_infiltration = 15;
 
 // ============================================
-// STATE PARTY SUPPORT BY DEMOGRAPHIC
+// GARRISON MILITARISM (Internal military culture)
 // ============================================
 
-// NEW SOUTH WALES
-Q.nsw_workers_alp = 70;
-Q.nsw_workers_liberal = 8;
-Q.nsw_workers_country = 0;
-Q.nsw_workers_cpa = 12;
-Q.nsw_workers_lang = 8;
-Q.nsw_workers_other = 2;
+// Your 4 garrisons have varying levels of "garrison militarism"
+// (distinct from Juntia, but sympathetic ideology)
 
-Q.nsw_white_collar_alp = 35;
-Q.nsw_white_collar_liberal = 45;
-Q.nsw_white_collar_country = 3;
-Q.nsw_white_collar_cpa = 3;
-Q.nsw_white_collar_lang = 2;
-Q.nsw_white_collar_other = 12;
+Q.garrison_militarism = "Doctrine of military supremacy within corporate structure";
 
-Q.nsw_business_alp = 12;
-Q.nsw_business_liberal = 55;
-Q.nsw_business_country = 15;
-Q.nsw_business_cpa = 0;
-Q.nsw_business_lang = 3;
-Q.nsw_business_other = 15;
+Q.garrison_1_militarist_culture = 40;
+Q.garrison_1_juntia_sympathy = 30;
 
-Q.nsw_rural_alp = 25;
-Q.nsw_rural_liberal = 15;
-Q.nsw_rural_country = 50;
-Q.nsw_rural_cpa = 0;
-Q.nsw_rural_lang = 5;
-Q.nsw_rural_other = 5;
+Q.garrison_2_militarist_culture = 45;
+Q.garrison_2_juntia_sympathy = 35;
 
-Q.nsw_unemployed_alp = 50;
-Q.nsw_unemployed_liberal = 8;
-Q.nsw_unemployed_country = 0;
-Q.nsw_unemployed_cpa = 30;
-Q.nsw_unemployed_lang = 10;
-Q.nsw_unemployed_other = 2;
+Q.garrison_3_militarist_culture = 70; // VERY HIGH - Popularista Militia
+Q.garrison_3_juntia_sympathy = 50; // Dangerous
 
-Q.nsw_catholics_alp = 60;
-Q.nsw_catholics_liberal = 22;
-Q.nsw_catholics_country = 8;
-Q.nsw_catholics_cpa = 5;
-Q.nsw_catholics_lang = 3;
-Q.nsw_catholics_other = 2;
-
-Q.nsw_migrants_alp = 65;
-Q.nsw_migrants_liberal = 18;
-Q.nsw_migrants_country = 0;
-Q.nsw_migrants_cpa = 12;
-Q.nsw_migrants_lang = 3;
-Q.nsw_migrants_other = 2;
-
-// VICTORIA
-Q.vic_workers_alp = 62;
-Q.vic_workers_liberal = 15;
-Q.vic_workers_country = 0;
-Q.vic_workers_cpa = 18;
-Q.vic_workers_lang = 0;
-Q.vic_workers_other = 5;
-
-Q.vic_white_collar_alp = 28;
-Q.vic_white_collar_liberal = 50;
-Q.vic_white_collar_country = 5;
-Q.vic_white_collar_cpa = 5;
-Q.vic_white_collar_lang = 0;
-Q.vic_white_collar_other = 12;
-
-Q.vic_business_alp = 10;
-Q.vic_business_liberal = 60;
-Q.vic_business_country = 18;
-Q.vic_business_cpa = 0;
-Q.vic_business_lang = 0;
-Q.vic_business_other = 12;
-
-Q.vic_rural_alp = 15;
-Q.vic_rural_liberal = 25;
-Q.vic_rural_country = 55;
-Q.vic_rural_cpa = 0;
-Q.vic_rural_lang = 0;
-Q.vic_rural_other = 5;
-
-Q.vic_unemployed_alp = 42;
-Q.vic_unemployed_liberal = 12;
-Q.vic_unemployed_country = 0;
-Q.vic_unemployed_cpa = 40;
-Q.vic_unemployed_lang = 0;
-Q.vic_unemployed_other = 6;
-
-Q.vic_catholics_alp = 52;
-Q.vic_catholics_liberal = 30;
-Q.vic_catholics_country = 10;
-Q.vic_catholics_cpa = 3;
-Q.vic_catholics_lang = 0;
-Q.vic_catholics_other = 5;
-
-Q.vic_migrants_alp = 55;
-Q.vic_migrants_liberal = 25;
-Q.vic_migrants_country = 0;
-Q.vic_migrants_cpa = 15;
-Q.vic_migrants_lang = 0;
-Q.vic_migrants_other = 5;
-
-// QUEENSLAND
-Q.qld_workers_alp = 75;
-Q.qld_workers_liberal = 5;
-Q.qld_workers_country = 0;
-Q.qld_workers_cpa = 15;
-Q.qld_workers_lang = 0;
-Q.qld_workers_other = 5;
-
-Q.qld_white_collar_alp = 40;
-Q.qld_white_collar_liberal = 35;
-Q.qld_white_collar_country = 8;
-Q.qld_white_collar_cpa = 5;
-Q.qld_white_collar_lang = 0;
-Q.qld_white_collar_other = 12;
-
-Q.qld_business_alp = 20;
-Q.qld_business_liberal = 40;
-Q.qld_business_country = 25;
-Q.qld_business_cpa = 0;
-Q.qld_business_lang = 0;
-Q.qld_business_other = 15;
-
-Q.qld_rural_alp = 25;
-Q.qld_rural_liberal = 10;
-Q.qld_rural_country = 60;
-Q.qld_rural_cpa = 0;
-Q.qld_rural_lang = 0;
-Q.qld_rural_other = 5;
-
-Q.qld_unemployed_alp = 55;
-Q.qld_unemployed_liberal = 5;
-Q.qld_unemployed_country = 0;
-Q.qld_unemployed_cpa = 35;
-Q.qld_unemployed_lang = 0;
-Q.qld_unemployed_other = 5;
-
-Q.qld_catholics_alp = 65;
-Q.qld_catholics_liberal = 20;
-Q.qld_catholics_country = 10;
-Q.qld_catholics_cpa = 3;
-Q.qld_catholics_lang = 0;
-Q.qld_catholics_other = 2;
-
-Q.qld_migrants_alp = 70;
-Q.qld_migrants_liberal = 15;
-Q.qld_migrants_country = 0;
-Q.qld_migrants_cpa = 10;
-Q.qld_migrants_lang = 0;
-Q.qld_migrants_other = 5;
-
-// SOUTH AUSTRALIA
-Q.sa_workers_alp = 60;
-Q.sa_workers_liberal = 12;
-Q.sa_workers_country = 0;
-Q.sa_workers_cpa = 20;
-Q.sa_workers_lang = 0;
-Q.sa_workers_other = 8;
-
-Q.sa_white_collar_alp = 25;
-Q.sa_white_collar_liberal = 55;
-Q.sa_white_collar_country = 5;
-Q.sa_white_collar_cpa = 3;
-Q.sa_white_collar_lang = 0;
-Q.sa_white_collar_other = 12;
-
-Q.sa_business_alp = 15;
-Q.sa_business_liberal = 55;
-Q.sa_business_country = 20;
-Q.sa_business_cpa = 0;
-Q.sa_business_lang = 0;
-Q.sa_business_other = 10;
-
-Q.sa_rural_alp = 18;
-Q.sa_rural_liberal = 30;
-Q.sa_rural_country = 45;
-Q.sa_rural_cpa = 0;
-Q.sa_rural_lang = 0;
-Q.sa_rural_other = 7;
-
-Q.sa_unemployed_alp = 45;
-Q.sa_unemployed_liberal = 10;
-Q.sa_unemployed_country = 0;
-Q.sa_unemployed_cpa = 40;
-Q.sa_unemployed_lang = 0;
-Q.sa_unemployed_other = 5;
-
-Q.sa_catholics_alp = 50;
-Q.sa_catholics_liberal = 30;
-Q.sa_catholics_country = 12;
-Q.sa_catholics_cpa = 5;
-Q.sa_catholics_lang = 0;
-Q.sa_catholics_other = 3;
-
-Q.sa_migrants_alp = 58;
-Q.sa_migrants_liberal = 25;
-Q.sa_migrants_country = 0;
-Q.sa_migrants_cpa = 12;
-Q.sa_migrants_lang = 0;
-Q.sa_migrants_other = 5;
-
-// WESTERN AUSTRALIA
-Q.wa_workers_alp = 68;
-Q.wa_workers_liberal = 10;
-Q.wa_workers_country = 0;
-Q.wa_workers_cpa = 15;
-Q.wa_workers_lang = 0;
-Q.wa_workers_other = 7;
-
-Q.wa_white_collar_alp = 30;
-Q.wa_white_collar_liberal = 48;
-Q.wa_white_collar_country = 5;
-Q.wa_white_collar_cpa = 4;
-Q.wa_white_collar_lang = 0;
-Q.wa_white_collar_other = 13;
-
-Q.wa_business_alp = 18;
-Q.wa_business_liberal = 50;
-Q.wa_business_country = 22;
-Q.wa_business_cpa = 0;
-Q.wa_business_lang = 0;
-Q.wa_business_other = 10;
-
-Q.wa_rural_alp = 22;
-Q.wa_rural_liberal = 20;
-Q.wa_rural_country = 52;
-Q.wa_rural_cpa = 0;
-Q.wa_rural_lang = 0;
-Q.wa_rural_other = 6;
-
-Q.wa_unemployed_alp = 48;
-Q.wa_unemployed_liberal = 10;
-Q.wa_unemployed_country = 0;
-Q.wa_unemployed_cpa = 38;
-Q.wa_unemployed_lang = 0;
-Q.wa_unemployed_other = 4;
-
-Q.wa_catholics_alp = 55;
-Q.wa_catholics_liberal = 28;
-Q.wa_catholics_country = 10;
-Q.wa_catholics_cpa = 4;
-Q.wa_catholics_lang = 0;
-Q.wa_catholics_other = 3;
-
-Q.wa_migrants_alp = 62;
-Q.wa_migrants_liberal = 22;
-Q.wa_migrants_country = 0;
-Q.wa_migrants_cpa = 10;
-Q.wa_migrants_lang = 0;
-Q.wa_migrants_other = 6;
-
-// TASMANIA
-Q.tas_workers_alp = 72;
-Q.tas_workers_liberal = 10;
-Q.tas_workers_country = 0;
-Q.tas_workers_cpa = 12;
-Q.tas_workers_lang = 0;
-Q.tas_workers_other = 6;
-
-Q.tas_white_collar_alp = 38;
-Q.tas_white_collar_liberal = 42;
-Q.tas_white_collar_country = 5;
-Q.tas_white_collar_cpa = 4;
-Q.tas_white_collar_lang = 0;
-Q.tas_white_collar_other = 11;
-
-Q.tas_business_alp = 20;
-Q.tas_business_liberal = 48;
-Q.tas_business_country = 20;
-Q.tas_business_cpa = 0;
-Q.tas_business_lang = 0;
-Q.tas_business_other = 12;
-
-Q.tas_rural_alp = 28;
-Q.tas_rural_liberal = 22;
-Q.tas_rural_country = 45;
-Q.tas_rural_cpa = 0;
-Q.tas_rural_lang = 0;
-Q.tas_rural_other = 5;
-
-Q.tas_unemployed_alp = 50;
-Q.tas_unemployed_liberal = 12;
-Q.tas_unemployed_country = 0;
-Q.tas_unemployed_cpa = 33;
-Q.tas_unemployed_lang = 0;
-Q.tas_unemployed_other = 5;
-
-Q.tas_catholics_alp = 62;
-Q.tas_catholics_liberal = 25;
-Q.tas_catholics_country = 8;
-Q.tas_catholics_cpa = 3;
-Q.tas_catholics_lang = 0;
-Q.tas_catholics_other = 2;
-
-Q.tas_migrants_alp = 65;
-Q.tas_migrants_liberal = 20;
-Q.tas_migrants_country = 0;
-Q.tas_migrants_cpa = 10;
-Q.tas_migrants_lang = 0;
-Q.tas_migrants_other = 5;
+Q.garrison_4_militarist_culture = 35;
+Q.garrison_4_juntia_sympathy = 25;
 
 // ============================================
-// CALCULATE NATIONAL DEMOGRAPHICS
+// INDUSTRIAL-TECHNOCRAT HYBRID MOVEMENT
 // ============================================
-Q.workers = 0;
-Q.white_collar = 0;
-Q.business = 0;
-Q.rural = 0;
-Q.unemployed = 0;
-Q.catholics = 0;
-Q.migrants = 0;
 
-for (var demo_class of Q.classes) {
-    Q[demo_class] = 0;
-    for (var state of Q.states) {
-        Q[demo_class] += Q[state + '_' + demo_class] * Q.state_weights[state];
-    }
-}
+// A cross-faction movement that combines Developmentalist + Technau ideals
+Q.industrial_technocrat_movement_exists = 0;
+Q.industrial_technocrat_strength = 0; // Can grow
+Q.industrial_technocrat_corporadas_support = 0;
+Q.industrial_technocrat_ideology = "Technology-Driven Industrialization";
+Q.industrial_technocrat_potential_leaders = ['Industriev Massim', 
+                                              'Innovation Chief Vex Quantis',
+                                              'Technau Liaison Meridian'];
 
 // ============================================
-// CALCULATE NATIONAL PARTY SUPPORT
+// FAMILY CLIQUES (Within Oligarch sphere and Corporadas)
 // ============================================
-for (var demo_class of Q.classes) {
-    for (var party of Q.parties) {
-        Q[demo_class + '_' + party] = 0;
-        for (var state of Q.states) {
-            Q[demo_class + '_' + party] += Q[state + '_' + demo_class + '_' + party] * Q.state_weights[state];
-        }
-    }
-}
 
+// OLIGARCH FAMILIES (External)
+Q.goldmar_family_wealth = 95;
+Q.goldmar_family_hostility = 60; // Want your assets
+Q.goldmar_family_takeover_attempts = 0;
 
+Q.petronius_family_wealth = 85;
+Q.petronius_family_hostility = 40;
+Q.petronius_family_infiltration = 25; // Agents in your organization
 
+Q.silvan_family_wealth = 80;
+Q.silvan_family_hostility = 35;
 
+Q.morganeth_family_wealth = 90;
+Q.morganeth_family_hostility = 55;
 
+// CORPORADAS FAMILY CLIQUES (Internal dynasties)
+Q.mentezes_family_influence = 80; // Your family
+Q.mentezes_family_members = ['Quatterz', 'Helustav', 'Valeriana', 'Obsidius'];
 
+Q.vuitmerbaus_family_influence = 65; // COO's family
+Q.vuitmerbaus_family_loyalty = 75;
 
+Q.competing_corporadas_families = ['Stonemark', 'Ironledger', 'Vaultheim'];
+Q.stonemark_family_influence = 40;
+Q.stonemark_family_rivalry = 50; // Want your CEO position
 
+// ============================================
+// INTER-POWER RELATIONS MATRIX
+// ============================================
 
+// How do the major powers view each other?
 
+// Juntia relations
+Q.juntia_technau_relation = 50; // Respect but ideological gap
+Q.juntia_secucrados_relation = 65; // Allied in authoritarianism
+Q.juntia_oligarchs_relation = 40; // Contempt for soft aristocrats
+Q.juntia_ai_sectoriums_relation = 30; // Distrust of machines
+Q.juntia_corporadas_relation = 40; // See you as weak merchants
 
+// Technau relations
+Q.technau_secucrados_relation = 45; // Distrust surveillance state
+Q.technau_oligarchs_relation = 35; // Meritocracy vs heredity clash
+Q.technau_ai_sectoriums_relation = 80; // Strong cooperation
+Q.technau_corporadas_relation = 55; // Potential trade partner
 
-// Events: what has occurred?
-Q.chifley_death = 0; // Ben Chifley dies in 1951
-Q.bank_nationalization_seen = 0;
-Q.bank_nationalization_failed = 0;
-Q.petrov_affair_seen = 0; // 1954 event
-Q.korean_war_seen = 0; // Begins 1950
-Q.menzies_ban_referendum = 0; // 1951 referendum to ban CPA
+// Secucrados relations
+Q.secucrados_oligarchs_relation = 50; // Mutual benefit (security for wealth)
+Q.secucrados_ai_sectoriums_relation = 40; // Fear of uncontrollable AI
+Q.secucrados_corporadas_relation = 50; // Professional courtesy
 
-// reforms and policies
-Q.welfare_expansion = 0;
-Q.immigration_program = 0; // Post-war migration
-Q.snowy_scheme = 0; // Snowy Mountains Scheme
-Q.university_expansion = 0;
-Q.housing_program = 0;
-Q.health_reform = 0;
-// Relations with UK
-Q.uk_relation = 70;
-// Relations with USA
-Q.usa_relation = 50;
-// Relations with Asia (Indonesia, Malaya, etc.)
-Q.asia_relation = 30;
-// ANZUS treaty negotiations
-Q.anzus_progress = 0;
-// Colombo Plan (aid to Asia)
-Q.colombo_plan = 0;
-// How much have we challenged White Australia?
-Q.white_australia_challenged = 0;
-// nationalization attempts
-Q.nationalization_progress = 0;
-// Bank nationalization specifically
-Q.bank_nationalization = 0;
+// Oligarchs relations
+Q.oligarchs_ai_sectoriums_relation = 45; // Use them as tools
+Q.oligarchs_corporadas_relation = 35; // Competition
 
-// Tax rates relative to 1949 baseline
-Q.lower_tax_rates = 0;
-Q.upper_tax_rates = 0;
-Q.tariffs = 0; // Protection vs free trade
+// AI Sectoriums relations
+Q.ai_sectoriums_corporadas_relation = 60; // Neutral efficiency assessment
 
-// our conduct and relationships
-Q.alp_no_confidence = 0;
-Q.no_confidence_against_alp = 0;
+// ============================================
+// SECTOR 222 OVERALL STATUS
+// ============================================
 
-// Advisors/Leaders
-Q.n_advisors = 3;
-// Timers for various actions
-Q.timers = ['advisor_action', 'confronting_communists', 'crisis_program',
-            'fundraising', 'ideology',
-            'inter_party_relationships', 'international_relations',
-            'union_relations', 'media', 'enemies',
-            'party_organizations', 'rally', 'actu',
-            'shuffle_leadership', 'industrial_action', 'immigration_policy',
-            'party_unity',
-            // govt
-            'agricultural_policy', 'domestic_security', 'fiscal_policy',
-            'foreign_policy', 'judiciary', 'labor_affairs', 'defence_policy',
-            'immigration', 'state_affairs', 'shuffle_cabinet', 'social_welfare',
-            'indigenous_rights', 'economic_policy', 'coalition_affairs',
-            'asian_relations', 'womens_policy', 'economic_planning',
-            'constitutional_reform', 'union_policy',
-            'education_science', 'white_australia',
-            // events
-            'bank_nationalization', 'communist_ban',
-            'korean_war', 'petrov_affair',
-            'industrial_disputes', 'cold_war_pressure'];
+Q.sector_222_stability = 55; // Overall sector peace
+Q.sector_222_gdp = 50000; // Billion credits (you're ~10% of this)
+Q.sector_222_conflict_level = 45; // Inter-entity tensions
+Q.sector_222_federation_compliance = 70;
 
-Q.daily_timers = ['leafleting', 'unionvisit'];
+Q.interuniversal_federation_pressure = 60;
+Q.federation_intervention_risk = 20; // If sector destabilizes
 
-Q.advisor_action_timer = 0;
-// party affairs timers
-Q.confronting_communists_timer = 0;
-Q.crisis_program_timer = 0;
-Q.fundraising_timer = 0;
-Q.ideology_timer = 0;
-Q.inter_party_relationships_timer = 0;
-Q.international_relations_timer = 0;
-Q.union_relations_timer = 0;
-Q.media_timer = 0;
-Q.enemies_timer = 0;
-Q.party_organizations_timer = 0;
-Q.rally_timer = 0;
-Q.actu_timer = 0;
-Q.shuffle_leadership_timer = 0;
-Q.industrial_action_timer = 0;
-Q.immigration_policy_timer = 0;
+// Border conflicts
+Q.juntia_corporadas_border_tension = 40;
+Q.oligarchs_corporadas_trade_war = 35;
+Q.bandit_raids_frequency = 30;
 
-// elections
-Q.n_elections = 0;
-Q.hung_parliament_elections = 0;
-Q.in_election = 0;
-Q.next_election_year = 1949;
-Q.next_election_month = 12; // 1949 December (roughly)
-Q.next_election_time = 12; // ~28 months away
+// Ideological movements crossing boundaries
+Q.militarism_spread = 40; // Garrison militarism + Juntia influence
+Q.technocracy_spread = 50; // Technau + Industrial-Technocrat influence
+Q.esotericist_growth = 25; // Cult influence spreading
+Q.populism_spread = 35; // Popularista ideology gaining traction
 
-// government affairs timers
-Q.agricultural_policy_timer = 0;
-Q.domestic_security_timer = 0;
+// ============================================
+// MAJOR EXTERNAL EVENTS (Can be triggered)
+// ============================================
+
+Q.juntia_invasion_threatened = 0;
+Q.technau_tech_sharing_offer = 0;
+Q.secucrados_espionage_discovered = 0;
+Q.oligarch_hostile_takeover_active = 0;
+Q.ai_sectorium_merger_proposal = 0;
+Q.bandit_warlord_unification = 0; // Multiple bandit groups unite
+Q.esotericist_terrorist_attack = 0;
+Q.sector_wide_economic_crisis = 0;
+Q.federation_audit_demanded = 0;
+
+// Cross-faction alliance possibilities
+Q.corporadas_technau_alliance_possible = 0;
+Q.corporadas_juntia_defense_pact_possible = 0;
+Q.corporadas_oligarch_merger_possible = 0;
+Q.developmentalist_technau_split_risk = 40; // Might leave to join Technau
+
+// ============================================
+// EXTERNAL ADVISORS (Not your divisions)
+// ============================================
+
+Q.external_advisors_available = ['technau_liaison', 'oligarch_consultant',
+                                  'juntia_military_expert', 'ai_analyst',
+                                  'esotericist_defector', 'bandit_informant'];
+
+Q.technau_liaison_recruited = 0;
+Q.oligarch_consultant_recruited = 0;
+Q.juntia_military_expert_recruited = 0;
+Q.ai_analyst_recruited = 0;
+Q.esotericist_defector_recruited = 0;
+Q.bandit_informant_recruited = 0;
+
+// ============================================
+// CRISIS & EVENT TRACKING
+// ============================================
+Q.crisis_urgency = 5; // Overall threat level (0-10)
+Q.industrial_strike_active = 1;
+Q.visionarista_expedition_demanded = 1;
+Q.gc_quarterly_report_due = 1;
+Q.trade_co_hostile_takeover_attempt = 0;
+
+// Secret events
+Q.bueskhan_revelation_triggered = 0;
+Q.popularista_militia_coup_plotted = 0;
+Q.visionarista_split_triggered = 0;
+
+// ============================================
+// ADVISORS (Division heads and faction liaisons)
+// ============================================
+Q.n_advisors = 3; // Active advisors
+
+// Division heads
+Q.production_chief_advisor = 0;
+Q.security_chief_advisor = 1; // Starting advisor
+Q.finance_chief_advisor = 0;
+Q.innovation_chief_advisor = 0;
+
+// Faction liaisons
+Q.visionarista_liaison = 0;
+Q.developmentalist_liaison = 0;
+Q.popularista_liaison = 0;
+Q.trade_co_liaison = 1; // Starting advisor
+Q.bueskhan_operative = 1; // Starting advisor
+
+// ============================================
+// TIMERS (Actions available)
+// ============================================
+Q.timers = ['board_negotiations', 'division_management', 'zone_intervention',
+            'security_operations', 'economic_policy', 'coalition_maintenance',
+            'gc_relations', 'crisis_response', 'research_projects',
+            'public_relations', 'hostile_takeover', 'expansion_projects'];
+
+Q.board_negotiations_timer = 0;
+Q.division_management_timer = 0;
+Q.zone_intervention_timer = 0;
+Q.security_operations_timer = 0;
 Q.economic_policy_timer = 0;
-Q.fiscal_policy_timer = 0;
-Q.foreign_policy_timer = 0;
-Q.judiciary_timer = 0;
-Q.labor_affairs_timer = 0;
-Q.defence_policy_timer = 0;
-Q.immigration_timer = 0;
-Q.state_affairs_timer = 0;
-Q.shuffle_cabinet_timer = 0;
-Q.social_welfare_timer = 0;
-Q.asian_relations_timer = 0;
-Q.womens_policy_timer = 0;
-Q.indigenous_rights_timer = 0;
-Q.economic_planning_timer = 0;
-Q.coalition_affairs_timer = 0;
-// event timers
-Q.bank_nationalization_timer = 0;
-Q.communist_ban_timer = 0;
-Q.korean_war_timer = 0;
+Q.coalition_maintenance_timer = 0;
+Q.gc_relations_timer = 0;
+Q.crisis_response_timer = 0;
+Q.research_projects_timer = 0;
+Q.public_relations_timer = 0;
+Q.hostile_takeover_timer = 0;
+Q.expansion_projects_timer = 0;
+
+// ============================================
+// SHAREHOLDER MEETINGS (Elections)
+// ============================================
+Q.n_shareholder_meetings = 0;
+Q.in_shareholder_meeting = 0;
+Q.next_meeting_quarter = 4; // Q4 3210
+Q.next_meeting_year = 3210;
+Q.confidence_votes_survived = 0;
+Q.ceo_dismissals = 0;
+
+// ============================================
+// ACHIEVEMENTS & RECORDS
+// ============================================
+Q.board_control_records = [];
+Q.economic_records = [];
+Q.crisis_records = [];
 
 !}
 new-page: true
 
-> *"The prime minister, the foreign minister and the trade minister were the three wise monkeys: they saw no evil, they spoke no evil, they heard no evil but they knew all about it. It's a sorry story of a government in a mode of reckless negligence"*
+> *"In the shadow of the Federation's gaze, we build empires on spreadsheets and blood. The quarterly report is our scripture. The profit margin is our creed. And when the Governorate Commandante asks if we are worthy... we show him the numbers."*
 
- - Kim Beazley Sr., on the Menzies government, 1951
+ - Internal Mentezes' Group Doctrine, Year 3208
 
-This is a game of alternate history. While historical accuracy is a major concern, keep in mind that this is a *game*, and that any divergence from actual events will necessarily have to involve some element of make-believe. Nevertheless, please let the author know if there are any glaring mistakes.
+This is a narrative-driven corporate political simulator set in a dystopian future where mega-corporations govern entire sectors. Historical accuracy to the Corporadas Untia Magna setting is maintained where possible, but this is ultimately a game of emergent storytelling.
 
-For more information on the politics and government of post-war Australia, see the "Library" page on the top left. If this is your first time playing the game, it is strongly recommended that you read at least some of this information.
+You will play as **CEO Mentezes Quatterz** of the Mentezes' Group faction, attempting to maintain control of Corporadas Untia Magna through board politics, zone management, and factional maneuvering. Your decisions will shape the future of Sector 222.
 
-- @1949_easy: Begin (easy difficulty)
-- @1949_main: Begin (normal difficulty)
-- @1949_hard: Begin (hard difficulty)
-- @1949_historical: Begin (historical mode)
+For more information on factions, zones, and game mechanics, consult the Library.
 
-@1949_easy
-on-arrival: difficulty = -1; resources = 4; dues = 3; actu_strength = 1000; cpa_relation = 20; liberal_relation = 35; country_relation = 30; budget = 2;
+- @3210_easy: Begin (easy difficulty)
+- @3210_main: Begin (normal difficulty)
+- @3210_hard: Begin (hard difficulty)
+- @3210_historical: Begin (historical mode - no saves)
+
+@3210_easy
+on-arrival: difficulty = -1; resources = 7; liquid_assets = 1500; mentezes_group_strength = 40; trade_co_loyalty_to_mentezes = 75; industrial_zone_stability = 65; coalition_stability = 80;
 go-to: intro
 
-@1949_hard
-on-arrival: difficulty = 1; resources = 0; dues = 1; actu_strength = 600; left_dissent = 25; centre_dissent = 20; nsw_right_dissent = 30; groupers_dissent = 25; liberal_relation = 25; cpa_relation = 10; country_relation = 20; budget = -2; actu_communist = 0.3;
+@3210_hard
+on-arrival: difficulty = 1; resources = 3; liquid_assets = 600; mentezes_group_strength = 30; mentezes_group_dissent = 20; trade_co_loyalty_to_mentezes = 55; industrial_zone_stability = 40; gc_intervention_risk = 25; popularista_coup_risk = 35;
 go-to: intro
 
-@1949_historical
-subtitle: Saving, loading, and polls will be disabled. [? if not achievement_game_completed: Not recommended for a first playthrough. ?]
+@3210_historical
+subtitle: Saving, loading, and board polls will be disabled. Recommended for experienced players only.
 on-arrival: {!
 Q.difficulty = 2;
 Q.historical_mode = 1;
-Q.resources = 2;
-Q.dues = 1;
-Q.actu_strength = 800;
-Q.left_dissent = 20;
-Q.centre_dissent = 10;
-Q.nsw_right_dissent = 25;
-Q.groupers_dissent = 15;
-Q.liberal_relation = 30;
-Q.cpa_relation = 15;
-Q.country_relation = 25;
-Q.budget = 0;
-Q.actu_communist = 0.2;
+Q.resources = 5;
+Q.liquid_assets = 1000;
 this.state.disableSaves = true;
 !}
 go-to: intro
@@ -973,33 +702,42 @@ Do you wish to skip the intro?
 - @no_intro_skip: No
 
 @yes_intro_skip
-go-to: 1949_main
+go-to: 3210_main
 
 @no_intro_skip
 
-'New Year. Somehow, I thought it would bring me my mood back. But how was I wrong when I thought about all this unfairness imposed by the Taft, this motherfuggin son. The only thing I would like to have in common with him is an alliance against Japanese.
+*Incoming transmission - Secure Channel Mentezes-Alpha*
 
-Workers taught to tighten up their wallets, with that Debt in effect. Debt. You want to know? Americans call it fair means of repaying for their own catastrophical acts. We call it injustice.
+"CEO Quatterz. The quarterly report is due in 48 hours. The Governorate Commandante is... asking questions about Industrial Zone stability. Production output is down 12% due to the strikes. The Visionarista faction is demanding approval for their Outer Wilder expedition - they're threatening to withdraw support if we don't allocate 200 million credits.
 
-Our Labor party. Surely it could solve it? Oh no, don't dream about that. We could easily split party if not Moderates within the party - and we can afford many more splits before our Labor will consist of only purists.
+Trade Co. is being... Trade Co. They'll support us as long as the money flows, but I've heard whispers they're in talks with the Developmentalists about a 'mutual profitability arrangement.'
 
-'Old man' Chifley? He is trying something, but we know, he is failing horribly...
+And sir... Garrison 3. Commander Braulev. The Popularista Militia. They're conducting 'readiness drills' at unusual hours. Security Division recommends heightened surveillance.
 
-And on trends are many more things - communists, rurals, americans, debt , big fellas, corporates, Papua, Philippinese, war, New Zealand, Tasmania, election... Speaking of that, just by December will be our elections, deciding if Labor or LNP guys gonna secure it once more... 
+The board meets in three weeks. We currently hold 55 seats through the coalition. We need 51 to maintain your position. Developmentalist and Market Unions are coordinating - they're calling themselves the 'Reform Coalition' now. 20 seats between them. If Visionarista flips..."
 
-All things considered, I would love to have some of wine...'
+*Pause*
 
-Wine is poured. Manifest is on the deck. What are you waiting for, Eddie?
+"Sir, what are your orders?"
 
-- @1949_main: Let's start this.
+- @3210_main: Let's begin.
 
-@1949_main
-audio: shuffle music/1949_aus/WaltzingMatilda.mp3 music/1949_aus/AdvanceAustraliaFair.mp3 music/1949_aus/SolidaryForever.mp3
+@3210_main
+audio: shuffle music/corporadas/StationAmbient.mp3 music/corporadas/BoardroomTension.mp3 music/corporadas/IndustrialHum.mp3
 new-page: true
 go-to: main if difficulty >= 0; main.main_easy if difficulty < 0
 
-= 1949
+= Year 3210, Quarter 1
 
-Citizens of the Commonwealth. The year is 1949. The 'Great Silence' of the Pacific has ended, but the peace is a heavy one. Under the terms of the Atlanto-Pacific Defense Organization and the Debt Realignment of 1947, our course is clear. To maintain the Gold Standard is to maintain our honor. To man the Papua Line is to ensure our survival. The government asks for your 'discipline.' The banks ask for your 'patience.' From the smelting pots of Port Pirie to the docks of East Sydney, the price of freedom is being tallied in Taft Dollars. 
+**SECTOR 222 - CORPORADAS UNTIA MAGNA HOLDINGS**
+**EXECUTIVE BRIEFING - CEO MENTEZES QUATTERZ**
 
-Australia stands as the Bastion of the South. Do not look at the shadows in the union halls. Do not listen to the agitators in the streets. The Empire of Japan is watching. Washington is waiting. Work hard. Keep quiet. For the King, and for the Debt...
+The colonial station hums with the sound of a thousand grievances. In the Industrial Zone, production lines stand silent as workers demand contract renegotiations. In Mega City Polus, 3.5 million citizens watch holoscreens showing your face, wondering if their next paycheck will clear. In Garrison 3, militia commanders sharpen blades meant for "external threats."
+
+The Governorate Commandante's quarterly inspection is imminent. The board convenes in 12 weeks. Trade Co. Emergent hedges its bets. The Visionarista dream of distant frontiers. The Developmentalists whisper of industrial revolution. The Popularista promise bread and circuses.
+
+You control 55 seats through coalition. You need 51 to survive. The Federation expects tribute. The zones expect order. The divisions expect direction.
+
+The profit margin is thin. The timeline is tight. The Sector is watching.
+
+**What will you do first, CEO?**
