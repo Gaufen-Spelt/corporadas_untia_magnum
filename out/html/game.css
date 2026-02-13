@@ -546,10 +546,13 @@ blockquote {
   text-indent: 0;
   line-height: 1.4em;
   flex-grow: 1;
-  font-size: 0.9em;
+  font-size: 0.85em;
   color: var(--text-color);
   overflow-y: auto;
+  overflow-x: hidden;
   max-height: 400px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 #qualities::-webkit-scrollbar, #qualities_2::-webkit-scrollbar {
@@ -593,6 +596,8 @@ blockquote {
   flex-direction: row;
   border-bottom: 1px solid var(--border-color);
   width: 100%;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 .tab_button {
@@ -603,14 +608,17 @@ blockquote {
   border: none;
   outline: none;
   flex: 1;
-  padding: 0.8em 0.4em;
-  font-size: 0.8em;
+  padding: 0.6em 0.3em;
+  font-size: 0.7em;
   white-space: nowrap;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
   transition: all 0.2s ease;
   border-right: 1px solid rgba(0, 255, 204, 0.1);
   cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .tab_button:last-child {
