@@ -2,15 +2,13 @@ title: Status
 new-page: true
 is-special: true
 
-YEAR [+ year +]
+YEAR [+ year +] Week [+ week +] Day [+ day +]
 
 **Executive Leadership**
 
-Chief Executive Officer: [+ ceo_name +] ([+ ceo_division +])
-Chief Operating Officer: [+ coo_name +] ([+ coo_division +])
-
-Board Chairman: [+ board_chairman +] ([+ parent_corporation +])
-Next Shareholder Meeting: [+ next_meeting_quarter +] [+ next_meeting_year +]
+Sector 222 Lead Chief: [+ ceo_name +] ([+ ceo_division +])
+Sector 222 Replacive Chief: [+ coo_name +] ([+ coo_division +])
+Sudan Co. Emergent Chief Manager: [+ sudan_manager +]
 
 **Corporate Resources**
 
@@ -19,62 +17,52 @@ Operating Budget: ¤[+ budget +]M
 Internal Resistance Index: [+ dissent_percent +]
 
 @corporate
-on-arrival: {!
-// Calculate territorial control
-Q.controlled_zones = 0;
-if (Q.zone_alpha) Q.controlled_zones += 1;
-if (Q.zone_beta) Q.controlled_zones += 1;
-if (Q.zone_gamma) Q.controlled_zones += 1;
-if (Q.zone_delta) Q.controlled_zones += 1;
-if (Q.zone_epsilon) Q.controlled_zones += 1;
-if (Q.zone_zeta) Q.controlled_zones += 1;
-!}
 
-= Corporate Structure
+Corporate Entities of Untia Magna:
 
-**Executive Board**
+**CORPORADAS**:
 
-Chairman of the Board: [+ board_chairman +]
+Mentezes' Group:
 
-Chief Executive Officer: [+ ceo_name +] ([+ parent_corporation +])
+Sudan Co'Emergent Group:
 
-**Shareholder Assembly**
+Yeshiva'Hanou Group:
 
-{!<span class="tooltip-text" title="Corporadas Untia Magnum">CUM</span>!}: [+ cum_shares +] shares ([+ cum_percent +]%)
-{!<span class="tooltip-text" title="Hegemonic Industries">Hegemonic</span>!}: [+ hegemonic_shares +] shares ([+ hegemonic_percent +]%)
-{!<span class="tooltip-text" title="Sovereign Ventures Group">SVG</span>!}: [+ svg_shares +] shares ([+ svg_percent +]%)
-{!<span class="tooltip-text" title="Worker Collective Coalition">WCC</span>!}: [+ wcc_shares +] shares ([+ wcc_percent +]%)
-[? if legacy_shares > 0 : {!<span class="tooltip-text" title="Legacy Holdings">Legacy</span>!}: [+ legacy_shares +] shares ([+ legacy_percent +]%) ?]
-[? if dissident_bloc : {!<span class="tooltip-text" title="Dissident Bloc">Dissidents</span>!}: [+ dissident_shares +] shares ([+ dissident_percent +]%) ?]
-Independent: [+ independent_shares +] shares ([+ independent_percent +]%)
+Market and Shop Clique Groups: 
 
-**Executive Council**
+**INDEPENDENTS**:
 
-{!<span class="tooltip-text" title="Corporadas Untia Magnum">CUM</span>!}: [+ cum_seats +] seats ([+ cum_seat_percent +]%)
-{!<span class="tooltip-text" title="Hegemonic Industries">Hegemonic</span>!}: [+ hegemonic_seats +] seats ([+ hegemonic_seat_percent +]%)
-{!<span class="tooltip-text" title="Sovereign Ventures Group">SVG</span>!}: [+ svg_seats +] seats ([+ svg_seat_percent +]%)
-{!<span class="tooltip-text" title="Worker Collective Coalition">WCC</span>!}: [+ wcc_seats +] seats ([+ wcc_seat_percent +]%)
-[? if legacy_seats > 0 : {!<span class="tooltip-text" title="Legacy Holdings">Legacy</span>!}: [+ legacy_seats +] seats ([+ legacy_seat_percent +]%) ?]
-[? if dissident_bloc : {!<span class="tooltip-text" title="Dissident Bloc">Dissidents</span>!}: [+ dissident_seats +] seats ([+ dissident_seat_percent +]%) ?]
-Independent: [+ independent_seats +] seats ([+ independent_seat_percent +]%)
+Weltrang's Business:
 
-[? if controlling_entity : Capital Reserves: ¤[+ budget +] million ?]
+Manager's City Trades Group:
 
-**Territorial Control**
+Veteraner's Organization:
 
-CUM controls [+ controlled_zones +] of 6 operational zones
+**Sector Yo - 188**:
 
-[? if zone_alpha : Alpha Zone: [+ director_alpha +] (CUM) ?][? if not zone_alpha : Alpha Zone: [+ director_alpha +] (Rival Consortium) ?]
+Tai De Xio:
 
-[? if zone_beta : Beta Zone: [+ director_beta +] (CUM) ?][? if not zone_beta : Beta Zone: [+ director_beta +] (Rival Consortium) ?]
+Tai Li Man:
 
-[? if zone_gamma : Gamma Zone: [+ director_gamma +] (CUM) ?][? if not zone_gamma : Gamma Zone: [+ director_gamma +] (Rival Consortium) ?]
+Tai Li Gun:
 
-[? if zone_delta : Delta Zone: [+ director_delta +] (CUM) ?][? if not zone_delta : Delta Zone: [+ director_delta +] (Rival Consortium) ?]
+Tai Shi We:
 
-[? if zone_epsilon : Epsilon Zone: [+ director_epsilon +] (CUM) ?][? if not zone_epsilon : Epsilon Zone: [+ director_epsilon +] (Rival Consortium) ?]
+**Corporadas - Militado**:
 
-[? if zone_zeta : Zeta Zone: [+ director_zeta +] (CUM) ?][? if not zone_zeta : Zeta Zone: [+ director_zeta +] (Rival Consortium) ?]
+Old General's Influencia:
+
+Acting Group of Military Finances Representation:
+
+Acting Face of Business - Military Co-operation Interestship Partnership:
+
+Acting Group of Bombardier's Shareholder Seats:
+
+Plautumbensky's Business:
+
+**Technocrats**:
+
+Viemensky' Research, Audit and Influence Representation Group:
 
 @markets
 on-arrival: {!
