@@ -660,15 +660,13 @@ Q.crisis_records = [];
 !}
 new-page: true
 
-> *"In the shadow of the Federation's gaze, we build empires on spreadsheets and blood. The quarterly report is our scripture. The profit margin is our creed. And when the Governorate Commandante asks if we are worthy... we show him the numbers."*
+> *""They question my indulgences. I ask them: Would you risk destitution for principle, or accept prosperity without scrutiny? I chose certainty. Don't ask how I arrived—ask if you have what it takes."
 
- - Internal Mentezes' Group Doctrine, Year 3208
+- Mentezes', Year 3189.
 
 This is a narrative-driven corporate political simulator set in a dystopian future where mega-corporations govern entire sectors. Historical accuracy to the Corporadas Untia Magna setting is maintained where possible, but this is ultimately a game of emergent storytelling.
 
-You will play as **CEO Mentezes Quatterz** of the Mentezes' Group faction, attempting to maintain control of Corporadas Untia Magna through board politics, zone management, and factional maneuvering. Your decisions will shape the future of Sector 222.
-
-For more information on factions, zones, and game mechanics, consult the Library.
+Prepare yourself.
 
 - @3210_easy: Begin (easy difficulty)
 - @3210_main: Begin (normal difficulty)
@@ -696,29 +694,35 @@ go-to: intro
 
 @intro
 
-Do you wish to skip the intro?
+Which one would you like to play as?
 
-- @yes_intro_skip: Yes
-- @no_intro_skip: No
+- @corporatists: Corporatists
+- @militarists: Militarists
+- @technocrats: Technocrats
+- @securocrats: Securocrats
 
-@yes_intro_skip
-go-to: 3210_main
+@militarists
+choose-if: year < 0
+unavailable-subtitle: Not developed, in progress.
+
+@technocrats
+choose-if: year < 0
+unavailable-subtitle: Not developed, in progress.
+
+@securocrats
+choose-if: year < 0
+unavailable-subtitle: Not developed, in progress.
+
+@corporatists
+
+Would you like to read the intro or skip the intro?
+
+- @no_intro_skip: Read the intro
+- @3210_main: Skip
 
 @no_intro_skip
 
-*Incoming transmission - Secure Channel Mentezes-Alpha*
-
-"CEO Quatterz. The quarterly report is due in 48 hours. The Governorate Commandante is... asking questions about Industrial Zone stability. Production output is down 12% due to the strikes. The Visionarista faction is demanding approval for their Outer Wilder expedition - they're threatening to withdraw support if we don't allocate 200 million credits.
-
-Trade Co. is being... Trade Co. They'll support us as long as the money flows, but I've heard whispers they're in talks with the Developmentalists about a 'mutual profitability arrangement.'
-
-And sir... Garrison 3. Commander Braulev. The Popularista Militia. They're conducting 'readiness drills' at unusual hours. Security Division recommends heightened surveillance.
-
-The board meets in three weeks. We currently hold 55 seats through the coalition. We need 51 to maintain your position. Developmentalist and Market Unions are coordinating - they're calling themselves the 'Reform Coalition' now. 20 seats between them. If Visionarista flips..."
-
-*Pause*
-
-"Sir, what are your orders?"
+Mentezes. I would like to share my considerations, Mr. Mentezes'. When the time will finally tick, we guarantee your prosperity none of endurance that of needed to survive consequences of your richness. No, in essence, morality is dead and factually so. What is going instead is that: You do not know how does it feel to see failures. What do you deem of yourself? What if I told you, that, even here, you may feel the consequences. What does it take for you to see the future of your own fate? Perhaps, one shake would be enough. To shake your eternity.            
 
 - @3210_main: Let's begin.
 
