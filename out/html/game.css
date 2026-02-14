@@ -322,6 +322,7 @@ header {
   max-height: calc(100vh - 40px);
   overflow-y: auto;
   overflow-x: hidden;
+  z-index: 10;
 }
 
 /* Scrollbar styling for right panel */
@@ -356,6 +357,7 @@ header {
   position: relative;
   width: 100%;
   max-width: none;
+  z-index: 1;
 }
 
 #content::before {
