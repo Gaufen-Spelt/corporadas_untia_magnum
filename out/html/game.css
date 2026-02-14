@@ -300,8 +300,9 @@ header {
 /* MAIN COLUMN - center content */
 #main_column {
   grid-area: main;
-  max-width: none;
+  max-width: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 /* RIGHT PANEL - info panel with proper sizing */
@@ -356,8 +357,9 @@ header {
   border-left: 3px solid var(--border-color);
   position: relative;
   width: 100%;
-  max-width: none;
+  max-width: 100%;
   z-index: 1;
+  box-sizing: border-box;
 }
 
 #content::before {
