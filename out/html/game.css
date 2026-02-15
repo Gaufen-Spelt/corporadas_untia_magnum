@@ -305,6 +305,53 @@ header {
   overflow: hidden;
 }
 
+/* BOTTOM PANEL - news/additional content below main */
+#bottom_panel {
+  background-color: var(--content-bg-color);
+  color: var(--text-color);
+  font-size: 0.95em;
+  padding: 2em 3em;
+  box-shadow: 
+    0 0 0 1px var(--border-color),
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  min-height: 250px;
+  border-left: 3px solid var(--border-color);
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-top: 25px;
+}
+
+#bottom_panel h1 {
+  margin: 0 0 1.5em 0;
+  font-size: 1.2em;
+  font-weight: 700;
+  font-family: "Rajdhani", sans-serif;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--link-color);
+  border-left: 4px solid var(--link-color);
+  padding-left: 1em;
+  text-shadow: none;
+}
+
+#bottom_panel h1::before {
+  content: "◆ ";
+  color: var(--accent-color);
+  margin-right: 0.5em;
+}
+
+#bottom_panel p {
+  margin: 0;
+  margin-bottom: 1.2em;
+  text-indent: 0;
+  text-align: justify;
+  color: var(--text-color);
+}
+
 /* RIGHT PANEL - info panel with proper sizing */
 .tools {
   grid-area: right-panel;
@@ -959,6 +1006,11 @@ a.card:hover .card-tooltip {
     padding: 1.5em;
   }
   
+  #bottom_panel {
+    padding: 1.5em;
+    font-size: 0.9em;
+  }
+  
   #header-text h1 {
     font-size: 1.3em;
   }
@@ -967,6 +1019,12 @@ a.card:hover .card-tooltip {
 @media screen and (max-width: 560px) {
   #content {
     padding: 1.2em;
+  }
+  
+  #bottom_panel {
+    padding: 1.2em;
+    font-size: 0.85em;
+    margin-top: 15px;
   }
   
   #content::before {
