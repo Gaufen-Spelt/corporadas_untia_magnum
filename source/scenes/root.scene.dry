@@ -668,12 +668,15 @@ This is a narrative-driven corporate political simulator set in a dystopian futu
 Prepare yourself.
 
 - @3210_easy: Begin (easy difficulty)
-- @3210_main: Begin (normal difficulty)
+- @3210_main_2: Begin (normal difficulty)
 - @3210_hard: Begin (hard difficulty)
 - @3210_historical: Begin (historical mode - no saves)
 
 @3210_easy
 on-arrival: difficulty = -1; resources = 7; liquid_assets = 1500; mentezes_group_strength = 40; trade_co_loyalty_to_mentezes = 75; industrial_zone_stability = 65; coalition_stability = 80;
+go-to: intro
+
+@3210_main_2
 go-to: intro
 
 @3210_hard
@@ -720,8 +723,30 @@ Would you like to read the intro or skip the intro?
 - @3210_main: Skip
 
 @no_intro_skip
+new-page: true
 
-Mentezes. I would like to share my considerations, Mr. Mentezes'. When the time will finally tick, we guarantee your prosperity none of endurance that of needed to survive consequences of your richness. No, in essence, morality is dead and factually so. What is going instead is that: You do not know how does it feel to see failures. What do you deem of yourself? What if I told you, that, even here, you may feel the consequences. What does it take for you to see the future of your own fate? Perhaps, one shake would be enough. To shake your eternity.            
+Mentezes. I would like to share my considerations, Mr. Mentezes'. When the time will finally tick, we guarantee your prosperity none of endurance that of needed to survive consequences of your richness. 
+
+No, in essence, morality is dead and factually so. What is going instead is that: You do not know how does it feel to see failures. What do you deem of yourself? What if I told you, that, even here, you may feel the consequences. What does it take for you to see the future of your own fate? 
+
+Perhaps, one shake would be enough. To shake your eternity.     
+
+To finally wake you to your situation.
+
+- @huh: What was that...?
+
+@huh
+new-page: true
+
+Felt like I was under some substance. Perhaps, drinking Kol-4x4 (very acidic toxin, normal human would die, but our folks are not Homo Sapience) was not the best idea.
+
+I must stay in form. 
+
+I have to do my usual thing - keep things flowing.
+
+What's another century of stability is for me?
+
+All I have to do is not shake the things. Or else.
 
 - @3210_main: Let's begin.
 
@@ -730,17 +755,8 @@ audio: shuffle music/corporadas/StationAmbient.mp3 music/corporadas/BoardroomTen
 new-page: true
 go-to: main if difficulty >= 0; main.main_easy if difficulty < 0
 
-= Year 3210, Quarter 1
+= Year 3210.
 
-**SECTOR 222 - CORPORADAS UNTIA MAGNA HOLDINGS**
-**EXECUTIVE BRIEFING - CEO MENTEZES QUATTERZ**
+**SECTOR 222 - Day is in the Profit**
 
-The colonial station hums with the sound of a thousand grievances. In the Industrial Zone, production lines stand silent as workers demand contract renegotiations. In Mega City Polus, 3.5 million citizens watch holoscreens showing your face, wondering if their next paycheck will clear. In Garrison 3, militia commanders sharpen blades meant for "external threats."
-
-The Governorate Commandante's quarterly inspection is imminent. The board convenes in 12 weeks. Trade Co. Emergent hedges its bets. The Visionarista dream of distant frontiers. The Developmentalists whisper of industrial revolution. The Popularista promise bread and circuses.
-
-You control 55 seats through coalition. You need 51 to survive. The Federation expects tribute. The zones expect order. The divisions expect direction.
-
-The profit margin is thin. The timeline is tight. The Sector is watching.
-
-**What will you do first, CEO?**
+**Mentezes, prepare your cards.**
